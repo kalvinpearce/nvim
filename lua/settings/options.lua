@@ -1,4 +1,7 @@
+local cmd = vim.cmd
 local apply_options = require("settings.utils").apply_options
+
+cmd "filetype plugin indent on"
 
 apply_options({
     autoindent = true, -- enable autoindent
