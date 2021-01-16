@@ -39,6 +39,8 @@ map("n", "p", "p`]")
 -- Beter completion nav
 map("i", "<c-j>", "<down>")
 map("i", "<c-k>", "<up>")
+-- Multi tab (complete/tab/move out of pairs)
+cmd [[inoremap <expr><TAB> pumvisible() ? "\<C-y>" : search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<TAB>']]
 
 -- Better insert pasting
 map("i", "<c-v>", "<F10><c-r>+<F10>")
