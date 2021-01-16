@@ -65,6 +65,7 @@ return require("packer").startup(
 
       -- Themes
       use "kyazdani42/nvim-web-devicons"
+      use "rakr/vim-one"
       use "sheerun/vim-polyglot"
 
       -- UI
