@@ -1,2 +1,2 @@
-lua require "settings"
-
+lua require("settings")
+lua require("plugins")
