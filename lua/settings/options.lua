@@ -30,6 +30,7 @@ apply_options({
     foldmethod = "marker", -- foldmethod using marker
     formatoptions = "qrn1", -- improve editor formatting
     mouse = "a",
+    pastetoggle="<F10>",
     shortmess = "filnxtToOFIWc", -- disable some stuff on shortmess
     signcolumn = "yes", -- enable sign column all the time, 4 column
     syntax = "on", -- syntax enable
