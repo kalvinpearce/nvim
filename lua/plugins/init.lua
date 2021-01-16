@@ -1,4 +1,5 @@
 require("plugins.startify")
+require("plugins.completion")
 require("plugins.devicons")
 require("plugins.statusline")
 require("plugins.vim-one")
