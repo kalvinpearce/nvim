@@ -57,18 +57,11 @@ return require("packer").startup(
       use "f-person/git-blame.nvim"
 
       -- Movement
-      use "justinmk/vim-sneak"
       use "skamsie/vim-lineletters"
       use "unblevable/quick-scope"
 
-    --   -- Fzf
-    --   use {"junegunn/fzf", run = "./install --all"} -- Fuzzy Searcher
-    --   use "junegunn/fzf.vim"
-    --   use "gfanto/fzf-lsp.nvim"
-
       --Test
       use "janko/vim-test"
-    --   use "rcarriga/vim-ultest" -- pretty test output
 
       -- Themes
       use "kyazdani42/nvim-web-devicons"
