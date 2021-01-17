@@ -37,6 +37,7 @@ return require("packer").startup(
       use 'nvim-lua/completion-nvim'
       use "voldikss/vim-floaterm"
       use "mbbill/undotree" -- undo tree
+      use "preservim/nerdtree"
 
       -- Auto Tweeks
       use "oberblastmeister/rooter.nvim" -- root dir switcher
