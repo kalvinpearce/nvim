@@ -1,6 +1,7 @@
 local map = require("settings.utils").map
 
 require("lsp.lsputils")
+require("lsp.diagnostics")
 
 -- LSP
 map("n", 'K', "<Cmd>lua vim.lsp.buf.hover()<CR>")
