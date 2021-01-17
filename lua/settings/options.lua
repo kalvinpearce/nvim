@@ -1,4 +1,5 @@
 local cmd = vim.cmd
+local fn = vim.fn
 local apply_options = require("settings.utils").apply_options
 
 cmd "filetype plugin indent on"
@@ -45,3 +46,10 @@ apply_options({
     updatetime = 100, -- set faster update time
 
 })
+
+if fn.has("win32") == 1 then
+    cmd [[ let &shell = "powershell" ]]
+    cmd [[ set shellquote= shellpipe=\| shellxquote= ]]
+    cmd [[ set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command ]]
+    cmd [[ set shellredir=\|\ Out-File\ -Encoding\ UTF8 ]]
+end
