@@ -2,6 +2,7 @@ local map = require("settings.utils").map
 
 require("lsp.lsputils")
 require("lsp.diagnostics")
+require("lsp.treesitter")
 
 require("lsp.vim")
 require("lsp.rust")

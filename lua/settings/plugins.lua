@@ -26,6 +26,7 @@ return require("packer").startup(
       use "nvim-lua/lsp-status.nvim"
       use "RishabhRD/popfix"
       use "RishabhRD/nvim-lsputils"
+      use "nvim-treesitter/nvim-treesitter"
 
       -- Telescope
       use "nvim-lua/popup.nvim"
