@@ -88,3 +88,5 @@ map("n", "<leader>/",  ":Commentary<cr>")
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
 map("o", "A", ":<C-U>normal! ggVG<CR>")
+
+map("n", "\\", "<cmd>BufferPick<CR>")
