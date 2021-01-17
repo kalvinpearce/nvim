@@ -4,6 +4,7 @@ require("lsp.lsputils")
 require("lsp.diagnostics")
 
 require("lsp.vim")
+require("lsp.rust")
 
 -- LSP
 map("n", 'K', "<Cmd>lua vim.lsp.buf.hover()<CR>")
