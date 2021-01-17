@@ -24,7 +24,7 @@ apply_options({
     writebackup = false, -- disable backup
 
     clipboard = "unnamedplus", -- use system clipboard
-    completeopt = "menuone,noinsert,noselect", -- better completion
+    completeopt = "menuone,noinsert", -- better completion
     encoding = "UTF-8", -- set encoding
     foldmethod = "marker", -- foldmethod using marker
     formatoptions = "qrn1", -- improve editor formatting
