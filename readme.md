@@ -1,6 +1,6 @@
-<img src="https://img.shields.io/badge/neovim%20-%23559D42.svg?&style=for-the-badge&logo=neovim&logoColor=white"/>
-<img src="https://img.shields.io/badge/unity%20-%23000000.svg?&style=for-the-badge&logo=unity&logoColor=white"/>
-<img src="https://img.shields.io/badge/rust%20-%23DD3A26.svg?&style=for-the-badge&logo=rust&logoColor=white"/>
+[<img src="https://img.shields.io/badge/neovim%20-%23559D42.svg?&style=for-the-badge&logo=neovim&logoColor=white"/>][/]
+[<img src="https://img.shields.io/badge/unity%20-%23000000.svg?&style=for-the-badge&logo=unity&logoColor=white"/>][/]
+[<img src="https://img.shields.io/badge/rust%20-%23DD3A26.svg?&style=for-the-badge&logo=rust&logoColor=white"/>][/]
 
 ### Attention
 
@@ -25,3 +25,5 @@ felt like I was trying to force it. Using VSCode's vim plugin always felt like I
 was trying to get it to do something it didn't want to. It was close but never
 perfect. However this time I bit the bullet and went for a complete vim solution
 and this is what I ended up with so far.
+
+[/]: https://github.com/kalvinpearce/nvim/
