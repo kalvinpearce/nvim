@@ -31,7 +31,7 @@ g.startify_lists = {
    { type ='bookmarks',                   header = {'       Bookmarks'}           },
  }
 
-local configPath = vim.fn.stdpath('config') .. "/init.vim";
+local configPath = vim.fn.stdpath('config') .. "/init.lua";
 g.startify_bookmarks = {
         {i = configPath},
         }
