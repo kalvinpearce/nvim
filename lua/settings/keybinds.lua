@@ -84,6 +84,7 @@ map("x", "J", ":move '>+1<cr>gv-gv")
 map("n", "<leader>.",  ":e $MYVIMRC<cr>")
 map("n", "<leader>,",  ":Startify<cr>")
 map("n", "<leader>/",  ":Commentary<cr>")
+map("x", "<leader>/",  ":Commentary<cr>")
 
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
