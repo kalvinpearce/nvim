@@ -17,6 +17,8 @@ Currently this is being developed for Windows (to support omnisharp) but will be
 supporting linux soon too (most things should work on linux already out of the
 box)
 
+<img src="docs/preview.png" />
+
 ## Why not just use VSCode?
 
 Well I really like the idea of vim and think the customizability and speed that
