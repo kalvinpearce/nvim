@@ -6,6 +6,7 @@ require("lsp.treesitter")
 
 require("lsp.vim")
 require("lsp.rust")
+require("lsp.omnisharp")
 
 -- LSP
 map("n", 'K', "<Cmd>lua vim.lsp.buf.hover()<CR>")
