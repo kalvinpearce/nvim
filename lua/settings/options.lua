@@ -25,7 +25,6 @@ apply_options({
 
     clipboard = "unnamedplus", -- use system clipboard
     completeopt = "menuone,noinsert,noselect", -- better completion
-    cpoptions = "x", -- stay at seach item when <esc>
     encoding = "UTF-8", -- set encoding
     foldmethod = "marker", -- foldmethod using marker
     formatoptions = "qrn1", -- improve editor formatting

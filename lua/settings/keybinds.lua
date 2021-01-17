@@ -40,7 +40,7 @@ map("n", "p", "p`]")
 map("i", "<c-j>", "<down>")
 map("i", "<c-k>", "<up>")
 -- Multi tab (complete/tab/move out of pairs)
-cmd [[inoremap <expr><TAB> pumvisible() ? "\<C-y>" : search('\%#[]>)}''"`]', 'n') ? '<Right>' : '<TAB>']]
+map("i", "<TAB>", "pumvisible() ? '<C-y>' : search('\\%#[]>)}''\"`]', 'n') ? '<Right>' : '<TAB>'", {expr = true})
 
 -- Better insert pasting
 map("i", "<c-v>", "<F10><c-r>+<F10>")
