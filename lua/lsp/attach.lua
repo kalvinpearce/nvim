@@ -18,6 +18,7 @@ local on_attach = function(client)
     map("n", "g0", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
     map("n", "]d", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
 
+    require'completion'.on_attach()
     if client.resolved_capabilities.document_formatting then
         util.nvim_multiline_command [[
             augroup lsp_format_on_save
