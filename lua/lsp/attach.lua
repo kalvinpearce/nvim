@@ -33,4 +33,4 @@ local on_attach = function(client)
     end
 end
 
-return { on_attach }
+return { attach = on_attach }
