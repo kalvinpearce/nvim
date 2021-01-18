@@ -53,3 +53,5 @@ if fn.has("win32") == 1 then
     cmd [[ set shellcmdflag=-NoLogo\ -NoProfile\ -ExecutionPolicy\ RemoteSigned\ -Command ]]
     cmd [[ set shellredir=\|\ Out-File\ -Encoding\ UTF8 ]]
 end
+
+cmd [[ set guifont=Hack\ Nerd\ Font ]]
