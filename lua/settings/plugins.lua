@@ -40,7 +40,7 @@ return require("packer").startup(
       use "gfanto/fzf-lsp.nvim"
 
       -- Auto Tweeks
-      use "oberblastmeister/rooter.nvim" -- root dir switcher
+      use "airblade/vim-rooter" -- root dir switcher
       use "cohama/lexima.vim" -- Auto close parentheses and repeat by dot dot dot...
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
       use "romainl/vim-cool"
@@ -55,7 +55,7 @@ return require("packer").startup(
       use "tpope/vim-fugitive"
       use "tpope/vim-rhubarb"
       use "rhysd/conflict-marker.vim" -- Highlight conflict markers.[x and ]x, ct for themselves, co for ourselves, cn for none and cb
-      use "lewis6991/gitsigns.nvim"
+      use "mhinz/vim-signify"
       use "f-person/git-blame.nvim"
 
       -- Movement

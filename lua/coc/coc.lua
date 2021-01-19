@@ -15,6 +15,7 @@ g.coc_global_extensions = {
   "coc-prettier",
   "coc-tsserver",
   "coc-omnisharp",
+  "coc-rust-analyzer",
 }
 
 function show_docs()

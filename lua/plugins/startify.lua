@@ -1,4 +1,5 @@
 local g = vim.g
+local fn = vim.fn
 
 
 g.ascii = {
@@ -31,9 +32,10 @@ g.startify_lists = {
    { type ='bookmarks',                   header = {'       Bookmarks'}           },
  }
 
-local configPath = vim.fn.stdpath('config') .. "/init.lua";
+local configPath = fn.stdpath('config') .. "/init.lua";
 g.startify_bookmarks = {
         {i = configPath},
+        {rt = "D:/Repos/rust-tutorials/"}
         }
 
 g.startify_session_sort = 1
