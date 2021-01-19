@@ -20,13 +20,12 @@ return require("packer").startup(
       -- Packer can manage itself as an optional plugin
       use {"wbthomason/packer.nvim", opt = true}
 
-      -- LSP
+      -- Coc
       use "nvim-lua/plenary.nvim"
-      use "neovim/nvim-lspconfig"
-      use "nvim-lua/lsp-status.nvim"
-      use "RishabhRD/popfix"
-      use "RishabhRD/nvim-lsputils"
       use "nvim-treesitter/nvim-treesitter"
+      use "neovim/nvim-lspconfig"
+      use {"neoclide/coc.nvim", branch = "release"}
+      use "antoinemadec/coc-fzf" -- coc and fzf together
 
       -- Telescope
       use "nvim-lua/popup.nvim"
@@ -34,10 +33,11 @@ return require("packer").startup(
 
       -- Misc IDE Stuff
       use "mhinz/vim-startify" -- start screen
-      use 'nvim-lua/completion-nvim'
       use "voldikss/vim-floaterm"
       use "mbbill/undotree" -- undo tree
-      use "preservim/nerdtree"
+      use {"junegunn/fzf", run = "./install --all"} -- Fuzzy Searcher
+      use "junegunn/fzf.vim"
+      use "gfanto/fzf-lsp.nvim"
 
       -- Auto Tweeks
       use "oberblastmeister/rooter.nvim" -- root dir switcher
