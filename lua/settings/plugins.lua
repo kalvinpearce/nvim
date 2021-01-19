@@ -40,7 +40,7 @@ return require("packer").startup(
       use "gfanto/fzf-lsp.nvim"
 
       -- Auto Tweeks
-      use "oberblastmeister/rooter.nvim" -- root dir switcher
+      use "airblade/vim-rooter" -- root dir switcher
       use "cohama/lexima.vim" -- Auto close parentheses and repeat by dot dot dot...
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
       use "romainl/vim-cool"
