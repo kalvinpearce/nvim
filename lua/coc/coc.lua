@@ -56,7 +56,8 @@ map("x", "<leader>f", "<Plug>(coc-format-selected)", {noremap = false})
 map("n", "<leader>f", "<Plug>(coc-format)", {noremap = false})
 
 -- Remap keys for applying codeAction to the current buffer.
-map("n", "<leader>a", "<Plug>(coc-codeaction)", {noremap = false})
+map("n", "<leader>a", "<Plug>(coc-codeaction-line)", {noremap = false})
+map("x", "<leader>a", "<Plug>(coc-codeaction-selected)", {noremap = false})
 
 map("n", "<leader>cq", "<Plug>(coc-fix-current)", {noremap = false})
 
