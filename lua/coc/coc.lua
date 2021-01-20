@@ -53,7 +53,7 @@ map("n", "gr", "<Plug>(coc-references)", {noremap = false})
 
 -- Format
 map("x", "<leader>f", "<Plug>(coc-format-selected)", {noremap = false})
-map("n", "<leader>f", "<Plug>(coc-format-selected)", {noremap = false})
+map("n", "<leader>f", "<Plug>(coc-format)", {noremap = false})
 
 -- Remap keys for applying codeAction to the current buffer.
 map("n", "<leader>a", "<Plug>(coc-codeaction)", {noremap = false})
