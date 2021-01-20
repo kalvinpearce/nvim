@@ -27,6 +27,7 @@ return require("packer").startup(
       use {"neoclide/coc.nvim", branch = "release"}
       use "antoinemadec/coc-fzf" -- coc and fzf together
 
+      use "vim-scripts/ShaderHighLight"
       -- Telescope
       use "nvim-lua/popup.nvim"
       use "nvim-telescope/telescope.nvim"
