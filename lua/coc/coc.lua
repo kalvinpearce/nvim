@@ -2,7 +2,6 @@ local map = require("settings.utils").map
 local g = vim.g
 local cmd = vim.cmd
 local fn = vim.fn
-local exec = vim.api.nvim_exec
 
 g.coc_global_extensions = {
   "coc-marketplace",
@@ -16,6 +15,7 @@ g.coc_global_extensions = {
   "coc-tsserver",
   "coc-omnisharp",
   "coc-rust-analyzer",
+  "coc-yank",
 }
 
 function show_docs()
@@ -69,3 +69,5 @@ map("n", "<leader>co", ":CocFzfList outline<CR>", {})
 map("n", "<leader>cs", ":CocFzfList -I symbols<CR>")
 -- Open settings
 map("n", "<leader>c.", ":CocConfig<CR>", {})
+-- Coc-Yank
+map("n", "<leader>y", ":<C-u>CocList -A --normal yank<cr>")
