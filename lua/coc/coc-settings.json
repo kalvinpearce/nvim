@@ -62,8 +62,5 @@
   "explorer.floating.height": -20,
   "explorer.floating.border.title": "",
   "explorer.quitOnOpen": true,
-
-  "Lua.diagnostics.globals": [
-      "vim"
-  ]
+  "Lua.diagnostics.globals": ["vim"]
 }
