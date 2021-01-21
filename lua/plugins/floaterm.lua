@@ -20,4 +20,5 @@ g.floaterm_keymap_new    = '<F4>'
 
 map("n", "<leader>tt", ":FloatermToggle<CR>")
 map("n", "<leader>tg", ":FloatermNew lazygit<CR>")
-map("t", "<Esc><Esc>", "<C-\\><C-n>:FloatermToggle<CR>")
+-- map("t", "<Esc><Esc>", "<C-\\><C-n>:FloatermToggle<CR>")
+map("t", "<Esc><Esc>", "<C-\\><C-n>")
