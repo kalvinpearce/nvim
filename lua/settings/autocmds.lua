@@ -13,7 +13,6 @@ cmd "au CmdlineLeave : echo ''"
 cmd "command! ReloadLSP lua reload_lsp()"
 cmd "command! DebugLSP lua print(vim.inspect(vim.lsp.get_active_clients()))"
 cmd "command! LogLSP lua open_lsp_log()"
-cmd "command! SourceVIMRC source $MYVIMRC"
 
 -- Startuptime
 exec([[
