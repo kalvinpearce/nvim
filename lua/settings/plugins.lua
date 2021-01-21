@@ -79,6 +79,8 @@ return require("packer").startup(
       -- Misk
       use "tweekmonster/startuptime.vim" -- benchmark startup
       use "editorconfig/editorconfig-vim"
+
+      -- Language specific
       use "cespare/vim-toml"
       use "nickspoons/vim-cs"
       use "kalvinpearce/ShaderHighLight"
