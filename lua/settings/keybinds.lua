@@ -9,7 +9,7 @@ g.mapleader = " "
 -- Remove force kill
 map("n", "<c-z>", "<nop>")
 
--- Quick exit 
+-- Quick exit
 map("i", "jk", "<esc>")
 map("i", "kj", "<esc>")
 
@@ -44,6 +44,7 @@ map("i", "<TAB>", "pumvisible() ? '<C-y>' : search('\\%#[]>)}''\"`]', 'n') ? '<R
 
 -- Better insert pasting
 map("i", "<c-v>", "<F10><c-r>+<F10>")
+cmd [[ cmap <C-V> <C-R>+ ]]
 
 -- Better indenting
 map("v", "<", "<gv")
