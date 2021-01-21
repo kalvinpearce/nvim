@@ -27,7 +27,6 @@ return require("packer").startup(
       use {"neoclide/coc.nvim", branch = "release"}
       use "antoinemadec/coc-fzf" -- coc and fzf together
 
-      use "vim-scripts/ShaderHighLight"
       -- Telescope
       use "nvim-lua/popup.nvim"
       use "nvim-telescope/telescope.nvim"
@@ -81,6 +80,7 @@ return require("packer").startup(
       use "tweekmonster/startuptime.vim" -- benchmark startup
       use "editorconfig/editorconfig-vim"
       use "cespare/vim-toml"
+      use "kalvinpearce/ShaderHighLight"
 
     end,
     config = {
