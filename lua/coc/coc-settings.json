@@ -6,7 +6,6 @@
 
   "suggest.triggerCompletionWait": 50,
   "suggest.noselect": false,
-
   "suggest.enablePreview": true,
   "suggest.detailMaxLength":120,
   "suggest.detailField": "abbr",
@@ -65,6 +64,7 @@
   "explorer.floating.height": -20,
   "explorer.floating.border.title": "",
   "explorer.quitOnOpen": true,
+
   "Lua.diagnostics.globals": ["vim"],
   "rust-analyzer.inlayHints.enable": false
 }
