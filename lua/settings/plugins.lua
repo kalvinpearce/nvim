@@ -83,7 +83,7 @@ return require("packer").startup(
       -- Language specific
       use "cespare/vim-toml"
       use "mhinz/vim-crates"
-      use "nickspoons/vim-cs"
+      use "OmniSharp/omnisharp-vim" -- currently just using for better syntax highlighting
       use "kalvinpearce/ShaderHighLight"
 
     end,
