@@ -17,6 +17,7 @@ g.coc_global_extensions = {
   "coc-omnisharp",
   "coc-rust-analyzer",
   "coc-yank",
+  "coc-spell-checker",
 }
 
 exec([[
