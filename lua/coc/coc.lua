@@ -2,6 +2,7 @@ local map = require("settings.utils").map
 local g = vim.g
 local cmd = vim.cmd
 local fn = vim.fn
+local exec = vim.api.nvim_exec
 
 g.coc_global_extensions = {
   "coc-marketplace",
@@ -17,6 +18,17 @@ g.coc_global_extensions = {
   "coc-rust-analyzer",
   "coc-yank",
 }
+
+exec([[
+    augroup CocUnderlineHighlights
+        autocmd!
+        autocmd ColorScheme * highlight CocErrorHighlight guisp=red gui=underline cterm=underline
+        autocmd ColorScheme * highlight CocWarningHighlight guisp=yellow gui=underline cterm=underline
+        autocmd ColorScheme * highlight CocHintHighlight guisp=#15aabf gui=underline cterm=underline
+        autocmd ColorScheme * highlight CocInfoHighlight guisp=grey gui=underline cterm=underline
+        autocmd ColorScheme * highlight CocInfoSign ctermfg=grey guifg=grey
+    augroup END
+]],"")
 
 function show_docs()
   local cw = fn.expand("<cword>")
