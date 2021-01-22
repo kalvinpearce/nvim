@@ -75,9 +75,10 @@ return require("packer").startup(
       use "machakann/vim-highlightedyank"
       use {"rrethy/vim-hexokinase", run = "make hexokinase"}
 
-      -- Misk
+      -- Misc
       use "tweekmonster/startuptime.vim" -- benchmark startup
       use "editorconfig/editorconfig-vim"
+      use "wsdjeg/vim-todo"
 
       -- Language specific
       use "cespare/vim-toml"
