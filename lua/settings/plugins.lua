@@ -22,7 +22,6 @@ return require("packer").startup(
 
       -- Coc
       use "nvim-lua/plenary.nvim"
-      use "nvim-treesitter/nvim-treesitter"
       use "neovim/nvim-lspconfig"
       use {"neoclide/coc.nvim", branch = "release"}
       use "antoinemadec/coc-fzf" -- coc and fzf together
