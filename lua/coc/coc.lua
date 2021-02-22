@@ -96,3 +96,10 @@ map("n", "<leader>y", ":<C-u>CocList -A --normal yank<cr>")
 local luaPath = fn.expand('$VIMRUNTIME/lua')
 local lspPath = fn.expand('$VIMRUNTIME/lua/vim/lsp')
 cmd("call coc#config('Lua.workspace', { 'library': {'"..luaPath.."': 'true', '"..lspPath.."': 'true'".."} })")
+
+-- Fix coc explorer session bug?
+cmd "set sessionoptions=buffers,curdir,folds,help,tabpages,winsize"
+
+-- Snippets mappings
+g.coc_snippet_next = '<c-l>'
+g.coc_snippet_prev = '<c-h>'

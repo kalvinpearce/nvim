@@ -8,6 +8,8 @@ cmd "au TermOpen * setlocal signcolumn=no nonumber norelativenumber"
 cmd "command!  -nargs=1 ReloadModule lua require('plenary.reload').reload_module(<q-args>)"
 cmd "au BufWritePost *.lua :ReloadModule<CR>"
 
+cmd "autocmd Filetype dart setlocal tabstop=4"
+
 cmd "au CmdlineLeave : echo ''"
 
 cmd "command! ReloadLSP lua reload_lsp()"

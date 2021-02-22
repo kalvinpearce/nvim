@@ -42,6 +42,9 @@ map("i", "<c-k>", "<up>")
 -- Multi tab (complete/tab/move out of pairs)
 map("i", "<TAB>", "pumvisible() ? '<C-y>' : search('\\%#[]>)}''\"`]', 'n') ? '<Right>' : '<TAB>'", {expr = true})
 
+-- Esc to dismiss floats
+map("i", "<esc>", "pumvisible() ? '<c-e>' : '<esc>'", {expr = true})
+
 -- Better insert pasting
 map("i", "<c-v>", "<F10><c-r>+<F10>")
 cmd [[ cmap <C-V> <C-R>+ ]]
@@ -92,3 +95,26 @@ map("x", "<leader>/",  ":Commentary<cr>")
 map("o", "A", ":<C-U>normal! ggVG<CR>")
 
 map("n", "\\", "<cmd>BufferPick<CR>")
+
+-- Better insert movement
+map("i", "<c-h>", "<left>")
+map("i", "<c-j>", "<down>")
+map("i", "<c-k>", "<up>")
+map("i", "<c-l>", "<right>")
+
+-- Ctrl-backspace
+map("i", "<c-bs>", "<c-w>")
+
+-- Hard mode
+map("n", "<left>", "<nop>");
+map("n", "<right>", "<nop>");
+map("n", "<up>", "<nop>");
+map("n", "<down>", "<nop>");
+map("i", "<left>", "<nop>");
+map("i", "<right>", "<nop>");
+map("i", "<up>", "<nop>");
+map("i", "<down>", "<nop>");
+map("x", "<left>", "<nop>");
+map("x", "<right>", "<nop>");
+map("x", "<up>", "<nop>");
+map("x", "<down>", "<nop>");
