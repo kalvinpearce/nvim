@@ -37,6 +37,7 @@ return require("packer").startup(
       use {"junegunn/fzf", run = "./install --all"} -- Fuzzy Searcher
       use "junegunn/fzf.vim"
       use "gfanto/fzf-lsp.nvim"
+      use "chaoren/vim-wordmotion"
       use "iamcco/markdown-preview.nvim"
 
       -- Auto Tweeks
