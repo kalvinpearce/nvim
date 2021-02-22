@@ -1,6 +1,6 @@
 {
   "coc.preferences.colorSupport": true,
-  "coc.preferences.formatOnSaveFiletypes": ["rust", "csharp"],
+  "coc.preferences.formatOnSaveFiletypes": ["rust", "cs"],
 
   "list.maxPreviewHeight": 30,
 
