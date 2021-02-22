@@ -41,7 +41,7 @@ return require("packer").startup(
 
       -- Auto Tweeks
       use "airblade/vim-rooter" -- root dir switcher
-      use "cohama/lexima.vim" -- Auto close parentheses and repeat by dot dot dot...
+      -- use "cohama/lexima.vim" -- Auto close parentheses and repeat by dot dot dot...
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
       use "romainl/vim-cool"
 
