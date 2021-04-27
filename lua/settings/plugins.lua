@@ -34,9 +34,8 @@ return require("packer").startup(
       use "mhinz/vim-startify" -- start screen
       use "voldikss/vim-floaterm"
       use "mbbill/undotree" -- undo tree
-      use {"junegunn/fzf", run = "./install --all"} -- Fuzzy Searcher
+      use {"junegunn/fzf", run = "fzf#inatall()"} -- Fuzzy Searcher
       use "junegunn/fzf.vim"
-      use "gfanto/fzf-lsp.nvim"
       use "chaoren/vim-wordmotion"
       use "iamcco/markdown-preview.nvim"
 
@@ -75,7 +74,7 @@ return require("packer").startup(
       use "romgrk/barbar.nvim"
       use "glepnir/galaxyline.nvim"
       use "machakann/vim-highlightedyank"
-      use {"rrethy/vim-hexokinase", run = "make hexokinase"}
+      use "norcalli/nvim-colorizer.lua"
 
       -- Misc
       use "tweekmonster/startuptime.vim" -- benchmark startup
