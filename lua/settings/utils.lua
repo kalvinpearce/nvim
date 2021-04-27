@@ -1,4 +1,4 @@
-local fn = vim.fn
+local api = vim.api
 local tbl_extend = vim.tbl_extend
 local U = {}
 
@@ -12,7 +12,7 @@ function U.map(mode, key, result, opts)
             expr = false
         }
     )
-    fn.nvim_set_keymap(mode, key, result, opts)
+    api.nvim_set_keymap(mode, key, result, opts)
 end
 
 return U
