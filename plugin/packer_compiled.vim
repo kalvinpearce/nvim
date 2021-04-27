@@ -23,21 +23,18 @@ if not string.find(package.cpath, install_cpath_pattern, 1, true) then
 end
 
 local function try_loadstring(s, component, name)
-  local success, err = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s))
   if not success then
     print('Error running ' .. component .. ' for ' .. name)
-    error(err)
+    error(result)
   end
+  return result
 end
 
 _G.packer_plugins = {
   ShaderHighLight = {
     loaded = true,
     path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ShaderHighLight"
-  },
-  ["barbar.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\barbar.nvim"
   },
   ["coc-fzf"] = {
     loaded = true,
@@ -63,21 +60,25 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\fzf"
   },
-  ["fzf-lsp.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\fzf-lsp.nvim"
-  },
   ["fzf.vim"] = {
     loaded = true,
     path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\fzf.vim"
   },
-  ["galaxyline.nvim"] = {
-    loaded = true,
-    path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\galaxyline.nvim"
-  },
   ["git-blame.nvim"] = {
     loaded = true,
     path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\git-blame.nvim"
+  },
+  ["markdown-preview.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\markdown-preview.nvim"
+  },
+  ["neoline.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neoline.vim"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-colorizer.lua"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -93,6 +94,7 @@ _G.packer_plugins = {
   },
   ["packer.nvim"] = {
     loaded = false,
+    needs_bufread = false,
     path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\opt\\packer.nvim"
   },
   ["plenary.nvim"] = {
@@ -135,6 +137,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-crates"
   },
+  ["vim-fetch"] = {
+    loaded = true,
+    path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fetch"
+  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-floaterm"
@@ -142,10 +148,6 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fugitive"
-  },
-  ["vim-hexokinase"] = {
-    loaded = true,
-    path = "C:\\Users\\Kev\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-hexokinase"
   },
   ["vim-highlightedyank"] = {
     loaded = true,
