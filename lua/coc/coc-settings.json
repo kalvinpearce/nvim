@@ -66,5 +66,6 @@
   "explorer.quitOnOpen": true,
 
   "Lua.diagnostics.globals": ["vim"],
-  "rust-analyzer.inlayHints.enable": false
+  "rust-analyzer.inlayHints.enable": false,
+  "omnisharp.version": "v1.37.3"
 }
