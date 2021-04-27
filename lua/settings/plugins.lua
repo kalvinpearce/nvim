@@ -38,6 +38,7 @@ return require("packer").startup(
       use "junegunn/fzf.vim"
       use "chaoren/vim-wordmotion"
       use "iamcco/markdown-preview.nvim"
+      use "wsdjeg/vim-fetch"
 
       -- Auto Tweeks
       use "airblade/vim-rooter" -- root dir switcher
