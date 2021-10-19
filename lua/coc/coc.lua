@@ -14,6 +14,7 @@ g.coc_global_extensions = {
   "coc-style-helper",
   "coc-prettier",
   "coc-tsserver",
+  "coc-prisma",
   "coc-omnisharp",
   "coc-rust-analyzer",
   "coc-yank",
