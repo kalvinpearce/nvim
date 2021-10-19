@@ -32,6 +32,7 @@ return require("packer").startup(
 
       -- Misc IDE Stuff
       use "mhinz/vim-startify" -- start screen
+      use "nvim-treesitter/nvim-treesitter"
       use "voldikss/vim-floaterm"
       use "mbbill/undotree" -- undo tree
       use {"junegunn/fzf", run = "fzf#inatall()"} -- Fuzzy Searcher
@@ -85,7 +86,7 @@ return require("packer").startup(
       -- Language specific
       use "cespare/vim-toml"
       use "mhinz/vim-crates"
-      use "OmniSharp/omnisharp-vim" -- currently just using for better syntax highlighting
+      -- use "OmniSharp/omnisharp-vim" -- currently just using for better syntax highlighting
       use "kalvinpearce/ShaderHighLight"
 
     end,

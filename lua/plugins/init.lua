@@ -1,4 +1,5 @@
 require("plugins.startify")
+require("plugins.treesitter")
 require("plugins.quickscope")
 require("plugins.devicons")
 require("plugins.statusline")
