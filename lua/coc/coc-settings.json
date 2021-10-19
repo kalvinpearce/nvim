@@ -64,6 +64,7 @@
   "explorer.floating.height": -20,
   "explorer.floating.border.title": "",
   "explorer.quitOnOpen": true,
+  "explorer.file.showHiddenFiles": true,
 
   "Lua.diagnostics.globals": ["vim"],
   "rust-analyzer.inlayHints.enable": false,
