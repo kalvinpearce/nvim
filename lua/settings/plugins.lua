@@ -48,7 +48,9 @@ return require("packer").startup(
       use "romainl/vim-cool"
 
       -- Manual Tweeks
-      use "tpope/vim-commentary" -- comments like gcc
+      use { 'numToStr/Comment.nvim',
+        config = function() require('Comment').setup() end
+      }
       use "mhartington/formatter.nvim"
       use "AndrewRadev/splitjoin.vim" -- allows to split one liner to multi lines
       use "machakann/vim-sandwich" -- Change surrounding arks
