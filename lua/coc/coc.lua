@@ -62,10 +62,8 @@ map("n", "]e", "<Plug>(coc-diagnostic-next)", {noremap = false})
 map("n", "gw", "<Plug>(coc-cursors-word)", {noremap = false})
 
 -- GoTo code navigation.
-map("n", "gd", "<Plug>(coc-definition)", {noremap = false})
 map("n", "gy", "<Plug>(coc-type-definition)", {noremap = false})
 map("n", "gi", "<Plug>(coc-implementation)", {noremap = false})
-map("n", "gr", "<Plug>(coc-references)", {noremap = false})
 
 -- Format
 map("x", "<leader>f", "<Plug>(coc-format-selected)", {noremap = false})

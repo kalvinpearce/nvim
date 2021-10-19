@@ -20,32 +20,27 @@ return require("packer").startup(
       -- Packer can manage itself as an optional plugin
       use {"wbthomason/packer.nvim", opt = true}
 
-      -- Coc
       use "nvim-lua/plenary.nvim"
-      use "neovim/nvim-lspconfig"
-      use {"neoclide/coc.nvim", branch = "release"}
-      use "antoinemadec/coc-fzf" -- coc and fzf together
-
-      -- Telescope
-      use "nvim-lua/popup.nvim"
-      use "nvim-telescope/telescope.nvim"
 
       -- Misc IDE Stuff
       use "mhinz/vim-startify" -- start screen
       use "nvim-treesitter/nvim-treesitter"
+      use {"neoclide/coc.nvim", branch = "release"}
       use "voldikss/vim-floaterm"
       use "mbbill/undotree" -- undo tree
-      use {"junegunn/fzf", run = "fzf#inatall()"} -- Fuzzy Searcher
-      use "junegunn/fzf.vim"
       use "chaoren/vim-wordmotion"
       use "iamcco/markdown-preview.nvim"
       use "wsdjeg/vim-fetch"
+      -- Telescope
+      use "nvim-telescope/telescope.nvim"
+      use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+      use "fannheyward/telescope-coc.nvim"
 
       -- Auto Tweeks
       use "airblade/vim-rooter" -- root dir switcher
       -- use "cohama/lexima.vim" -- Auto close parentheses and repeat by dot dot dot...
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
-      use "romainl/vim-cool"
+      use "romainl/vim-cool" -- kill highlight when moving off searched word
 
       -- Manual Tweeks
       use { 'numToStr/Comment.nvim',
