@@ -1,21 +1,15 @@
 [<img src="https://img.shields.io/badge/neovim%20-%23559D42.svg?&style=for-the-badge&logo=neovim&logoColor=white"/>][/]
 [<img src="https://img.shields.io/badge/unity%20-%23000000.svg?&style=for-the-badge&logo=unity&logoColor=white"/>][/]
+[<img src="https://img.shields.io/badge/typescript%20-%232f74c0.svg?&style=for-the-badge&logo=typescript&logoColor=white"/>][/]
 [<img src="https://img.shields.io/badge/rust%20-%23DD3A26.svg?&style=for-the-badge&logo=rust&logoColor=white"/>][/]
-
-### Attention
-
-This is a complete port of old nvim config for WSL linux and has been rewritten
-in lua 100%
 
 # NeoVim Config
 
+100% Lua config 🥳
+
 This is very much a work in progress. As someone coming from heavy use of VSCode
 this config aims to bring many familiar utils and handy features into vim mainly
-for C#/Unity and Rust development.
-
-Currently this is being developed for Windows (to support omnisharp) but will be
-supporting linux soon too (most things should work on linux already out of the
-box)
+for C#/Unity, Typescript and Rust development.
 
 <img src="docs/preview.png" />
 
