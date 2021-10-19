@@ -66,7 +66,9 @@
   "explorer.quitOnOpen": true,
   "explorer.file.showHiddenFiles": true,
 
-  "Lua.diagnostics.globals": ["vim"],
+  "Lua.completion.callSnippet": "Replace",
+  "Lua.hint.enable": false,
   "rust-analyzer.inlayHints.enable": false,
-  "omnisharp.version": "v1.37.3"
+  "omnisharp.version": "v1.37.3",
+  "sumneko-lua.enableNvimLuaDev": true
 }

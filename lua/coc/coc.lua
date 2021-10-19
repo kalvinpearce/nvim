@@ -7,7 +7,7 @@ local exec = vim.api.nvim_exec
 g.coc_global_extensions = {
   "coc-marketplace",
   "coc-json",
-  "coc-lua",
+  "coc-sumneko-lua",
   "coc-snippets",
   "coc-explorer",
   "coc-emmet",
@@ -90,11 +90,6 @@ map("n", "<leader>cs", ":CocFzfList -I symbols<CR>")
 map("n", "<leader>c.", ":CocConfig<CR>", {})
 -- Coc-Yank
 map("n", "<leader>y", ":<C-u>CocList -A --normal yank<cr>")
-
--- Temp hacky way to load paths into lua server
-local luaPath = fn.expand('$VIMRUNTIME/lua')
-local lspPath = fn.expand('$VIMRUNTIME/lua/vim/lsp')
-cmd("call coc#config('Lua.workspace', { 'library': {'"..luaPath.."': 'true', '"..lspPath.."': 'true'".."} })")
 
 -- Fix coc explorer session bug?
 cmd "set sessionoptions=buffers,curdir,folds,help,tabpages,winsize"
