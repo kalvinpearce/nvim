@@ -84,7 +84,7 @@ return require("packer").startup(
       use "wsdjeg/vim-todo"
 
       -- Language specific
-      use "cespare/vim-toml"
+      use { "cespare/vim-toml", branch = "main"}
       use "mhinz/vim-crates"
       -- use "OmniSharp/omnisharp-vim" -- currently just using for better syntax highlighting
       use "kalvinpearce/ShaderHighLight"
