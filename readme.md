@@ -13,6 +13,42 @@ for C#/Unity, Typescript and Rust development.
 
 <img src="docs/preview.png" />
 
+## Installation
+Backup nvim config:
+`mv ~/.config/nvim ~/.config/nvim-backup`
+
+Clone config:
+`git clone --depth=1 https://github.com/kalvinpearce/nvim ~/.config/nvim`
+
+#### Dependancies 
+* neovim >= 5
+* python3 & pynvim
+* npm > 12
+* fzf
+* fd
+* ripgrep
+* lazygit
+
+##### Linux (currently only Arch)
+Install dependancies:
+`chmod +x ~/.config/nvim/install_deps.sh && sh ~/.config/nvim/install_deps.sh`
+
+#### Windows
+Install dependancies:
+```bash
+choco install extras
+choco install python
+choco install nvm
+nvm install --latest
+nvm use --latest
+npm i -g neovim
+choco install fzf
+choco install fd
+choco install ripgrep
+choco install lazygit
+```
+
+
 ## Why not just use VSCode?
 
 Well I really like the idea of vim and think the customizability and speed that
