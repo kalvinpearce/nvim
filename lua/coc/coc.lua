@@ -51,7 +51,7 @@ map("n", "<Esc>", "coc#float#close_all()", {silent = true})
 map("n", "<leader>e", "<cmd>CocCommand explorer<CR>", {})
 map("n", "<leader><leader>", "<cmd>CocCommand explorer --position floating<CR>", {})
 map("i", "<c-space>", "coc#refresh()", {expr = true})
-cmd "nmap rn <Plug>(coc-rename)"
+cmd "nmap <leader>rn <Plug>(coc-rename)"
 
 -- Use `[e` and `]e` to navigate diagnostics
 -- Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
