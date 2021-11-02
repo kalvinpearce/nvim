@@ -116,3 +116,12 @@ map("x", "<left>", "<nop>");
 map("x", "<right>", "<nop>");
 map("x", "<up>", "<nop>");
 map("x", "<down>", "<nop>");
+
+-- harpoon
+map("n", "<leader>hn", ":lua require('harpoon.mark').add_file()<cr>")
+map("n", "<leader>hh", ":lua require('harpoon.ui').toggle_quick_menu()<cr>")
+map("n", "<leader>hc", ":lua require('harpoon.cmd.ui').toggle_quick_menu()<cr>")
+map("n", "<leader>hf", ":lua require('harpoon.ui').nav_file(1)<cr>")
+map("n", "<leader>hd", ":lua require('harpoon.ui').nav_file(2)<cr>")
+map("n", "<leader>hs", ":lua require('harpoon.ui').nav_file(3)<cr>")
+map("n", "<leader>ha", ":lua require('harpoon.ui').nav_file(4)<cr>")

@@ -21,6 +21,7 @@ return require("packer").startup(
       use {"wbthomason/packer.nvim", opt = true}
 
       use "nvim-lua/plenary.nvim"
+      use "nvim-lua/popup.nvim"
 
       -- Misc IDE Stuff
       use "mhinz/vim-startify" -- start screen
@@ -31,6 +32,8 @@ return require("packer").startup(
       use "chaoren/vim-wordmotion"
       use "iamcco/markdown-preview.nvim"
       use "wsdjeg/vim-fetch"
+      use "ThePrimeagen/harpoon"
+
       -- Telescope
       use "nvim-telescope/telescope.nvim"
       use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -83,7 +86,6 @@ return require("packer").startup(
       -- Language specific
       use { "cespare/vim-toml", branch = "main"}
       use "mhinz/vim-crates"
-      -- use "OmniSharp/omnisharp-vim" -- currently just using for better syntax highlighting
       use "kalvinpearce/ShaderHighLight"
 
     end,
