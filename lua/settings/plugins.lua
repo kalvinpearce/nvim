@@ -30,7 +30,7 @@ return require("packer").startup(
       use "voldikss/vim-floaterm"
       use {"mbbill/undotree", cmd="UndotreeToggle"}
       use "chaoren/vim-wordmotion"
-      use "iamcco/markdown-preview.nvim"
+      use {"iamcco/markdown-preview.nvim", ft="md"}
       use "wsdjeg/vim-fetch"
       use "ThePrimeagen/harpoon"
       use { 'rmagatti/auto-session',
