@@ -76,7 +76,9 @@ return require("packer").startup(
 
       -- UI
       use "romgrk/barbar.nvim"
-      use "glepnir/galaxyline.nvim"
+      use { 'nvim-lualine/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+      }
       use "machakann/vim-highlightedyank"
       use "norcalli/nvim-colorizer.lua"
 
