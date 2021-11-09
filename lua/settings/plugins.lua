@@ -60,13 +60,11 @@ return require("packer").startup(
 
       -- Git
       use "tpope/vim-fugitive"
-      use "tpope/vim-rhubarb"
       use "rhysd/conflict-marker.vim" -- Highlight conflict markers.[x and ]x, ct for themselves, co for ourselves, cn for none and cb
       use { 'lewis6991/gitsigns.nvim',
         requires = { 'nvim-lua/plenary.nvim' },
         config = function() require('gitsigns').setup() end
       }
-      use "f-person/git-blame.nvim"
 
       -- Movement
       use "unblevable/quick-scope"
