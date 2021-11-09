@@ -69,7 +69,9 @@ return require("packer").startup(
       use "unblevable/quick-scope"
 
       -- Themes
-      use "kyazdani42/nvim-web-devicons"
+      use {"kyazdani42/nvim-web-devicons",
+        config = function () require"nvim-web-devicons".setup() end
+      }
       use "rakr/vim-one"
 
       -- UI
