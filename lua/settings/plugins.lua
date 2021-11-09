@@ -86,7 +86,10 @@ return require("packer").startup(
       -- Misc
       use "tweekmonster/startuptime.vim" -- benchmark startup
       use "editorconfig/editorconfig-vim"
-      use "wsdjeg/vim-todo"
+      use { "folke/todo-comments.nvim",
+          requires = "nvim-lua/plenary.nvim",
+          config = function() require("todo-comments").setup { } end
+      }
 
       -- Language specific
       use { "mhinz/vim-crates", ft="toml"}
