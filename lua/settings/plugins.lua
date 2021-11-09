@@ -87,7 +87,7 @@ return require("packer").startup(
       -- Language specific
       use { "cespare/vim-toml", branch = "main"}
       use "mhinz/vim-crates"
-      use "kalvinpearce/ShaderHighLight"
+      use { "kalvinpearce/ShaderHighLight", ft={"shader", "hlsl", "glsl", "cginc"}}
 
     end,
     config = {
