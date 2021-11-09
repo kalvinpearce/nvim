@@ -42,7 +42,9 @@ return require("packer").startup(
       use "fannheyward/telescope-coc.nvim"
 
       -- Auto Tweeks
-      use "airblade/vim-rooter" -- root dir switcher
+      use { "ahmedkhalf/project.nvim",
+        config = function() require("project_nvim").setup { } end
+      }
       use { "steelsojka/pears.nvim",
         config = function () require('pears').setup() end
       }
