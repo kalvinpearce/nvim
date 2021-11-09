@@ -66,11 +66,7 @@ return require("packer").startup(
       use "f-person/git-blame.nvim"
 
       -- Movement
-      use "skamsie/vim-lineletters"
       use "unblevable/quick-scope"
-
-      --Test
-      use "janko/vim-test"
 
       -- Themes
       use "kyazdani42/nvim-web-devicons"
