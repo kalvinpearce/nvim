@@ -125,3 +125,6 @@ map("n", "<leader>hf", ":lua require('harpoon.ui').nav_file(1)<cr>")
 map("n", "<leader>hd", ":lua require('harpoon.ui').nav_file(2)<cr>")
 map("n", "<leader>hs", ":lua require('harpoon.ui').nav_file(3)<cr>")
 map("n", "<leader>ha", ":lua require('harpoon.ui').nav_file(4)<cr>")
+
+-- nvim-tree
+map("n", "<leader>e", ":NvimTreeToggle<cr>")

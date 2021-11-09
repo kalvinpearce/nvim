@@ -42,6 +42,9 @@ return require("packer").startup(
       use "fannheyward/telescope-coc.nvim"
 
       -- Auto Tweeks
+      use { 'kyazdani42/nvim-tree.lua',
+          requires = 'kyazdani42/nvim-web-devicons'
+      }
       use { "ahmedkhalf/project.nvim",
         config = function() require("project_nvim").setup { } end
       }

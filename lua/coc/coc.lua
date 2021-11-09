@@ -48,8 +48,6 @@ map("n", "gh", "<CMD>lua show_docs()<CR>")
 map("n", "<leader>cx", ":CocRestart<CR>", {silent = true})
 map("n", "<Esc>", "coc#float#close_all()", {silent = true})
 
-map("n", "<leader>e", "<cmd>CocCommand explorer<CR>", {})
-map("n", "<leader><leader>", "<cmd>CocCommand explorer --position floating<CR>", {})
 map("i", "<c-space>", "coc#refresh()", {expr = true})
 cmd "nmap <leader>rn <Plug>(coc-rename)"
 
