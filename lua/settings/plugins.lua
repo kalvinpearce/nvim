@@ -28,7 +28,7 @@ return require("packer").startup(
       use "nvim-treesitter/nvim-treesitter"
       use {"neoclide/coc.nvim", branch = "release"}
       use "voldikss/vim-floaterm"
-      use "mbbill/undotree" -- undo tree
+      use {"mbbill/undotree", cmd="UndotreeToggle"}
       use "chaoren/vim-wordmotion"
       use "iamcco/markdown-preview.nvim"
       use "wsdjeg/vim-fetch"
