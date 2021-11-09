@@ -33,6 +33,9 @@ return require("packer").startup(
       use "iamcco/markdown-preview.nvim"
       use "wsdjeg/vim-fetch"
       use "ThePrimeagen/harpoon"
+      use { 'rmagatti/auto-session',
+        config = function() require('auto-session').setup { } end
+      }
 
       -- Telescope
       use "nvim-telescope/telescope.nvim"

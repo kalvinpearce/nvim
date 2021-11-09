@@ -31,6 +31,7 @@ opt.pastetoggle = '<F10>'
 opt.shortmess = 'filnxtToOFIWc' -- disable some stuff on shortmess
 opt.signcolumn = 'yes' -- enable sign column all the time, 4 column
 opt.syntax = 'on' -- syntax enable
+opt.sessionoptions = "blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal"
 
 opt.cmdheight = 2
 opt.conceallevel = 0
