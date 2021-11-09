@@ -54,7 +54,6 @@ return require("packer").startup(
       use { 'numToStr/Comment.nvim',
         config = function() require('Comment').setup() end
       }
-      use "mhartington/formatter.nvim"
       use "AndrewRadev/splitjoin.vim" -- allows to split one liner to multi lines
       use "machakann/vim-sandwich" -- Change surrounding arks
 
@@ -85,7 +84,6 @@ return require("packer").startup(
       use "wsdjeg/vim-todo"
 
       -- Language specific
-      use { "cespare/vim-toml", branch = "main"}
       use { "mhinz/vim-crates", ft="toml"}
       use { "kalvinpearce/ShaderHighLight", ft={"shader", "hlsl", "glsl", "cginc"}}
 
