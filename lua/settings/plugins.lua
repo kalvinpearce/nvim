@@ -28,20 +28,14 @@ return require("packer").startup(
       use "nvim-treesitter/nvim-treesitter"
       use {"neoclide/coc.nvim", branch = "release"}
       use "voldikss/vim-floaterm"
-      use {"mbbill/undotree", cmd="UndotreeToggle"}
-      use "chaoren/vim-wordmotion"
-      use "wsdjeg/vim-fetch"
-      use "ThePrimeagen/harpoon"
+      use "wsdjeg/vim-fetch" -- open file at line & col eg nvim a.txt:12:3
+      use "editorconfig/editorconfig-vim"
       use { 'rmagatti/auto-session',
         config = function() require('auto-session').setup { } end
       }
-
-      -- Telescope
       use "nvim-telescope/telescope.nvim"
       use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
       use "fannheyward/telescope-coc.nvim"
-
-      -- Auto Tweeks
       use { 'kyazdani42/nvim-tree.lua',
           requires = 'kyazdani42/nvim-web-devicons'
       }
@@ -51,15 +45,22 @@ return require("packer").startup(
       use { "steelsojka/pears.nvim",
         config = function () require('pears').setup() end
       }
+
+      -- Auto Tweeks
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
       use "romainl/vim-cool" -- kill highlight when moving off searched word
+      use "machakann/vim-highlightedyank"
 
       -- Manual Tweeks
       use { 'numToStr/Comment.nvim',
         config = function() require('Comment').setup() end
       }
+      use "ThePrimeagen/harpoon"
+      use "chaoren/vim-wordmotion"
       use "AndrewRadev/splitjoin.vim" -- allows to split one liner to multi lines
       use "machakann/vim-sandwich" -- Change surrounding arks
+      use "unblevable/quick-scope"
+      use {"mbbill/undotree", cmd="UndotreeToggle"}
 
       -- Git
       use "tpope/vim-fugitive"
@@ -69,26 +70,19 @@ return require("packer").startup(
         config = function() require('gitsigns').setup() end
       }
 
-      -- Movement
-      use "unblevable/quick-scope"
-
-      -- Themes
+      -- UI
       use {"kyazdani42/nvim-web-devicons",
         config = function () require"nvim-web-devicons".setup() end
       }
       use "rakr/vim-one"
-
-      -- UI
       use "romgrk/barbar.nvim"
       use { 'nvim-lualine/lualine.nvim',
         requires = {'kyazdani42/nvim-web-devicons', opt = true}
       }
-      use "machakann/vim-highlightedyank"
       use "norcalli/nvim-colorizer.lua"
 
       -- Misc
       use "tweekmonster/startuptime.vim" -- benchmark startup
-      use "editorconfig/editorconfig-vim"
       use { "folke/todo-comments.nvim",
           requires = "nvim-lua/plenary.nvim",
           config = function() require("todo-comments").setup { } end
