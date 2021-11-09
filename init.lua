@@ -7,8 +7,6 @@ function Source(reload)
     require("settings")
     require("plugins")
     require("coc")
-    require('Comment').setup()
-    require('pears').setup()
 end
 Source(false)
 vim.cmd "command! SourceConfig lua Source(true)"

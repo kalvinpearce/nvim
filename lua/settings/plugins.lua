@@ -41,7 +41,9 @@ return require("packer").startup(
 
       -- Auto Tweeks
       use "airblade/vim-rooter" -- root dir switcher
-      use "steelsojka/pears.nvim"
+      use { "steelsojka/pears.nvim",
+        config = function () require('pears').setup() end
+      }
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
       use "romainl/vim-cool" -- kill highlight when moving off searched word
 
