@@ -36,7 +36,7 @@ require'nvim-tree'.setup {
     custom = {}
   },
   view = {
-    width = 30,
+    width = 40,
     height = 30,
     hide_root_folder = false,
     side = 'left',
@@ -45,6 +45,7 @@ require'nvim-tree'.setup {
       custom_only = false,
       list = {
           { key = {"<CR>", "o", "<2-LeftMouse>", "l"}, cb = tree_cb("edit") },
+          { key = {"<BS>", "h"}, cb = tree_cb("close_node") },
       }
     }
   }
