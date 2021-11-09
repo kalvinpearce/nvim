@@ -30,7 +30,6 @@ return require("packer").startup(
       use "voldikss/vim-floaterm"
       use {"mbbill/undotree", cmd="UndotreeToggle"}
       use "chaoren/vim-wordmotion"
-      use {"iamcco/markdown-preview.nvim", ft="md"}
       use "wsdjeg/vim-fetch"
       use "ThePrimeagen/harpoon"
       use { 'rmagatti/auto-session',
@@ -90,6 +89,7 @@ return require("packer").startup(
       -- Language specific
       use { "mhinz/vim-crates", ft="toml"}
       use { "kalvinpearce/ShaderHighLight", ft={"shader", "hlsl", "glsl", "cginc"}}
+      use {"iamcco/markdown-preview.nvim", ft="md"}
 
     end,
     config = {
