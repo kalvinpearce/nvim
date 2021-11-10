@@ -1,5 +1,6 @@
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 
+vim.g.nvim_tree_respect_buf_cwd = 1
 require'nvim-tree'.setup {
   disable_netrw       = true,
   hijack_netrw        = true,
@@ -8,32 +9,14 @@ require'nvim-tree'.setup {
   auto_close          = false,
   open_on_tab         = false,
   hijack_cursor       = true,
-  update_cwd          = false,
+  update_cwd          = true,
   update_to_buf_dir   = {
     enable = true,
     auto_open = true,
   },
-  diagnostics = {
-    enable = false,
-    icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
-    }
-  },
   update_focused_file = {
-    enable      = false,
-    update_cwd  = false,
-    ignore_list = {}
-  },
-  system_open = {
-    cmd  = nil,
-    args = {}
-  },
-  filters = {
-    dotfiles = false,
-    custom = {}
+    enable      = true,
+    update_cwd  = true,
   },
   view = {
     width = 40,
