@@ -9,10 +9,6 @@ g.mapleader = " "
 -- Remove force kill
 map("n", "<c-z>", "<nop>")
 
--- Quick exit
-map("i", "jk", "<esc>")
-map("i", "kj", "<esc>")
-
 -- Tab cycles buffer
 map("n", "<tab>", ":bnext<cr>")
 map("n", "<s-tab>", ":bprevious<cr>")

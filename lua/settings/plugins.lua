@@ -61,6 +61,9 @@ return require("packer").startup(
       use "machakann/vim-sandwich" -- Change surrounding arks
       use "unblevable/quick-scope"
       use {"mbbill/undotree", cmd="UndotreeToggle"}
+      use { "max397574/better-escape.nvim", -- better jk && jj maps to exit
+          config = function() require("better_escape").setup() end,
+      }
 
       -- Git
       use "tpope/vim-fugitive"
