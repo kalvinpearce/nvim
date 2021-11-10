@@ -30,9 +30,6 @@ return require("packer").startup(
       use "voldikss/vim-floaterm"
       use "wsdjeg/vim-fetch" -- open file at line & col eg nvim a.txt:12:3
       use "editorconfig/editorconfig-vim"
-      use { 'rmagatti/auto-session',
-        config = function() require('auto-session').setup { } end
-      }
       use "nvim-telescope/telescope.nvim"
       use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
       use "fannheyward/telescope-coc.nvim"
