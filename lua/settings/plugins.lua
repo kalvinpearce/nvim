@@ -42,6 +42,7 @@ return require("packer").startup(
       use { "steelsojka/pears.nvim",
         config = function () require('pears').setup() end
       }
+      use "Shatur/neovim-session-manager"
 
       -- Auto Tweeks
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it

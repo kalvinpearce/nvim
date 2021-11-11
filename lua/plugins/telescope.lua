@@ -19,6 +19,7 @@ require('telescope').setup {
 
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('coc')
+require('telescope').load_extension('sessions')
 
  map("n", "<c-p>", "<cmd>Telescope find_files<cr>")
 
