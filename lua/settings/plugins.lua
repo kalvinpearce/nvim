@@ -59,6 +59,10 @@ return require("packer").startup(
       use { "max397574/better-escape.nvim", -- better jk && jj maps to exit
           config = function() require("better_escape").setup() end,
       }
+      use { "folke/twilight.nvim", -- Solo view functions
+          config = function() require("twilight").setup { } end,
+          cmd={"TwilightEnable", "Twilight"}
+      }
 
       -- Git
       use "tpope/vim-fugitive"
