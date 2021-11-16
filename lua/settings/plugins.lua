@@ -53,8 +53,12 @@ return require("packer").startup(
       use "ThePrimeagen/harpoon"
       use "chaoren/vim-wordmotion"
       use "AndrewRadev/splitjoin.vim" -- allows to split one liner to multi lines
-      use "machakann/vim-sandwich" -- Change surrounding arks
-      use "unblevable/quick-scope"
+      use { "machakann/vim-sandwich", -- Change surrounding arks
+          config = function() vim.cmd [[runtime macros/sandwich/keymap/surround.vim]] end,
+      }
+      use { "ggandor/lightspeed.nvim", -- Better jumps with s/S
+          config = function() vim.cmd [[nnoremap f f]] vim.cmd [[nnoremap t t]] end,
+      }
       use {"mbbill/undotree", cmd="UndotreeToggle"}
       use { "max397574/better-escape.nvim", -- better jk && jj maps to exit
           config = function() require("better_escape").setup() end,
