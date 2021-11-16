@@ -45,7 +45,6 @@ return require("packer").startup(
       use "rrethy/vim-illuminate" -- highlight matching words when cursor on it
       use "romainl/vim-cool" -- kill highlight when moving off searched word
       use "machakann/vim-highlightedyank"
-      use "joeytwiddle/sexy_scroller.vim"
 
       -- Manual Tweeks
       use { 'numToStr/Comment.nvim',
