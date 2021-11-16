@@ -39,9 +39,6 @@ return require("packer").startup(
       use { "ahmedkhalf/project.nvim",
         config = function() require("project_nvim").setup { } end
       }
-      use { "steelsojka/pears.nvim",
-        config = function () require('pears').setup() end
-      }
       use "Shatur/neovim-session-manager"
 
       -- Auto Tweeks
