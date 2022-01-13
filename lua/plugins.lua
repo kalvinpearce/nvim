@@ -60,6 +60,7 @@ return packer.startup({
 		require("config.autopairs").init(use) -- Auto close brackets etc
 		require("config.comment").init(use) -- Great comment support
 		require("config.toggleterm").init(use) -- Terminal manager
+		require("config.nvim-scrollbar").init(use) -- Add nice scrollbar
 		require("config.project").init(use) -- Projects
 		require("config.session-manager").init(use) -- Auto session handling and management
 
