@@ -71,6 +71,8 @@ return packer.startup({
 		require("config.wordmotion").init(use) -- Motion within words eg camelCase
 		require("config.harpoon").init(use) -- Better short term recent file navigation
 		require("config.dial-nvim").init(use) -- Better c-a/c-x
+		use("stevearc/dressing.nvim") -- Pretty stuff for vim.ui.select & vim.ui.input
+		require("config.nvim-notify").init(use) -- Pretty vim.notify
 		require("config.todo").init(use) -- TODO comment highlights & list view
 
 		-- Misc
