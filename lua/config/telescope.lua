@@ -30,6 +30,7 @@ local function config()
 	})
 
 	telescope.load_extension("fzf")
+	telescope.load_extension("lsp_handlers")
 
 	local map = require("keymaps").map
 	map("n", "<C-p>", "<cmd>Telescope find_files<cr>")
@@ -38,7 +39,10 @@ end
 local function init(use)
 	return use({
 		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-telescope/telescope-fzf-native.nvim", run = "make" } },
+		requires = {
+			{ "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+			"gbrlsnchs/telescope-lsp-handlers.nvim",
+		},
 		config = function()
 			require("config.telescope").config()
 		end,
