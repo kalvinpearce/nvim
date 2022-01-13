@@ -71,6 +71,7 @@ return packer.startup({
 		require("config.wordmotion").init(use) -- Motion within words eg camelCase
 		require("config.harpoon").init(use) -- Better short term recent file navigation
 		require("config.dial-nvim").init(use) -- Better c-a/c-x
+		require("config.todo").init(use) -- TODO comment highlights & list view
 
 		-- Misc
 		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3
@@ -98,13 +99,6 @@ return packer.startup({
 				require("twilight").setup({})
 			end,
 			cmd = { "TwilightEnable", "Twilight" },
-		})
-		use({ -- TODO comment highlights & list view
-			"folke/todo-comments.nvim",
-			requires = "nvim-lua/plenary.nvim",
-			config = function()
-				require("todo-comments").setup({})
-			end,
 		})
 
 		-- Language specific
