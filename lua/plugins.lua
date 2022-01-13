@@ -70,6 +70,7 @@ return packer.startup({
 		require("config.impatient").init(use) -- Speed up startup times
 		require("config.wordmotion").init(use) -- Motion within words eg camelCase
 		require("config.harpoon").init(use) -- Better short term recent file navigation
+		require("config.dial-nvim").init(use) -- Better c-a/c-x
 
 		-- Misc
 		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3
