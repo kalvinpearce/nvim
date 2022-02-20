@@ -5,7 +5,37 @@ local function config()
 	end
 
 	configs.setup({
-		ensure_installed = "maintained",
+		ensure_installed = {
+      "bash",
+      "c_sharp",
+      "css",
+      "dart",
+      "dockerfile",
+      "glsl",
+      "go",
+      "graphql",
+      "html",
+      "http",
+      "javascript",
+      "jsdoc",
+      "json",
+      "json5",
+      "jsonc",
+      "lua",
+      "markdown",
+      "php",
+      "prisma",
+      "regex",
+      "rust",
+      "scss",
+      "svelte",
+      "toml",
+      "tsx",
+      "typescript",
+      "vim",
+      "vue",
+      "yaml"
+    },
 		highlight = {
 			enable = true,
 			additional_vim_regex_highlighting = false,
