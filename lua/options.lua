@@ -40,7 +40,7 @@ o.pastetoggle = "<F10>"
 o.shortmess:append("c")
 o.formatoptions = "qrn1" -- improve editor formatting
 o.whichwrap:append("<,>,[,],h,l")
-o.sessionoptions = "blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal"
+o.sessionoptions = "blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal"
 
 -- Provider skips
 g.loaded_ruby_provider = 0
