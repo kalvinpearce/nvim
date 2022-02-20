@@ -74,6 +74,7 @@ return packer.startup({
 		use("stevearc/dressing.nvim") -- Pretty stuff for vim.ui.select & vim.ui.input
 		require("config.nvim-notify").init(use) -- Pretty vim.notify
 		require("config.todo").init(use) -- TODO comment highlights & list view
+		require("config.fidget-nvim").init(use) -- LSP loading info ticker
 
 		-- Misc
 		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3
