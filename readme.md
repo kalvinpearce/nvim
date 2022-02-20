@@ -20,7 +20,7 @@ Backup nvim config:
 Clone config:
 `git clone --depth=1 https://github.com/kalvinpearce/nvim ~/.config/nvim`
 
-#### Dependancies 
+#### Dependencies 
 * neovim >= 5
 * python3 & pynvim
 * npm > 12
@@ -30,11 +30,11 @@ Clone config:
 * lazygit
 
 ##### Linux (currently only Arch)
-Install dependancies:
+Install dependencies:
 `chmod +x ~/.config/nvim/install_deps.sh && sh ~/.config/nvim/install_deps.sh`
 
 #### Windows
-Install dependancies:
+Install dependencies:
 ```bash
 choco install extras
 choco install python
