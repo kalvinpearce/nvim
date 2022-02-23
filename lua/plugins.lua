@@ -75,6 +75,7 @@ return packer.startup({
 		require("config.nvim-notify").init(use) -- Pretty vim.notify
 		require("config.todo").init(use) -- TODO comment highlights & list view
 		require("config.fidget-nvim").init(use) -- LSP loading info ticker
+		require("config.crates-nvim").init(use) -- Juiced rust crates support in cargo.toml
 
 		-- Misc
 		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3
