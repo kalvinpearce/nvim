@@ -1,5 +1,8 @@
 local function config()
-	-- do setup stuff here
+	-- local status_ok, PLUGIN_NAME = pcall(require, "PLUGIN_NAME")
+	-- if not status_ok then
+	-- 	return
+	-- end
 end
 
 local function init(use)
