@@ -43,6 +43,7 @@ o.whichwrap:append("<,>,[,],h,l")
 o.sessionoptions = "blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal"
 
 -- Provider skips
+g.loaded_python_provider = 0
 g.loaded_ruby_provider = 0
 g.loaded_perl_provider = 0
 -- Plugin skips
