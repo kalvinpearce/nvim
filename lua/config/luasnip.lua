@@ -1,4 +1,25 @@
-local function config() end
+local function config()
+	local status_ok, luasnip = pcall(require, "luasnip")
+	if not status_ok then
+		return
+	end
+
+	local types = require("luasnip.util.types")
+	luasnip.config.setup({
+		ext_opts = {
+			[types.choiceNode] = {
+				active = {
+					virt_text = { { "●", "GruvboxOrange" } },
+				},
+			},
+			[types.insertNode] = {
+				active = {
+					virt_text = { { "●", "GruvboxBlue" } },
+				},
+			},
+		},
+	})
+end
 
 local function init(use)
 	return use({
