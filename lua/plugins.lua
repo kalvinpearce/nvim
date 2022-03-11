@@ -77,6 +77,7 @@ return packer.startup({
 		require("config.fidget-nvim").init(use) -- LSP loading info ticker
 		require("config.crates-nvim").init(use) -- Juiced rust crates support in cargo.toml
 		require("config.dim-unused").init(use) -- Dim unused code
+		require("config.guess-indent-nvim").init(use) -- Auto set indent based on file
 
 		-- Misc
 		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3
