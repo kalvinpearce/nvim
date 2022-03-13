@@ -55,7 +55,8 @@ return packer.startup({
 		require("config.startify").init(use) -- Start up page
 		require("config.treesitter").init(use) -- Beautiful highlights & other file parsing goodies
 		require("config.telescope").init(use) -- Fuzzy find engine
-		require("config.nvim-tree").init(use) -- Nice file explorer
+		-- require("config.nvim-tree").init(use) -- Nice file explorer
+		require("config.neo-tree-nvim").init(use) -- Nicer file explorer
 		require("config.whichkey").init(use) -- Keymaps manager
 		require("config.autopairs").init(use) -- Auto close brackets etc
 		require("config.comment").init(use) -- Great comment support
