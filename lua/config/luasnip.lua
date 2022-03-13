@@ -4,6 +4,8 @@ local function config()
 		return
 	end
 
+	luasnip.filetype_extend("typescriptreact", { "html" })
+
 	local types = require("luasnip.util.types")
 	luasnip.config.setup({
 		ext_opts = {
