@@ -4,6 +4,8 @@ local function config()
 		return
 	end
 
+	vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+
 	-- See ":help neo-tree-highlights" for a list of available highlight groups
 	vim.cmd([[
     hi link NeoTreeDirectoryName Directory
@@ -39,9 +41,9 @@ local function config()
 			},
 		},
 		filesystem = {
-			filters = { --These filters are applied to both browsing and searching
-				show_hidden = false,
-				respect_gitignore = true,
+			filtered_items = { --These filters are applied to both browsing and searching
+				hide_dotfiles = false,
+				hide_gitignored = true,
 			},
 			follow_current_file = false, -- This will find and focus the file in the active buffer every
 			-- time the current file is changed while the tree is open.
@@ -56,6 +58,7 @@ local function config()
 				position = "left",
 				width = 40,
 				mappings = {
+					["<space>"] = "none",
 					["<2-LeftMouse>"] = "open",
 					["<cr>"] = "open",
 					["l"] = "open",
@@ -141,7 +144,7 @@ end
 local function init(use)
 	return use({
 		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v1.x",
+		branch = "v2.x",
 		requires = {
 			"nvim-lua/plenary.nvim",
 			"kyazdani42/nvim-web-devicons",
