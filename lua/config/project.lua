@@ -4,7 +4,9 @@ local function config()
 		return
 	end
 
-	project.setup()
+	project.setup({
+		detection_methods = { "pattern" },
+	})
 end
 
 local function init(use)
