@@ -84,10 +84,10 @@ local function config()
 			"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 			"Buffers",
 		},
-		["e"] = { "<cmd>NeoTreeRevealToggle<cr>", "Explorer" },
+		["e"] = { "<cmd>Neotree toggle reveal<cr>", "Explorer" },
 		["w"] = { "<cmd>w!<CR>", "Save" },
 		["q"] = { "<cmd>q!<CR>", "Quit" },
-		["c"] = { "<cmd>Bdelete! %d<CR>", "Close Buffer" },
+		["c"] = { "<cmd>bd<CR>", "Close Buffer" },
 		["f"] = {
 			"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 			"Find files",
