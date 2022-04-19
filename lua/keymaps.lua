@@ -48,6 +48,7 @@ map("i", "<c-s>", "<esc>:w<cr>a")
 -- Close
 map("n", "<c-q>", ":q<cr>")
 map("n", "<c-w>", ":bd<cr>")
+map("n", "<c-s-w>", ":e#<cr>")
 
 -- Line duplication
 map("n", "<leader>dd", '"qyy"qp')
@@ -83,20 +84,12 @@ map("x", "<A-j>", ":move '>+1<CR>gv-gv")
 map("x", "<A-k>", ":move '<-2<CR>gv-gv")
 
 -- Hard mode
-map("n", "<left>", "<nop>")
-map("n", "<right>", "<nop>")
-map("n", "<up>", "<nop>")
-map("n", "<down>", "<nop>")
-map("i", "<left>", "<nop>")
-map("i", "<right>", "<nop>")
-map("i", "<up>", "<nop>")
-map("i", "<down>", "<nop>")
-map("x", "<left>", "<nop>")
-map("x", "<right>", "<nop>")
-map("x", "<up>", "<nop>")
-map("x", "<down>", "<nop>")
+map({ "n", "i", "x" }, "<left>", "<nop>")
+map({ "n", "i", "x" }, "<right>", "<nop>")
+map({ "n", "i", "x" }, "<up>", "<nop>")
+map({ "n", "i", "x" }, "<down>", "<nop>")
 
 -- Ctrl-backspace
-map("i", "<c-h>", "<c-w>")
+map({ "i", "c", "t" }, "<c-h>", "<c-w>")
 
 return { map = map }

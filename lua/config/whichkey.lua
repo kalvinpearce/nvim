@@ -85,15 +85,8 @@ local function config()
 			"Buffers",
 		},
 		["e"] = { "<cmd>Neotree toggle reveal<cr>", "Explorer" },
-		["w"] = { "<cmd>w!<CR>", "Save" },
-		["q"] = { "<cmd>q!<CR>", "Quit" },
 		["c"] = { "<cmd>bd<CR>", "Close Buffer" },
-		["f"] = {
-			"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-			"Find files",
-		},
 		["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-		["P"] = { "<cmd>Telescope projects<cr>", "Projects" },
 
 		p = {
 			name = "Packer",
@@ -160,7 +153,7 @@ local function config()
 		},
 		s = {
 			name = "Search",
-			b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+			p = { "<cmd>Telescope live_grep<cr>", "Grep Project" },
 			h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
 			M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
 			r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
