@@ -111,7 +111,7 @@ return packer.startup({
 
 		-- Language specific
 		use({ "kalvinpearce/ShaderHighLight", ft = { "shader", "hlsl", "glsl", "cginc" } })
-		use({ "iamcco/markdown-preview.nvim", run = "cd app && npm i", ft = "md" }) -- open markdown file in web browser with live updates
+		use({ "iamcco/markdown-preview.nvim", run = "cd app && npm i" }) -- open markdown file in web browser with live updates
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
