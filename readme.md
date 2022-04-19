@@ -21,7 +21,7 @@ Clone config:
 `git clone --depth=1 https://github.com/kalvinpearce/nvim ~/.config/nvim`
 
 #### Dependencies 
-* neovim >= 5
+* neovim >= 0.7
 * python3 & pynvim
 * npm > 12
 * fzf
