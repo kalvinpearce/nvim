@@ -126,12 +126,13 @@ local function config()
 			{ name = "buffer" },
 			{ name = "path" },
 		},
-		documentation = {
-			border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+		window = {
+			documentation = {
+				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+			},
 		},
 		experimental = {
 			ghost_text = false,
-			native_menu = false,
 		},
 	})
 end
