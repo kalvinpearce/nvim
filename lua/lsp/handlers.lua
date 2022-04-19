@@ -56,27 +56,25 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(bufnr)
-	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"gl",
-		'<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>',
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
+	local opts = { buffer = bufnr, noremap = true, silent = true }
+	local map = vim.keymap.set
+	map("n", "gD", vim.lsp.buf.declaration, opts)
+	map("n", "gd", vim.lsp.buf.definition, opts)
+	map("n", "K", vim.lsp.buf.hover, opts)
+	map("n", "gi", vim.lsp.buf.implementation, opts)
+	map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+	map("n", "<leader>rn", vim.lsp.buf.rename, opts)
+	map("n", "gr", vim.lsp.buf.references, opts)
+	map("n", "<leader>a", vim.lsp.buf.code_action, opts)
+	map("n", "<leader>f", vim.diagnostic.open_float, opts)
+	map("n", "[d", vim.diagnostic.goto_prev, opts)
+	map("n", "]d", vim.diagnostic.goto_next, opts)
+	map("n", "gl", vim.diagnostic.open_float, opts)
+	map("n", "<leader>q", vim.diagnostic.setloclist, opts)
+	map("n", "<leader>wl", function()
+		vim.inspect(vim.lsp.buf.list_workspace_folders())
+	end, opts)
+	vim.api.nvim_create_user_command("Format", vim.lsp.buf.formatting, {})
 end
 
 M.on_attach = function(client, bufnr)
