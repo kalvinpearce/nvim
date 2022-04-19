@@ -1,15 +1,11 @@
 local g = vim.g
-local cmd = vim.cmd
-local api = vim.api
 local tbl_extend = vim.tbl_extend
 
 local function map(mode, key, result, opts)
 	opts = tbl_extend("keep", opts or {}, {
 		noremap = true,
-		silent = true,
-		expr = false,
 	})
-	api.nvim_set_keymap(mode, key, result, opts)
+	vim.keymap.set(mode, key, result, opts)
 end
 
 -- Map space leader
@@ -25,34 +21,24 @@ map("o", "A", ":<C-U>normal! ggVG<CR>")
 map("n", "<C-z", "<Nop>")
 
 -- Better register actions
-map("n", "x", '"_x')
-map("v", "x", '"_x')
-map("n", "<s-x>", "x")
-map("v", "<s-x>", "x")
-map("n", "d", '"_d')
-map("v", "d", '"_d')
-map("n", "<s-d>", "d")
-map("v", "<s-d>", "d")
-map("n", "c", '"_c')
-map("v", "c", '"_c')
-map("n", "<s-c>", "c")
-map("v", "<s-c>", "c")
+map({ "n", "v" }, "x", '"_x')
+map({ "n", "v" }, "<s-x>", "x")
+map({ "n", "v" }, "d", '"_d')
+map({ "n", "v" }, "<s-d>", "d")
+map({ "n", "v" }, "c", '"_c')
+map({ "n", "v" }, "<s-c>", "c")
 map("v", "p", '"_dP')
 map("v", "<s-p>", "p")
 
 -- Move to end of paste
 map("n", "p", "p`]")
 
--- Beter completion nav
---map("i", "<c-j>", "<down>")
---map("i", "<c-k>", "<up>")
-
 -- Multi tab (complete/tab/move out of pairs)
 map("i", "<TAB>", "pumvisible() ? '<C-y>' : search('\\%#[]>)}''\"`]', 'n') ? '<Right>' : '<TAB>'", { expr = true })
 
 -- Better insert pasting
 map("i", "<c-v>", "<F10><c-r>+<F10>")
-cmd([[ cmap <C-V> <C-R>+ ]])
+map("c", "<c-v>", "<c-r>+", { noremap = false })
 
 -- Save
 map("n", "<c-s>", ":w<cr>")
@@ -65,7 +51,7 @@ map("n", "<c-w>", ":bd<cr>")
 
 -- Line duplication
 map("n", "<leader>dd", '"qyy"qp')
-cmd([[xnoremap <silent> <Leader>dd "qy'>"qp]])
+map("x", "<leader>dd", [["qy'>"qp]])
 
 -- Better window navigation
 map("n", "<C-h>", "<C-w>h")
@@ -96,13 +82,6 @@ map("x", "K", ":move '<-2<CR>gv-gv")
 map("x", "<A-j>", ":move '>+1<CR>gv-gv")
 map("x", "<A-k>", ":move '<-2<CR>gv-gv")
 
--- Better terminal navigation
--- Not needed due to toggleterm mappings
--- map("t", "<C-h>", "<C-\\><C-N><C-w>h")
--- map("t", "<C-j>", "<C-\\><C-N><C-w>j")
--- map("t", "<C-k>", "<C-\\><C-N><C-w>k")
--- map("t", "<C-l>", "<C-\\><C-N><C-w>l")
-
 -- Hard mode
 map("n", "<left>", "<nop>")
 map("n", "<right>", "<nop>")
@@ -118,6 +97,6 @@ map("x", "<up>", "<nop>")
 map("x", "<down>", "<nop>")
 
 -- Ctrl-backspace
-map("i", "<c-bs>", "<c-w>")
+map("i", "<c-h>", "<c-w>")
 
 return { map = map }
