@@ -11,6 +11,11 @@ local function config()
 			prompt_prefix = " ",
 			selection_caret = " ",
 			path_display = { "smart" },
+			-- file_ignore_patterns = {
+			-- 	"^.git/",
+			-- 	".git",
+			-- 	"node_modules",
+			-- },
 
 			mappings = {
 				i = {
@@ -20,6 +25,19 @@ local function config()
 					["<C-k>"] = actions.move_selection_previous,
 					["<C-h>"] = actions.which_key,
 				},
+			},
+		},
+		pickers = {
+			buffers = {
+				show_all_buffers = true,
+				mappings = {
+					i = {
+						["<c-d>"] = "delete_buffer",
+					},
+				},
+			},
+			find_files = {
+				hidden = true,
 			},
 		},
 		extensions = {
@@ -33,7 +51,7 @@ local function config()
 	telescope.load_extension("lsp_handlers")
 
 	local map = require("keymaps").map
-	map("n", "<C-p>", "<cmd>Telescope find_files<cr>")
+	map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--no-ignore', '-g', '!.git' }})<cr>")
 end
 
 local function init(use)
