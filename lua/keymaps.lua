@@ -17,8 +17,6 @@ map("", "<Space>", "<Nop>")
 g.mapleader = " "
 g.maplocalleader = " "
 
-map("n", "<leader>e", ":Lex 30<cr>")
-
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
 map("o", "A", ":<C-U>normal! ggVG<CR>")
