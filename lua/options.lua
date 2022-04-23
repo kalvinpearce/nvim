@@ -33,6 +33,7 @@ o.scrolloff = 10 -- number of lines to keep above/below cursor when scrolling
 o.sidescrolloff = 5 -- as above but for left/right scrolling
 o.timeoutlen = 1000 -- wait a second for map sequence before cancelling
 o.updatetime = 300 -- faster completion time
+o.equalalways = false -- don't adjust window size when creating new window
 
 -- Misc fixes
 o.iskeyword:append("-") -- don't split word on - char
