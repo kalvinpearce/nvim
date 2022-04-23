@@ -39,7 +39,16 @@ o.equalalways = false -- don't adjust window size when creating new window
 o.iskeyword:append("-") -- don't split word on - char
 o.pastetoggle = "<F10>"
 o.shortmess:append("c")
-o.formatoptions = "qrn1" -- improve editor formatting
+o.formatoptions = o.formatoptions
+  - "a" -- Don't autoformat paragraphs
+  - "t" -- Don't auto wrap text using textwidth
+  + "c" -- Auto wrap comments with textwidth
+  + "q" -- Allow formatting comments w/ gq
+  - "o" -- O and o, don't continue comments
+  + "r" -- Continue comments when pressing enter.
+  + "n" -- Indent past the formatlistpat, not underneath it.
+  + "j" -- Auto join comments if possible.
+  - "2" -- Format using indent from second line of paragraph
 o.whichwrap:append("<,>,[,],h,l")
 o.sessionoptions = "blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal"
 
@@ -65,3 +74,4 @@ g.loaded_rrhelper = 1
 g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
+
