@@ -1,5 +1,1 @@
-require("options")
-require("keymaps")
-require("plugins")
-require("autocommands")
-require("functions")
+require("kp")
