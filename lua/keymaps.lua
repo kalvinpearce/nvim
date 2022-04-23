@@ -93,4 +93,12 @@ map({ "n", "i", "x" }, "<down>", "<nop>")
 -- Ctrl-backspace
 map({ "i", "c", "t" }, "<c-h>", "<c-w>")
 
+-- Save and run file
+map("n", "<leader><leader>x", function()
+	if vim.bo.filetype == "lua" then
+		vim.cmd("write")
+		vim.cmd("source %")
+	end
+end)
+
 return { map = map }
