@@ -79,6 +79,7 @@ return packer.startup({
 		require("kp.config.neogen-nvim").init(use) -- Doc comments generator
 
 		-- Misc
+		use("kkoomen/vim-doge") -- documentation generation
 		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3
 		use("editorconfig/editorconfig-vim") -- use .editorconfig settings when file present
 		use("romainl/vim-cool") -- kill highlight when moving off searched word
