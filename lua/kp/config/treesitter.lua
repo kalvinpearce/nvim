@@ -57,7 +57,10 @@ end
 local function init(use)
 	return use({
 		"nvim-treesitter/nvim-treesitter",
-		requires = { "JoosepAlviste/nvim-ts-context-commentstring", "nvim-treesitter/playground" },
+		requires = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			"nvim-treesitter/playground",
+		},
 		-- run = ":TSUpdate",
 		config = function()
 			require("kp.config.treesitter").config()
