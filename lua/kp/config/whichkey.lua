@@ -118,6 +118,7 @@ local function config()
 				"<cmd>Gitsigns diffthis HEAD<cr>",
 				"Diff",
 			},
+			G = { "<cmd>GitignoreGenerate<cr>", "Generate gitignore" },
 		},
 
 		l = {

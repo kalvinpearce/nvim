@@ -79,6 +79,7 @@ return packer.startup({
 		require("kp.config.neogen-nvim").init(use) -- Doc comments generator
 
 		-- Misc
+		use("kalvinpearce/gitignore-gen.nvim")
 		use("kkoomen/vim-doge") -- documentation generation
 		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3
 		use("editorconfig/editorconfig-vim") -- use .editorconfig settings when file present
