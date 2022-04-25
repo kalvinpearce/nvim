@@ -10,7 +10,7 @@ local function config()
 		handle = {
 			text = " ",
 			color = colors.bg_highlight,
-			hide_if_all_visible = false,
+			hide_if_all_visible = true,
 		},
 		marks = {
 			Search = { text = { "-", "■" }, priority = 0, color = colors.orange },
@@ -24,20 +24,15 @@ local function config()
 			diagnostic = true,
 			search = true,
 		},
+		excluded_buftypes = {
+			"terminal",
+		},
+		excluded_filetypes = {
+			"prompt",
+			"TelescopePrompt",
+		},
 	})
-
-	-- require("hlslens").setup({
-	-- 	---@diagnostic disable-next-line: unused-local
-	-- 	build_position_cb = function(plist, bufnr, changedtick, pattern)
-	-- 		require.search_handler.show(plist.start_pos)
-	-- 	end,
-	-- })
-	-- vim.cmd([[
-	--    augroup scrollbar_search_hide
-	--      autocmd!
-	--      autocmd CmdlineLeave : lua require('scrollbar').search_handler.hide()
-	--    augroup END
-	--  ]])
+	require("scrollbar.handlers.search").setup()
 end
 
 local function init(use)
