@@ -11,11 +11,11 @@ local function config()
 			prompt_prefix = " ",
 			selection_caret = " ",
 			path_display = { "smart" },
-			-- file_ignore_patterns = {
-			-- 	"^.git/",
-			-- 	".git",
-			-- 	"node_modules",
-			-- },
+			file_ignore_patterns = {
+				"^.git/",
+				".git",
+				"node_modules",
+			},
 
 			mappings = {
 				i = {
@@ -51,7 +51,8 @@ local function config()
 	telescope.load_extension("lsp_handlers")
 
 	local map = require("kp.keymaps").map
-	map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--no-ignore', '-g', '!.git' }})<cr>")
+	-- map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--no-ignore', '-g', '!.git' }})<cr>")
+	map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>")
 end
 
 local function init(use)
