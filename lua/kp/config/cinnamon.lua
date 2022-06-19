@@ -5,7 +5,6 @@ local function config()
 	end
 
 	cinnamon.setup({
-		extra_keymaps = true,
 		default_delay = 3
 	})
 end
