@@ -7,6 +7,7 @@ local function config()
 	require("kp.lsp.lsp-installer")
 	require("kp.lsp.handlers").setup()
 	require("kp.lsp.null-ls")
+	require("lsp_signature").setup({})
 end
 
 local function init(use)
@@ -15,6 +16,7 @@ local function init(use)
 		requires = {
 			"williamboman/nvim-lsp-installer",
 			"jose-elias-alvarez/null-ls.nvim",
+			"ray-x/lsp_signature.nvim",
 		},
 		config = function()
 			require("kp.lsp").config()
