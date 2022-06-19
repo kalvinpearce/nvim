@@ -52,6 +52,8 @@ local function config()
 			enable = true,
 		},
 	})
+
+	require("treesitter-context").setup()
 end
 
 local function init(use)
@@ -60,6 +62,7 @@ local function init(use)
 		requires = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			"nvim-treesitter/playground",
+			"nvim-treesitter/nvim-treesitter-context",
 		},
 		-- run = ":TSUpdate",
 		config = function()
