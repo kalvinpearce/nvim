@@ -78,6 +78,7 @@ return packer.startup({
 		require("kp.config.guess-indent-nvim").init(use) -- Auto set indent based on file
 		require("kp.config.neogen-nvim").init(use) -- Doc comments generator
 		require("kp.config.cinnamon").init(use) -- Smooth movement for EVERYTHING
+		require("kp.config.wilder").init(use) -- Better wildmenu
 
 		-- Misc
 		use("kalvinpearce/gitignore-gen.nvim")
