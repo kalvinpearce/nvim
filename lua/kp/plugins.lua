@@ -116,6 +116,7 @@ return packer.startup({
 			end,
 			cmd = { "TwilightEnable", "Twilight" },
 		})
+		use({ "mg979/vim-visual-multi" })
 
 		-- Language specific
 		use({ "kalvinpearce/ShaderHighLight", ft = { "shader", "hlsl", "glsl", "cginc" } })
