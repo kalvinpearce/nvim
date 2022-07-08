@@ -121,6 +121,7 @@ return packer.startup({
 			end,
 		}) -- open markdown file in web browser with live updates
 		use("jxnblk/vim-mdx-js") -- MDX support
+		use({ "ellisonleao/glow.nvim", branch = "main" })
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
