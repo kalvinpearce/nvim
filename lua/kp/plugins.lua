@@ -117,6 +117,13 @@ return packer.startup({
 			cmd = { "TwilightEnable", "Twilight" },
 		})
 		use({ "mg979/vim-visual-multi" })
+		use({
+			"folke/trouble.nvim",
+			requires = "kyazdani42/nvim-web-devicons",
+			config = function()
+				require("trouble").setup({})
+			end,
+		})
 
 		-- Language specific
 		use({ "kalvinpearce/ShaderHighLight", ft = { "shader", "hlsl", "glsl", "cginc" } })
