@@ -120,6 +120,7 @@ return packer.startup({
 				vim.fn["mkdp#util#install"]()
 			end,
 		}) -- open markdown file in web browser with live updates
+		use("jxnblk/vim-mdx-js") -- MDX support
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
