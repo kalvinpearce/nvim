@@ -53,7 +53,6 @@ return packer.startup({
 		require("kp.lsp").init(use) -- LSP support
 
 		-- Core
-		require("kp.config.startify").init(use) -- Start up page
 		require("kp.config.treesitter").init(use) -- Beautiful highlights & other file parsing goodies
 		require("kp.config.telescope").init(use) -- Fuzzy find engine
 		require("kp.config.neo-tree-nvim").init(use) -- Nicer file explorer
@@ -63,6 +62,7 @@ return packer.startup({
 		require("kp.config.toggleterm").init(use) -- Terminal manager
 		require("kp.config.nvim-scrollbar").init(use) -- Add nice scrollbar
 		require("kp.config.session-manager").init(use) -- Auto session handling and management
+		require("kp.config.alpha").init(use) -- Start up page
 
 		-- Goodies
 		require("kp.config.indent-blankline").init(use) -- Add virtual text to indents
