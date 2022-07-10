@@ -127,12 +127,7 @@ return packer.startup({
 
 		-- Language specific
 		use({ "kalvinpearce/ShaderHighLight", ft = { "shader", "hlsl", "glsl", "cginc" } })
-		use({
-			"iamcco/markdown-preview.nvim",
-			run = function()
-				vim.fn["mkdp#util#install"]()
-			end,
-		}) -- open markdown file in web browser with live updates
+		require("kp.config.markdown-preview").init(use) -- open markdown file in web browser with live updates
 		use("jxnblk/vim-mdx-js") -- MDX support
 		use({ "ellisonleao/glow.nvim", branch = "main" })
 
