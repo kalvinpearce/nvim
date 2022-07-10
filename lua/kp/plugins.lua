@@ -97,6 +97,7 @@ return packer.startup({
 		require("kp.config.twilight").init(use) -- Solo view functions
 		use({ "mg979/vim-visual-multi" })
 		require("kp.config.trouble").init(use)
+		require("kp.config.firenvim").init(use)
 
 		-- Language specific
 		use({ "kalvinpearce/ShaderHighLight", ft = { "shader", "hlsl", "glsl", "cginc" } })
