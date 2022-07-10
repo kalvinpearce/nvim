@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 o.whichwrap:append("<,>,[,],h,l")
-o.sessionoptions = "blank,buffers,curdir,folds,help,options,tabpages,winsize,terminal"
+o.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,terminal"
 
 -- Provider skips
 g.loaded_python_provider = 0
