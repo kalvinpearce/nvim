@@ -93,12 +93,6 @@ return packer.startup({
 		use("machakann/vim-highlightedyank") -- highlight yank for short time after yanking
 		use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 		use("AndrewRadev/splitjoin.vim") -- allows to split one liner to multi lines
-		use({ -- Change surrounding arks
-			"machakann/vim-sandwich",
-			config = function()
-				vim.cmd([[runtime macros/sandwich/keymap/surround.vim]])
-			end,
-		})
 		use({ -- Better jumps with s/S
 			"ggandor/lightspeed.nvim",
 			config = function()
@@ -116,6 +110,7 @@ return packer.startup({
 			end,
 			cmd = { "TwilightEnable", "Twilight" },
 		})
+		require("kp.config.sandwich").init(use) -- Change surrounding arks
 		use({ "mg979/vim-visual-multi" })
 		require("kp.config.trouble").init(use)
 
