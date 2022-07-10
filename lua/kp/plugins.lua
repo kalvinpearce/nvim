@@ -103,14 +103,8 @@ return packer.startup({
 		use({ -- Better buffer jumps
 			"jlanzarotta/bufexplorer",
 		})
-		use({ -- Solo view functions
-			"folke/twilight.nvim",
-			config = function()
-				require("twilight").setup({})
-			end,
-			cmd = { "TwilightEnable", "Twilight" },
-		})
 		require("kp.config.sandwich").init(use) -- Change surrounding arks
+		require("kp.config.twilight").init(use) -- Solo view functions
 		use({ "mg979/vim-visual-multi" })
 		require("kp.config.trouble").init(use)
 
