@@ -56,7 +56,6 @@ return packer.startup({
 		require("kp.config.startify").init(use) -- Start up page
 		require("kp.config.treesitter").init(use) -- Beautiful highlights & other file parsing goodies
 		require("kp.config.telescope").init(use) -- Fuzzy find engine
-		-- require("kp.config.nvim-tree").init(use) -- Nice file explorer
 		require("kp.config.neo-tree-nvim").init(use) -- Nicer file explorer
 		require("kp.config.whichkey").init(use) -- Keymaps manager
 		require("kp.config.autopairs").init(use) -- Auto close brackets etc
@@ -75,7 +74,7 @@ return packer.startup({
 		require("kp.config.dial-nvim").init(use) -- Better c-a/c-x
 		use("stevearc/dressing.nvim") -- Pretty stuff for vim.ui.select & vim.ui.input
 		require("kp.config.nvim-notify").init(use) -- Pretty vim.notify
-		require("kp.config.todo").init(use) -- TODO comment highlights & list view
+		require("kp.config.todo").init(use) -- TODO: comment highlights & list view
 		require("kp.config.fidget-nvim").init(use) -- LSP loading info ticker
 		require("kp.config.crates-nvim").init(use) -- Juiced rust crates support in cargo.toml
 		require("kp.config.dim-unused").init(use) -- Dim unused code
@@ -93,11 +92,9 @@ return packer.startup({
 		use("machakann/vim-highlightedyank") -- highlight yank for short time after yanking
 		use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 		use("AndrewRadev/splitjoin.vim") -- allows to split one liner to multi lines
-		use({ -- Better buffer jumps
-			"jlanzarotta/bufexplorer",
-		})
 		require("kp.config.sandwich").init(use) -- Change surrounding arks
 		use({ "ggandor/lightspeed.nvim", requires = "tpope/vim-repeat" }) -- Better jumps with s/S
+		use({ "jlanzarotta/bufexplorer" }) -- Better buffer jumps
 		require("kp.config.twilight").init(use) -- Solo view functions
 		use({ "mg979/vim-visual-multi" })
 		require("kp.config.trouble").init(use)
