@@ -105,7 +105,7 @@ local function config()
 		},
 	})
 
-	local map = require("keymaps").map
+	local map = require("kp.utils").map
 	map("n", "<leader>e", ":NvimTreeToggle<cr>")
 end
 

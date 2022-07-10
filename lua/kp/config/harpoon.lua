@@ -1,5 +1,5 @@
 local function config()
-	local map = require("kp.keymaps").map
+	local map = require("kp.utils").map
 	map("n", "<a-n>", ":lua require('harpoon.mark').add_file()<cr>")
 	map("n", "<a-h>", ":lua require('harpoon.ui').toggle_quick_menu()<cr>")
 	map("n", "<a-u>", ":lua require('harpoon.cmd-ui').toggle_quick_menu()<cr>")

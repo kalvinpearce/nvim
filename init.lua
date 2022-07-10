@@ -1,1 +1,1 @@
-require("kp")
+require("kp.init")

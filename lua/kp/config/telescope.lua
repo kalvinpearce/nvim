@@ -50,7 +50,7 @@ local function config()
 	telescope.load_extension("fzf")
 	telescope.load_extension("lsp_handlers")
 
-	local map = require("kp.keymaps").map
+	local map = require("kp.utils").map
 	-- map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '--no-ignore', '-g', '!.git' }})<cr>")
 	map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>")
 end

@@ -42,7 +42,7 @@ local function config()
 	g.startify_change_to_vcs_root = 1
 	g.startify_change_to_dir = 1
 
-	local map = require("kp.keymaps").map
+	local map = require("kp.utils").map
 	map("n", "<leader>ss", ":SSave<cr>")
 	map("n", "<leader>sl", ":SLoad<cr>")
 	map("n", "<leader>sc", ":SClose<cr>")

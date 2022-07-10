@@ -4,7 +4,7 @@ local function config()
 		return
 	end
 
-	local map = require("keymaps").map
+	local map = require("kp.utils").map
 	map("n", "<C-a>", "<Plug>(dial-increment)", { noremap = false })
 	map("n", "<C-x>", "<Plug>(dial-decrement)", { noremap = false })
 	map("v", "<C-a>", "<Plug>(dial-increment)", { noremap = false })

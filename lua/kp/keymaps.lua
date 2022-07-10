@@ -1,13 +1,5 @@
 local g = vim.g
-local tbl_extend = vim.tbl_extend
-
-local function map(mode, key, result, opts)
-	opts = tbl_extend("keep", opts or {}, {
-		noremap = true,
-		silent = true,
-	})
-	vim.keymap.set(mode, key, result, opts)
-end
+local map = require("kp.utils").map
 
 -- Map space leader
 map("", "<Space>", "<Nop>")
@@ -101,4 +93,3 @@ map("n", "<leader><leader>x", function()
 	end
 end)
 
-return { map = map }
