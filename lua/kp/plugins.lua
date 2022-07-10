@@ -93,17 +93,11 @@ return packer.startup({
 		use("machakann/vim-highlightedyank") -- highlight yank for short time after yanking
 		use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 		use("AndrewRadev/splitjoin.vim") -- allows to split one liner to multi lines
-		use({ -- Better jumps with s/S
-			"ggandor/lightspeed.nvim",
-			config = function()
-				vim.cmd([[nnoremap f f]])
-				vim.cmd([[nnoremap t t]])
-			end,
-		})
 		use({ -- Better buffer jumps
 			"jlanzarotta/bufexplorer",
 		})
 		require("kp.config.sandwich").init(use) -- Change surrounding arks
+		use({ "ggandor/lightspeed.nvim", requires = "tpope/vim-repeat" }) -- Better jumps with s/S
 		require("kp.config.twilight").init(use) -- Solo view functions
 		use({ "mg979/vim-visual-multi" })
 		require("kp.config.trouble").init(use)
