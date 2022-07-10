@@ -61,6 +61,7 @@ return packer.startup({
 		require("kp.config.comment").init(use) -- Great comment support
 		require("kp.config.toggleterm").init(use) -- Terminal manager
 		require("kp.config.nvim-scrollbar").init(use) -- Add nice scrollbar
+		require("kp.config.project").init(use) -- Projects
 		require("kp.config.session-manager").init(use) -- Auto session handling and management
 		require("kp.config.alpha").init(use) -- Start up page
 
