@@ -10,7 +10,7 @@ local function config()
 		handle = {
 			text = " ",
 			color = colors.bg_highlight,
-			hide_if_all_visible = true,
+			hide_if_all_visible = false,
 		},
 		marks = {
 			Search = { text = { "-", "■" }, priority = 0, color = colors.orange },
