@@ -16,3 +16,14 @@ vim.cmd([[
     autocmd VimResized * tabdo wincmd = 
   augroup end
 ]])
+
+local highlight_yank_group = vim.api.nvim_create_augroup("HighlightYank", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = (vim.fn["hlexists"]("HighlightedyankRegion") > 0 and "HighlightedyankRegion" or "IncSearch"),
+			timeout = 500,
+		})
+	end,
+	group = highlight_yank_group,
+})

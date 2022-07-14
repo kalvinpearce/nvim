@@ -89,7 +89,6 @@ return packer.startup({
 		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3
 		use("editorconfig/editorconfig-vim") -- use .editorconfig settings when file present
 		use("romainl/vim-cool") -- kill highlight when moving off searched word
-		use("machakann/vim-highlightedyank") -- highlight yank for short time after yanking
 		use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 		use("AndrewRadev/splitjoin.vim") -- allows to split one liner to multi lines
 		require("kp.config.sandwich").init(use) -- Change surrounding arks
