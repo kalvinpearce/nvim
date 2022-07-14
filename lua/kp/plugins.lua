@@ -69,40 +69,39 @@ return packer.startup({
 		require("kp.config.indent-blankline").init(use) -- Add virtual text to indents
 		require("kp.config.gitsigns").init(use) -- Git changes displayed in side bar
 		require("kp.config.impatient").init(use) -- Speed up startup times
-		require("kp.config.wordmotion").init(use) -- Motion within words eg camelCase
+		require("kp.config.wordmotion").init(use) -- Motion within words eg camelCase (VIM)
 		require("kp.config.harpoon").init(use) -- Better short term recent file navigation
 		require("kp.config.dial-nvim").init(use) -- Better c-a/c-x
 		use("stevearc/dressing.nvim") -- Pretty stuff for vim.ui.select & vim.ui.input
 		require("kp.config.nvim-notify").init(use) -- Pretty vim.notify
 		require("kp.config.todo").init(use) -- TODO: comment highlights & list view
 		require("kp.config.fidget-nvim").init(use) -- LSP loading info ticker
-		require("kp.config.crates-nvim").init(use) -- Juiced rust crates support in cargo.toml
 		require("kp.config.dim-unused").init(use) -- Dim unused code
 		require("kp.config.guess-indent-nvim").init(use) -- Auto set indent based on file
 		require("kp.config.neogen-nvim").init(use) -- Doc comments generator
 		require("kp.config.cinnamon").init(use) -- Smooth movement for EVERYTHING
 		require("kp.config.wilder").init(use) -- Better wildmenu
+		require("kp.config.trouble").init(use) -- List lsp diagnostics
 
 		-- Misc
 		use("kalvinpearce/gitignore-gen.nvim")
-		use("kkoomen/vim-doge") -- documentation generation
-		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3
-		use("editorconfig/editorconfig-vim") -- use .editorconfig settings when file present
-		use("romainl/vim-cool") -- kill highlight when moving off searched word
-		use({ "mbbill/undotree", cmd = "UndotreeToggle" })
-		use("AndrewRadev/splitjoin.vim") -- allows to split one liner to multi lines
+		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3 (VIM)
+		use("editorconfig/editorconfig-vim") -- use .editorconfig settings when file present (VIM)
+		use("romainl/vim-cool") -- kill highlight when moving off searched word (VIM)
+		use({ "mbbill/undotree", cmd = "UndotreeToggle" }) -- (VIM)
+		use("AndrewRadev/splitjoin.vim") -- allows to split one liner to multi lines (VIM)
 		require("kp.config.surround").init(use) -- Change surrounding arks
 		use({ "ggandor/lightspeed.nvim", requires = "tpope/vim-repeat" }) -- Better jumps with s/S
-		use({ "jlanzarotta/bufexplorer" }) -- Better buffer jumps
+		use({ "jlanzarotta/bufexplorer" }) -- Better buffer jumps (VIM)
 		require("kp.config.twilight").init(use) -- Solo view functions
-		use({ "mg979/vim-visual-multi" })
-		require("kp.config.trouble").init(use)
+		use({ "mg979/vim-visual-multi" }) -- (VIM)
 
 		-- Language specific
 		use({ "kalvinpearce/ShaderHighLight", ft = { "shader", "hlsl", "glsl", "cginc" } })
+		require("kp.config.crates-nvim").init(use) -- Juiced rust crates support in cargo.toml
 		require("kp.config.markdown-preview").init(use) -- open markdown file in web browser with live updates
-		use("jxnblk/vim-mdx-js") -- MDX support
-		use({ "ellisonleao/glow.nvim", branch = "main" })
+		use("jxnblk/vim-mdx-js") -- MDX support (VIM)
+		use({ "ellisonleao/glow.nvim", branch = "main" }) -- Nice markdown visualisation
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
