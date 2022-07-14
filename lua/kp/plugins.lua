@@ -91,7 +91,7 @@ return packer.startup({
 		use("romainl/vim-cool") -- kill highlight when moving off searched word
 		use({ "mbbill/undotree", cmd = "UndotreeToggle" })
 		use("AndrewRadev/splitjoin.vim") -- allows to split one liner to multi lines
-		require("kp.config.sandwich").init(use) -- Change surrounding arks
+		require("kp.config.surround").init(use) -- Change surrounding arks
 		use({ "ggandor/lightspeed.nvim", requires = "tpope/vim-repeat" }) -- Better jumps with s/S
 		use({ "jlanzarotta/bufexplorer" }) -- Better buffer jumps
 		require("kp.config.twilight").init(use) -- Solo view functions
