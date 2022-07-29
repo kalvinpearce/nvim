@@ -4,7 +4,7 @@ local function config()
 		return
 	end
 
-	require("kp.lsp.lsp-installer")
+	require("kp.lsp.mason")
 	require("kp.lsp.handlers").setup()
 	require("kp.lsp.null-ls")
 	require("lsp_signature").setup({})
@@ -14,7 +14,8 @@ local function init(use)
 	return use({
 		"neovim/nvim-lspconfig",
 		requires = {
-			"williamboman/nvim-lsp-installer",
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 			"jose-elias-alvarez/null-ls.nvim",
 			"ray-x/lsp_signature.nvim",
 		},
