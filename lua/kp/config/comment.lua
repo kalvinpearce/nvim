@@ -8,7 +8,6 @@ local function config()
 		mappings = {
 			basic = true,
 			extra = true,
-			extended = true,
 		},
 		pre_hook = function(ctx)
 			if vim.bo.filetype == "typescriptreact" then
