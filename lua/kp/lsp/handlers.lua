@@ -94,6 +94,6 @@ if not status_ok then
 	return
 end
 
-M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+M.capabilities = vim.tbl_deep_extend( 'force', capabilities, cmp_nvim_lsp.default_capabilities())
 
 return M
