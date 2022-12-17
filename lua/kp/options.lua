@@ -1,44 +1,54 @@
 local o = vim.opt
 local g = vim.g
 
-o.mouse = "a" -- enable mouse support
-o.syntax = "on" -- enable syntax
-o.cursorline = true -- enable cursorline
-o.relativenumber = true -- enable relative numbers
 o.number = true -- enable line numbers
+o.relativenumber = true -- enable relative numbers
 o.signcolumn = "yes" -- always show sign column
-o.wrap = false -- disable line wrapping
-o.guifont = "Hack Nerd Font" -- my fav patched font
-o.clipboard = "unnamedplus" -- use system clipboard
-o.cmdheight = 2 -- more space for messages
-o.fileencoding = "utf-8" -- the encoding written to a file
-o.swapfile = false -- disable swapfile
-o.showmode = false -- don't show current mode e.g. INSERT
-o.termguicolors = true -- truecolours for better experience
-o.showtabline = 2 -- always show tabs
-o.undofile = true -- enable persistent undo
-o.lazyredraw = true -- make macros faster by only redraw when finished
-o.expandtab = true -- spaces over tabs (sorry Richard)
-o.shiftwidth = 2 -- spaces per indentation
+
 o.tabstop = 2 -- spaces per tab
-o.colorcolumn = "80" -- 80 chars color column (angry this is string)
-o.completeopt = { "menu", "menuone", "noinsert" } -- better completion
+o.softtabstop = 2 -- spaces per tab
+o.shiftwidth = 2 -- spaces per indentation
+o.expandtab = true -- spaces over tabs (sorry Richard)
+o.smartindent = true -- do indenting on new line
+
+o.swapfile = false -- disable swapfile
+o.backup = false -- disable backup
+o.undofile = true -- enable persistent undo
+o.undodir = os.getenv("HOME") .. "/.nvim/undodir"
+
+o.hlsearch = true -- show highlight when searching
+o.incsearch = true -- show highlight of current search patter while typing
 o.ignorecase = true -- ignore case in search patterns
 o.smartcase = true -- override ignorecase when searching with a captial
-o.smartindent = true -- do indenting on new line
-o.pumheight = 10 -- pop up menu height
-o.splitbelow = true -- force horizontal splits to go below
-o.splitright = true -- force virtical splits to go right
+
+o.mouse = "a" -- enable mouse support
+o.syntax = "on" -- enable syntax
+o.showtabline = 1 -- show tabs when 2 or more visible
+o.cursorline = true -- enable cursorline
+o.wrap = false -- disable line wrapping
+o.guifont = "Hack Nerd Font" -- my fav patched font
+o.cmdheight = 2 -- more space for messages
+o.showmode = false -- don't show current mode e.g. INSERT
+o.termguicolors = true -- truecolours for better experience
+o.lazyredraw = true -- make macros faster by only redraw when finished
+o.colorcolumn = "80" -- 80 chars color column (angry this is string)
+o.completeopt = { "menu", "menuone", "noinsert" } -- better completion
 o.scrolloff = 10 -- number of lines to keep above/below cursor when scrolling
 o.sidescrolloff = 5 -- as above but for left/right scrolling
-o.timeoutlen = 1000 -- wait a second for map sequence before cancelling
-o.updatetime = 300 -- faster completion time
+
+o.splitbelow = true -- force horizontal splits to go below
+o.splitright = true -- force virtical splits to go right
 o.equalalways = false -- don't adjust window size when creating new window
+
+o.timeoutlen = 1000 -- wait a second for map sequence before cancelling
+o.updatetime = 50 -- faster completion time
 
 -- Misc fixes
 o.iskeyword:append("-") -- don't split word on - char
 o.pastetoggle = "<F10>"
 o.shortmess:append("c")
+o.whichwrap:append("<,>,[,],h,l")
+o.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,terminal"
 
 local force_formatopts = vim.api.nvim_create_augroup("ForctFormatOptions", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
@@ -46,9 +56,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
 	command = "set formatoptions-=o",
 })
-
-o.whichwrap:append("<,>,[,],h,l")
-o.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,terminal"
 
 -- Provider skips
 g.loaded_python_provider = 0
