@@ -80,24 +80,25 @@ return packer.startup({
 		require("kp.config.trouble").init(use) -- List lsp diagnostics
 
 		-- Misc
-		use("kalvinpearce/gitignore-gen.nvim")
-		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3 (VIM)
-		use("gpanders/editorconfig.nvim") -- use .editorconfig settings when file present
-		use("romainl/vim-cool") -- kill highlight when moving off searched word (VIM)
-		use({ "mbbill/undotree", cmd = "UndotreeToggle" }) -- (VIM)
-		use("AndrewRadev/splitjoin.vim") -- allows to split one liner to multi lines (VIM)
 		require("kp.config.surround").init(use) -- Change surrounding arks
-		use({ "ggandor/lightspeed.nvim", requires = "tpope/vim-repeat" }) -- Better jumps with s/S
-		use({ "jlanzarotta/bufexplorer" }) -- Better buffer jumps (VIM)
 		require("kp.config.twilight").init(use) -- Solo view functions
-		use({ "mg979/vim-visual-multi" }) -- (VIM)
+		use({ "kalvinpearce/gitignore-gen.nvim" })
+		use({ "gpanders/editorconfig.nvim" }) -- Apply settings from .editorconfig
+		use({ "ggandor/lightspeed.nvim", requires = "tpope/vim-repeat" }) -- Better jumps with s/S
+		-- Misc Vim 😥
+		use({ "wsdjeg/vim-fetch" }) -- open file at line & col eg nvim a.txt:12:3
+		use({ "romainl/vim-cool" }) -- kill highlight when moving off searched word
+		use({ "mbbill/undotree", cmd = "UndotreeToggle" }) -- Branching undo playback
+		use({ "AndrewRadev/splitjoin.vim" }) -- allows to split one liner to multi lines
+		use({ "jlanzarotta/bufexplorer" }) -- Better buffer jumps
+		use({ "mg979/vim-visual-multi" }) -- Multi cursor support like vscode
 
 		-- Language specific
 		use({ "kalvinpearce/ShaderHighLight", ft = { "shader", "hlsl", "glsl", "cginc" } })
 		require("kp.config.crates-nvim").init(use) -- Juiced rust crates support in cargo.toml
 		require("kp.config.markdown-preview").init(use) -- open markdown file in web browser with live updates
-		use("jxnblk/vim-mdx-js") -- MDX support (VIM)
 		use({ "ellisonleao/glow.nvim", branch = "main" }) -- Nice markdown visualisation
+		use({ "jxnblk/vim-mdx-js" }) -- MDX support (VIM)
 
 		-- Automatically set up your configuration after cloning packer.nvim
 		-- Put this at the end after all plugins
