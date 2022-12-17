@@ -78,6 +78,7 @@ return packer.startup({
 		require("kp.config.cinnamon").init(use) -- Smooth movement for EVERYTHING
 		require("kp.config.wilder").init(use) -- Better wildmenu
 		require("kp.config.trouble").init(use) -- List lsp diagnostics
+		require("kp.config.cutlass").init(use) -- Black hole registers by default
 
 		-- Misc
 		require("kp.config.surround").init(use) -- Change surrounding arks
