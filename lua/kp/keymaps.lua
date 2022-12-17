@@ -11,33 +11,27 @@ g.maplocalleader = " "
 map("o", "A", ":<C-U>normal! ggVG<CR>")
 
 -- Remove force kill
-map("n", "<C-z", "<Nop>")
+map({"n", "v", "i", "c" }, "<C-z>", "<Nop>")
 
--- Better register actions
-map({ "n", "v" }, "x", '"_x')
-map({ "n", "v" }, "<s-x>", "x")
-map({ "n", "v" }, "d", '"_d')
-map({ "n", "v" }, "<s-d>", "d")
-map({ "n", "v" }, "c", '"_c')
-map({ "n", "v" }, "<s-c>", "c")
+-- System clipboard indegrations
+map({"n", "v"}, "<leader>y", [["+y]])
+map("n", "<leader>Y", [["+Y]])
+
+-- Paste without overwriting buffer
 map("v", "p", '"_dP')
-map("v", "<s-p>", "p")
-
+map("v", "<s-p>", "_dp")
 -- Move to end of paste
 map("n", "p", "p`]")
-
--- Multi tab (complete/tab/move out of pairs)
-map("i", "<TAB>", "pumvisible() ? '<C-y>' : search('\\%#[]>)}''\"`]', 'n') ? '<Right>' : '<TAB>'", { expr = true })
-
 -- Better insert pasting
 map("i", "<c-v>", "<F10><c-r>+<F10>")
 map("c", "<c-v>", "<c-r>+", { noremap = false })
 
--- Save
-map("n", "<c-s>", ":w<cr>")
-map("x", "<c-s>", ":w<cr>")
-map("i", "<c-s>", "<esc>:w<cr>a")
+-- -- Multi tab (complete/tab/move out of pairs)
+-- map("i", "<TAB>", "pumvisible() ? '<C-y>' : search('\\%#[]>)}''\"`]', 'n') ? '<Right>' : '<TAB>'", { expr = true })
 
+-- Save
+map({"n", "x"}, "<c-s>", ":w<cr>")
+map("i", "<c-s>", "<esc>:w<cr>a")
 -- Close
 map("n", "<c-q>", ":q<cr>")
 map("n", "<c-w>", ":bd<cr>")
@@ -47,13 +41,13 @@ map("n", "<c-s-w>", ":e#<cr>")
 map("n", "<leader>dd", '"qyy"qp')
 map("x", "<leader>dd", [["qy'>"qp]])
 
--- Better window navigation
+-- Window navigation ctrl+hjkl
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
--- Resize with arrows
+-- Resize with ctrl+arrows
 map("n", "<C-Up>", ":resize +2<CR>")
 map("n", "<C-Down>", ":resize -2<CR>")
 map("n", "<C-Left>", ":vertical resize -2<CR>")
@@ -68,22 +62,20 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- Move text up and down
-map("v", "<A-j>", ":m .+1<CR>==")
-map("v", "<A-k>", ":m .-2<CR>==")
-map("v", "p", '"_dP')
-map("x", "J", ":move '>+1<CR>gv-gv")
-map("x", "K", ":move '<-2<CR>gv-gv")
-map("x", "<A-j>", ":move '>+1<CR>gv-gv")
-map("x", "<A-k>", ":move '<-2<CR>gv-gv")
-
--- Hard mode
-map({ "n", "i", "x" }, "<left>", "<nop>")
-map({ "n", "i", "x" }, "<right>", "<nop>")
-map({ "n", "i", "x" }, "<up>", "<nop>")
-map({ "n", "i", "x" }, "<down>", "<nop>")
+map("v", "J", ":move '>+1<CR>gv=gv")
+map("v", "K", ":move '<-2<CR>gv=gv")
 
 -- Ctrl-backspace
 map({ "i", "c", "t" }, "<c-h>", "<c-w>")
+
+-- Join lines stay in place
+map("n", "J", "mzJ`z")
+
+-- Center cursor when d/u & n/N jumping
+map("n", "<c-d>", "<c-d>zz")
+map("n", "<c-u>", "<c-u>zz")
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
 
 -- Save and run file
 map("n", "<leader><leader>x", function()
