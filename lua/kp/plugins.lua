@@ -82,7 +82,7 @@ return packer.startup({
 		-- Misc
 		use("kalvinpearce/gitignore-gen.nvim")
 		use("wsdjeg/vim-fetch") -- open file at line & col eg nvim a.txt:12:3 (VIM)
-		use("editorconfig/editorconfig-vim") -- use .editorconfig settings when file present (VIM)
+		use("gpanders/editorconfig.nvim") -- use .editorconfig settings when file present
 		use("romainl/vim-cool") -- kill highlight when moving off searched word (VIM)
 		use({ "mbbill/undotree", cmd = "UndotreeToggle" }) -- (VIM)
 		use("AndrewRadev/splitjoin.vim") -- allows to split one liner to multi lines (VIM)
