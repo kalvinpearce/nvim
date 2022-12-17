@@ -5,8 +5,11 @@ local function config()
 	end
 
 	project.setup({
+		detection_methods = { "pattern", "lsp" },
 		patterns = { ".git", "package.json", "cargo.toml" },
 	})
+
+	require("telescope").load_extension("projects")
 end
 
 local function init(use)
