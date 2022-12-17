@@ -42,7 +42,7 @@ return packer.startup({
 		use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 
 		-- General UI
-		require("kp.config.tokyonight").init(use) -- Color theme
+		require("kp.config.bluloco").init(use) -- Color theme
 		require("kp.config.bufferline").init(use) -- Buffer/tab management
 		-- require("kp.config.tabline-nvim").init(use) -- Buffer/tab management
 		require("kp.config.lualine").init(use) -- Status bar with LSP support

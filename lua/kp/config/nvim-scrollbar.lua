@@ -4,21 +4,18 @@ local function config()
 		return
 	end
 
-	local colors = require("tokyonight.colors").setup()
-
 	scrollbar.setup({
 		handle = {
 			text = " ",
-			color = colors.bg_highlight,
 			hide_if_all_visible = false,
 		},
 		marks = {
-			Search = { text = { "-", "■" }, priority = 0, color = colors.orange },
-			Error = { text = { "-", "■" }, priority = 1, color = colors.error },
-			Warn = { text = { "-", "■" }, priority = 2, color = colors.warning },
-			Info = { text = { "-", "■" }, priority = 3, color = colors.info },
-			Hint = { text = { "-", "■" }, priority = 4, color = colors.hint },
-			Misc = { text = { "-", "■" }, priority = 5, color = colors.purple },
+			Search = { text = { "-", "■" }, priority = 0 },
+			Error = { text = { "-", "■" }, priority = 1 },
+			Warn = { text = { "-", "■" }, priority = 2 },
+			Info = { text = { "-", "■" }, priority = 3 },
+			Hint = { text = { "-", "■" }, priority = 4 },
+			Misc = { text = { "-", "■" }, priority = 5 },
 		},
 		handlers = {
 			diagnostic = true,
