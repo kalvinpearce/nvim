@@ -11,10 +11,10 @@ g.maplocalleader = " "
 map("o", "A", ":<C-U>normal! ggVG<CR>")
 
 -- Remove force kill
-map({"n", "v", "i", "c" }, "<C-z>", "<Nop>")
+map({ "n", "v", "i", "c" }, "<C-z>", "<Nop>")
 
 -- System clipboard indegrations
-map({"n", "v"}, "<leader>y", [["+y]])
+map({ "n", "v" }, "<leader>y", [["+y]])
 map("n", "<leader>Y", [["+Y]])
 
 -- Paste without overwriting buffer
@@ -23,14 +23,14 @@ map("v", "<s-p>", "_dp")
 -- Move to end of paste
 map("n", "p", "p`]")
 -- Better insert pasting
-map("i", "<c-v>", "<F10><c-r>+<F10>")
-map("c", "<c-v>", "<c-r>+", { noremap = false })
+map("i", "<c-v>", [[<F10><c-r>"<F10>]])
+map("c", "<c-v>", [[<c-r>"]], { noremap = false })
 
 -- -- Multi tab (complete/tab/move out of pairs)
 -- map("i", "<TAB>", "pumvisible() ? '<C-y>' : search('\\%#[]>)}''\"`]', 'n') ? '<Right>' : '<TAB>'", { expr = true })
 
 -- Save
-map({"n", "x"}, "<c-s>", ":w<cr>")
+map({ "n", "x" }, "<c-s>", ":w<cr>")
 map("i", "<c-s>", "<esc>:w<cr>a")
 -- Close
 map("n", "<c-q>", ":q<cr>")
@@ -84,4 +84,3 @@ map("n", "<leader><leader>x", function()
 		vim.cmd("source %")
 	end
 end)
-
