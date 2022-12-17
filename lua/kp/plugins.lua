@@ -47,12 +47,8 @@ return packer.startup({
 		-- require("kp.config.tabline-nvim").init(use) -- Buffer/tab management
 		require("kp.config.lualine").init(use) -- Status bar with LSP support
 
-		-- LSP & Completion
-		require("kp.config.cmp").init(use) -- Completion engine
-		require("kp.config.luasnip").init(use) -- Snippets engine
-		require("kp.lsp").init(use) -- LSP support
-
 		-- Core
+		require("kp.config.lsp").init(use) -- LSP support
 		require("kp.config.treesitter").init(use) -- Beautiful highlights & other file parsing goodies
 		require("kp.config.telescope").init(use) -- Fuzzy find engine
 		require("kp.config.neo-tree-nvim").init(use) -- Nicer file explorer
