@@ -48,7 +48,7 @@ o.iskeyword:append("-") -- don't split word on - char
 o.pastetoggle = "<F10>"
 o.shortmess:append("c")
 o.whichwrap:append("<,>,[,],h,l")
-o.sessionoptions = "blank,buffers,curdir,folds,tabpages,winsize,terminal"
+o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal"
 
 local force_formatopts = vim.api.nvim_create_augroup("ForctFormatOptions", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
@@ -79,4 +79,3 @@ g.loaded_rrhelper = 1
 g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
-
