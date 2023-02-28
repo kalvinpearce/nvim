@@ -1,4 +1,5 @@
-local map = require("kp.utils").map
+local Util = require("kp.utils")
+local map = Util.map
 
 -- Map space leader
 map("", "<Space>", "<Nop>")
@@ -57,17 +58,17 @@ map(
 )
 
 -- Navigate buffers
--- if Util.has("bufferline.nvim") then
---   map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
---   map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
---   map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
---   map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
--- else
-map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
--- end
+if Util.has("bufferline.nvim") then
+  map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+  map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+  map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
+  map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
+else
+  map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+  map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+  map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+  map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
+end
 
 -- Stay in indent mode
 map("v", "<", "<gv")
@@ -146,6 +147,29 @@ map(
   "'nN'[v:searchforward]",
   { expr = true, desc = "Prev search result" }
 )
+
+-- toggle options
+map(
+  "n",
+  "<leader>uf",
+  require("kp.plugins.lsp.format").toggle,
+  { desc = "Toggle format on Save" }
+)
+map("n", "<leader>us", function()
+  Util.toggle("spell")
+end, { desc = "Toggle Spelling" })
+map("n", "<leader>uw", function()
+  Util.toggle("wrap")
+end, { desc = "Toggle Word Wrap" })
+map("n", "<leader>ul", function()
+  Util.toggle("relativenumber", true)
+  Util.toggle("number")
+end, { desc = "Toggle Line Numbers" })
+map("n", "<leader>ud", Util.toggle_diagnostics, { desc = "Toggle Diagnostics" })
+local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
+map("n", "<leader>uc", function()
+  Util.toggle("conceallevel", false, { 0, conceallevel })
+end, { desc = "Toggle Conceal" })
 
 -- Add undo break-points
 map("i", ",", ",<c-g>u")
