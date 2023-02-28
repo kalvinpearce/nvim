@@ -1,5 +1,5 @@
 require("kp.options")
+require("kp.lazy")
 require("kp.keymaps")
-require("kp.plugins")
 require("kp.autocommands")
 require("kp.functions")

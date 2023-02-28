@@ -1,6 +1,9 @@
 local o = vim.opt
 local g = vim.g
 
+g.mapleader = " "
+g.maplocalleader = " "
+
 o.number = true -- enable line numbers
 o.relativenumber = true -- enable relative numbers
 o.signcolumn = "yes" -- always show sign column
