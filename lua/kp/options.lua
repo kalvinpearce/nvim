@@ -3,6 +3,7 @@ local g = vim.g
 
 g.mapleader = " "
 g.maplocalleader = " "
+o.clipboard = "unnamedplus" -- Sync with system clipboard
 
 o.number = true -- enable line numbers
 o.relativenumber = true -- enable relative numbers
