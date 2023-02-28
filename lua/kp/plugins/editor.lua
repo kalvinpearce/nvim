@@ -60,6 +60,8 @@ return {
       window = {
         mappings = {
           ["<space>"] = "none",
+          ["l"] = "open",
+          ["h"] = "close_node",
         },
       },
     },
