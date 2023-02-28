@@ -5,11 +5,11 @@ local M = {}
 M.root_patterns = { ".git", "lua" }
 
 function M.map(mode, key, result, opts)
-	opts = vim.tbl_extend("keep", opts or {}, {
-		noremap = true,
-		silent = true,
-	})
-	vim.keymap.set(mode, key, result, opts)
+  opts = vim.tbl_extend("keep", opts or {}, {
+    noremap = true,
+    silent = true,
+  })
+  vim.keymap.set(mode, key, result, opts)
 end
 
 ---@param on_attach fun(client, buffer)
@@ -63,9 +63,12 @@ function M.get_root()
   if path then
     for _, client in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
       local workspace = client.config.workspace_folders
-      local paths = workspace and vim.tbl_map(function(ws)
-        return vim.uri_to_fname(ws.uri)
-      end, workspace) or client.config.root_dir and { client.config.root_dir } or {}
+      local paths = workspace
+          and vim.tbl_map(function(ws)
+            return vim.uri_to_fname(ws.uri)
+          end, workspace)
+        or client.config.root_dir and { client.config.root_dir }
+        or {}
       for _, p in ipairs(paths) do
         local r = vim.loop.fs_realpath(p)
         if path:find(r, 1, true) then
@@ -130,7 +133,10 @@ function M.toggle(option, silent, values)
     else
       vim.opt_local[option] = values[1]
     end
-    return Util.info("Set " .. option .. " to " .. vim.opt_local[option]:get(), { title = "Option" })
+    return Util.info(
+      "Set " .. option .. " to " .. vim.opt_local[option]:get(),
+      { title = "Option" }
+    )
   end
   vim.opt_local[option] = not vim.opt_local[option]:get()
   if not silent then
@@ -155,7 +161,10 @@ function M.toggle_diagnostics()
 end
 
 function M.deprecate(old, new)
-  Util.warn(("`%s` is deprecated. Please use `%s` instead"):format(old, new), { title = "LazyVim" })
+  Util.warn(
+    ("`%s` is deprecated. Please use `%s` instead"):format(old, new),
+    { title = "LazyVim" }
+  )
 end
 
 -- delay notifications till vim.notify was replaced or after 500ms
@@ -196,4 +205,3 @@ function M.lazy_notify()
 end
 
 return M
-

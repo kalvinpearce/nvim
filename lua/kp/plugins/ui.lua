@@ -55,7 +55,11 @@ return {
     event = "VeryLazy",
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
-      { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+      {
+        "<leader>bP",
+        "<Cmd>BufferLineGroupClose ungrouped<CR>",
+        desc = "Delete non-pinned buffers",
+      },
     },
     opts = {
       options = {
@@ -90,7 +94,9 @@ return {
         return function()
           ---@type {foreground?:number}?
           local hl = vim.api.nvim_get_hl_by_name(name, true)
-          return hl and hl.foreground and { fg = string.format("#%06x", hl.foreground) }
+          return hl
+            and hl.foreground
+            and { fg = string.format("#%06x", hl.foreground) }
         end
       end
 
@@ -113,8 +119,17 @@ return {
                 hint = icons.diagnostics.Hint,
               },
             },
-            { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-            { "filename", path = 1, symbols = { modified = "  ", readonly = "", unnamed = "" } },
+            {
+              "filetype",
+              icon_only = true,
+              separator = "",
+              padding = { left = 1, right = 0 },
+            },
+            {
+              "filename",
+              path = 1,
+              symbols = { modified = "  ", readonly = "", unnamed = "" },
+            },
             -- stylua: ignore
             {
               function() return require("nvim-navic").get_location() end,
@@ -134,7 +149,11 @@ return {
               cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
               color = fg("Constant") ,
             },
-            { require("lazy.status").updates, cond = require("lazy.status").has_updates, color = fg("Special") },
+            {
+              require("lazy.status").updates,
+              cond = require("lazy.status").has_updates,
+              color = fg("Special"),
+            },
             {
               "diff",
               symbols = {
@@ -166,7 +185,14 @@ return {
     opts = {
       -- char = "▏",
       char = "│",
-      filetype_exclude = { "help", "alpha", "dashboard", "neo-tree", "Trouble", "lazy" },
+      filetype_exclude = {
+        "help",
+        "alpha",
+        "dashboard",
+        "neo-tree",
+        "Trouble",
+        "lazy",
+      },
       show_trailing_blankline_indent = false,
       show_current_context = false,
     },
@@ -198,12 +224,32 @@ return {
 
       dashboard.section.header.val = vim.split(logo, "\n")
       dashboard.section.buttons.val = {
-        dashboard.button("f", " " .. " Find file", ":Telescope find_files <CR>"),
-        dashboard.button("n", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("r", " " .. " Recent files", ":Telescope oldfiles <CR>"),
-        dashboard.button("g", " " .. " Find text", ":Telescope live_grep <CR>"),
+        dashboard.button(
+          "f",
+          " " .. " Find file",
+          ":Telescope find_files <CR>"
+        ),
+        dashboard.button(
+          "n",
+          " " .. " New file",
+          ":ene <BAR> startinsert <CR>"
+        ),
+        dashboard.button(
+          "r",
+          " " .. " Recent files",
+          ":Telescope oldfiles <CR>"
+        ),
+        dashboard.button(
+          "g",
+          " " .. " Find text",
+          ":Telescope live_grep <CR>"
+        ),
         dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-        dashboard.button("s", "勒" .. " Restore Session", [[:lua require("persistence").load() <cr>]]),
+        dashboard.button(
+          "s",
+          "勒" .. " Restore Session",
+          [[:lua require("persistence").load() <cr>]]
+        ),
         dashboard.button("l", "鈴" .. " Lazy", ":Lazy<CR>"),
         dashboard.button("q", " " .. " Quit", ":qa<CR>"),
       }
@@ -236,7 +282,11 @@ return {
         callback = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
+          dashboard.section.footer.val = "⚡ Neovim loaded "
+            .. stats.count
+            .. " plugins in "
+            .. ms
+            .. "ms"
           pcall(vim.cmd.AlphaRedraw)
         end,
       })

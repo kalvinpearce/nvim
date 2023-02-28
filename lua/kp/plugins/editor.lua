@@ -10,19 +10,35 @@ return {
       {
         "<leader>fe",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = require("kp.utils").get_root() })
+          require("neo-tree.command").execute({
+            toggle = true,
+            dir = require("kp.utils").get_root(),
+          })
         end,
         desc = "Explorer NeoTree (root dir)",
       },
       {
         "<leader>fE",
         function()
-          require("neo-tree.command").execute({ toggle = true, dir = vim.loop.cwd() })
+          require("neo-tree.command").execute({
+            toggle = true,
+            dir = vim.loop.cwd(),
+          })
         end,
         desc = "Explorer NeoTree (cwd)",
       },
-      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (root dir)", remap = true },
-      { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+      {
+        "<leader>e",
+        "<leader>fe",
+        desc = "Explorer NeoTree (root dir)",
+        remap = true,
+      },
+      {
+        "<leader>E",
+        "<leader>fE",
+        desc = "Explorer NeoTree (cwd)",
+        remap = true,
+      },
     },
     deactivate = function()
       vim.cmd([[Neotree close]])
@@ -72,37 +88,85 @@ return {
       end,
     },
     keys = {
-      { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
-      { "<leader>/", Util.telescope("live_grep"), desc = "Find in Files (Grep)" },
-      { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
-      { "<leader><space>", Util.telescope("files"), desc = "Find Files (root dir)" },
+      {
+        "<leader>,",
+        "<cmd>Telescope buffers show_all_buffers=true<cr>",
+        desc = "Switch Buffer",
+      },
+      {
+        "<leader>/",
+        Util.telescope("live_grep"),
+        desc = "Find in Files (Grep)",
+      },
+      {
+        "<leader>:",
+        "<cmd>Telescope command_history<cr>",
+        desc = "Command History",
+      },
+      {
+        "<leader><space>",
+        Util.telescope("files"),
+        desc = "Find Files (root dir)",
+      },
       { "<c-p>", Util.telescope("files"), desc = "Find Files (root dir)" },
       -- find
       { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
       { "<leader>ff", Util.telescope("files"), desc = "Find Files (root dir)" },
-      { "<leader>fF", Util.telescope("files", { cwd = false }), desc = "Find Files (cwd)" },
+      {
+        "<leader>fF",
+        Util.telescope("files", { cwd = false }),
+        desc = "Find Files (cwd)",
+      },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       -- git
       { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
       { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
       -- search
-      { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
-      { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
-      { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+      {
+        "<leader>sa",
+        "<cmd>Telescope autocommands<cr>",
+        desc = "Auto Commands",
+      },
+      {
+        "<leader>sb",
+        "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+        desc = "Buffer",
+      },
+      {
+        "<leader>sc",
+        "<cmd>Telescope command_history<cr>",
+        desc = "Command History",
+      },
       { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
       { "<leader>sd", "<cmd>Telescope diagnostics<cr>", desc = "Diagnostics" },
       { "<leader>sg", Util.telescope("live_grep"), desc = "Grep (root dir)" },
-      { "<leader>sG", Util.telescope("live_grep", { cwd = false }), desc = "Grep (cwd)" },
+      {
+        "<leader>sG",
+        Util.telescope("live_grep", { cwd = false }),
+        desc = "Grep (cwd)",
+      },
       { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
-      { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+      {
+        "<leader>sH",
+        "<cmd>Telescope highlights<cr>",
+        desc = "Search Highlight Groups",
+      },
       { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
       { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
       { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
       { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
       { "<leader>sw", Util.telescope("grep_string"), desc = "Word (root dir)" },
-      { "<leader>sW", Util.telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
-      { "<leader>uC", Util.telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      {
+        "<leader>sW",
+        Util.telescope("grep_string", { cwd = false }),
+        desc = "Word (cwd)",
+      },
+      {
+        "<leader>uC",
+        Util.telescope("colorscheme", { enable_preview = true }),
+        desc = "Colorscheme with preview",
+      },
       {
         "<leader>ss",
         Util.telescope("lsp_document_symbols", {
@@ -147,7 +211,9 @@ return {
         mappings = {
           i = {
             ["<c-t>"] = function(...)
-              return require("trouble.providers.telescope").open_with_trouble(...)
+              return require("trouble.providers.telescope").open_with_trouble(
+                ...
+              )
             end,
             ["<a-i>"] = function()
               Util.telescope("find_files", { no_ignore = true })()
@@ -301,7 +367,10 @@ return {
       local function map(key, dir, buffer)
         vim.keymap.set("n", key, function()
           require("illuminate")["goto_" .. dir .. "_reference"](false)
-        end, { desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference", buffer = buffer })
+        end, {
+          desc = dir:sub(1, 1):upper() .. dir:sub(2) .. " Reference",
+          buffer = buffer,
+        })
       end
 
       map("]]", "next")
@@ -338,10 +407,26 @@ return {
     cmd = { "TroubleToggle", "Trouble" },
     opts = { use_diagnostic_signs = true },
     keys = {
-      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-      { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+      {
+        "<leader>xx",
+        "<cmd>TroubleToggle document_diagnostics<cr>",
+        desc = "Document Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>TroubleToggle workspace_diagnostics<cr>",
+        desc = "Workspace Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>TroubleToggle loclist<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>TroubleToggle quickfix<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
     },
   },
 
@@ -366,7 +451,7 @@ return {
     "j-hui/fidget.nvim",
     event = "VeryLazy",
     config = function()
-      	require("fidget").setup()
+      require("fidget").setup()
     end,
   },
 
@@ -389,21 +474,21 @@ return {
 
   -- branching undo tree
   {
-    "mbbill/undotree", 
+    "mbbill/undotree",
     cmd = "UndotreeToggle",
   },
 
   -- better wild menu
   {
-		"gelguy/wilder.nvim",
+    "gelguy/wilder.nvim",
     enabled = false,
-		dependencies = {
-			"roxma/nvim-yarp",
-			"romgrk/fzy-lua-native",
-		},
-		config = function()
-      local wilder = require('wilder')
-      wilder.setup({modes = {':', '/', '?'}})
+    dependencies = {
+      "roxma/nvim-yarp",
+      "romgrk/fzy-lua-native",
+    },
+    config = function()
+      local wilder = require("wilder")
+      wilder.setup({ modes = { ":", "/", "?" } })
       wilder.set_option("pipeline", {
         wilder.branch(
           wilder.python_file_finder_pipeline({
@@ -447,31 +532,40 @@ return {
         wilder.lua_fzy_highlighter(),
       }
 
-      local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
-        border = "rounded",
-        empty_message = wilder.popupmenu_empty_message_with_spinner(),
-        highlighter = highlighters,
-        highlights = {
-          accent = wilder.make_hl("WilderAccent", "Pmenu", { { a = 1 }, { a = 1 }, { foreground = "#f4468f" } }),
-        },
-        left = {
-          " ",
-          wilder.popupmenu_devicons(),
-          wilder.popupmenu_buffer_flags({
-            flags = " a + ",
-            icons = { ["+"] = "", a = "", h = "" },
-          }),
-        },
-        right = {
-          " ",
-          wilder.popupmenu_scrollbar(),
-        },
-      }))
+      local popupmenu_renderer =
+        wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
+          border = "rounded",
+          empty_message = wilder.popupmenu_empty_message_with_spinner(),
+          highlighter = highlighters,
+          highlights = {
+            accent = wilder.make_hl(
+              "WilderAccent",
+              "Pmenu",
+              { { a = 1 }, { a = 1 }, { foreground = "#f4468f" } }
+            ),
+          },
+          left = {
+            " ",
+            wilder.popupmenu_devicons(),
+            wilder.popupmenu_buffer_flags({
+              flags = " a + ",
+              icons = { ["+"] = "", a = "", h = "" },
+            }),
+          },
+          right = {
+            " ",
+            wilder.popupmenu_scrollbar(),
+          },
+        }))
 
       local wildmenu_renderer = wilder.wildmenu_renderer({
         highlighter = highlighters,
         highlights = {
-          accent = wilder.make_hl("WilderAccent", "Pmenu", { { a = 1 }, { a = 1 }, { foreground = "#f4468f" } }),
+          accent = wilder.make_hl(
+            "WilderAccent",
+            "Pmenu",
+            { { a = 1 }, { a = 1 }, { foreground = "#f4468f" } }
+          ),
         },
         separator = " · ",
         left = { " ", wilder.wildmenu_spinner(), " " },
@@ -486,20 +580,62 @@ return {
           substitute = wildmenu_renderer,
         })
       )
-		end,
-	},
+    end,
+  },
 
   -- quick file navigation: harpoon
   {
     "ThePrimeagen/harpoon",
     keys = {
-      { "<a-n>", function() require('harpoon.mark').add_file() end, desc = "Add file" },
-      { "<a-h>", function() require('harpoon.ui').toggle_quick_menu() end, desc = "Quick menu" },
-      { "<a-u>", function() require('harpoon.cmd-ui').toggle_quick_menu() end, desc = "Quick menu"},
-      { "<a-j>", function() require('harpoon.ui').nav_file(1) end, desc = "Nav file 1" },
-      { "<a-k>", function() require('harpoon.ui').nav_file(2) end, desc = "Nav file 2" },
-      { "<a-l>", function() require('harpoon.ui').nav_file(3) end, desc = "Nav file 3" },
-      { "<a-;>", function() require('harpoon.ui').nav_file(4) end, desc = "Nav file 4" },
+      {
+        "<a-n>",
+        function()
+          require("harpoon.mark").add_file()
+        end,
+        desc = "Add file",
+      },
+      {
+        "<a-h>",
+        function()
+          require("harpoon.ui").toggle_quick_menu()
+        end,
+        desc = "Quick menu",
+      },
+      {
+        "<a-u>",
+        function()
+          require("harpoon.cmd-ui").toggle_quick_menu()
+        end,
+        desc = "Quick menu",
+      },
+      {
+        "<a-j>",
+        function()
+          require("harpoon.ui").nav_file(1)
+        end,
+        desc = "Nav file 1",
+      },
+      {
+        "<a-k>",
+        function()
+          require("harpoon.ui").nav_file(2)
+        end,
+        desc = "Nav file 2",
+      },
+      {
+        "<a-l>",
+        function()
+          require("harpoon.ui").nav_file(3)
+        end,
+        desc = "Nav file 3",
+      },
+      {
+        "<a-;>",
+        function()
+          require("harpoon.ui").nav_file(4)
+        end,
+        desc = "Nav file 4",
+      },
     },
     config = true,
   },
@@ -518,11 +654,11 @@ return {
         {
           "lewis6991/gitsigns.nvim",
           config = function()
-            require('gitsigns').setup()
+            require("gitsigns").setup()
             require("scrollbar.handlers.gitsigns").setup()
-          end
+          end,
         },
-      }
+      },
     },
     config = function()
       require("scrollbar").setup()
@@ -607,12 +743,37 @@ return {
 
       local map = require("kp.utils").map
       map("n", "<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", { desc = "Node" })
-			map("n", "<leader>tu", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", { desc = "Lazygit" })
-			map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Float" })
-			map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "Horizontal" })
-			map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc = "Vertical" })
-      
-      map("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { desc = "Lazygit" })
+      map(
+        "n",
+        "<leader>tu",
+        "<cmd>lua _LAZYGIT_TOGGLE()<cr>",
+        { desc = "Lazygit" }
+      )
+      map(
+        "n",
+        "<leader>tf",
+        "<cmd>ToggleTerm direction=float<cr>",
+        { desc = "Float" }
+      )
+      map(
+        "n",
+        "<leader>th",
+        "<cmd>ToggleTerm size=10 direction=horizontal<cr>",
+        { desc = "Horizontal" }
+      )
+      map(
+        "n",
+        "<leader>tv",
+        "<cmd>ToggleTerm size=80 direction=vertical<cr>",
+        { desc = "Vertical" }
+      )
+
+      map(
+        "n",
+        "<leader>gg",
+        "<cmd>lua _LAZYGIT_TOGGLE()<CR>",
+        { desc = "Lazygit" }
+      )
     end,
   },
 }

@@ -51,8 +51,12 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-n>"] = cmp.mapping.select_next_item({
+            behavior = cmp.SelectBehavior.Insert,
+          }),
+          ["<C-p>"] = cmp.mapping.select_prev_item({
+            behavior = cmp.SelectBehavior.Insert,
+          }),
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
@@ -60,7 +64,7 @@ return {
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
         sources = cmp.config.sources({
-          { name = 'nvim_lsp_signature_help' },
+          { name = "nvim_lsp_signature_help" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer" },
@@ -107,7 +111,10 @@ return {
         { opts.mappings.find_left, desc = "Find left surrounding" },
         { opts.mappings.highlight, desc = "Highlight surrounding" },
         { opts.mappings.replace, desc = "Replace surrounding" },
-        { opts.mappings.update_n_lines, desc = "Update `MiniSurround.config.n_lines`" },
+        {
+          opts.mappings.update_n_lines,
+          desc = "Update `MiniSurround.config.n_lines`",
+        },
       }
       mappings = vim.tbl_filter(function(m)
         return m[1] and #m[1] > 0
@@ -149,11 +156,13 @@ return {
   },
 
   -- inline documentation
-  { 
-    "danymat/neogen", 
-    dependencies = "nvim-treesitter/nvim-treesitter", 
+  {
+    "danymat/neogen",
+    dependencies = "nvim-treesitter/nvim-treesitter",
     config = function(_, opts)
-      require("neogen").setup(vim.tbl_deep_extend("force", opts, { snippet_engine = "luasnip" }))
+      require("neogen").setup(
+        vim.tbl_deep_extend("force", opts, { snippet_engine = "luasnip" })
+      )
     end,
   },
 
@@ -163,14 +172,14 @@ return {
     event = "VeryLazy",
     config = function(_, opts)
       local augend = require("dial.augend")
-      require("dial.config").augends:register_group{
+      require("dial.config").augends:register_group({
         default = {
-          augend.constant.alias.bool,     -- boolean value (true <-> false)
-          augend.integer.alias.decimal,   -- nonnegative decimal number (0, 1, 2, 3, ...)
-          augend.integer.alias.hex,       -- nonnegative hex number  (0x01, 0x1a1f, etc.)
-          augend.date.alias["%Y/%m/%d"],  -- date (2022/02/19, etc.)
+          augend.constant.alias.bool, -- boolean value (true <-> false)
+          augend.integer.alias.decimal, -- nonnegative decimal number (0, 1, 2, 3, ...)
+          augend.integer.alias.hex, -- nonnegative hex number  (0x01, 0x1a1f, etc.)
+          augend.date.alias["%Y/%m/%d"], -- date (2022/02/19, etc.)
         },
-      }
+      })
 
       local map = require("kp.utils").map
       local dialMap = require("dial.map")
@@ -209,8 +218,14 @@ return {
             a = { "@block.outer", "@conditional.outer", "@loop.outer" },
             i = { "@block.inner", "@conditional.inner", "@loop.inner" },
           }, {}),
-          f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
-          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
+          f = ai.gen_spec.treesitter(
+            { a = "@function.outer", i = "@function.inner" },
+            {}
+          ),
+          c = ai.gen_spec.treesitter(
+            { a = "@class.outer", i = "@class.inner" },
+            {}
+          ),
         },
       }
     end,
@@ -250,8 +265,16 @@ return {
         local ic = vim.deepcopy(i)
         local ac = vim.deepcopy(a)
         for key, name in pairs({ n = "Next", l = "Last" }) do
-          i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
-          a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
+          i[key] = vim.tbl_extend(
+            "force",
+            { name = "Inside " .. name .. " textobject" },
+            ic
+          )
+          a[key] = vim.tbl_extend(
+            "force",
+            { name = "Around " .. name .. " textobject" },
+            ac
+          )
         end
         require("which-key").register({
           mode = { "o", "x" },

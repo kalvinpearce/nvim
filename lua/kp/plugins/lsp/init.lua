@@ -81,7 +81,9 @@ local M = {
       vim.diagnostic.config(opts.diagnostics)
 
       local servers = opts.servers
-      local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+      local capabilities = require("cmp_nvim_lsp").default_capabilities(
+        vim.lsp.protocol.make_client_capabilities()
+      )
 
       local function setup(server)
         local server_opts = vim.tbl_deep_extend("force", {
@@ -116,7 +118,10 @@ local M = {
         if server_opts then
           server_opts = server_opts == true and {} or server_opts
           -- run manual setup if mason=false or if this is a server that cannot be installed with mason-lspconfig
-          if server_opts.mason == false or not vim.tbl_contains(available, server) then
+          if
+            server_opts.mason == false
+            or not vim.tbl_contains(available, server)
+          then
             setup(server)
           else
             ensure_installed[#ensure_installed + 1] = server
@@ -183,4 +188,4 @@ vim.list_extend(M, require("kp.plugins.lsp.lang.json"))
 vim.list_extend(M, require("kp.plugins.lsp.lang.typescript"))
 vim.list_extend(M, require("kp.plugins.lsp.lang.rust"))
 
-return M;
+return M
