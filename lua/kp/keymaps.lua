@@ -17,8 +17,8 @@ map("v", "<s-p>", "_dp")
 -- Move to end of paste
 map("n", "p", "p`]")
 -- Better insert pasting
-map("i", "<c-v>", [[<F10><c-r>"<F10>]])
-map("c", "<c-v>", [[<c-r>"]], { noremap = false })
+map("i", "<c-v>", [[<F10><c-r>+<F10>]])
+map("c", "<c-v>", [[<c-r>+]], { noremap = false })
 
 -- -- Multi tab (complete/tab/move out of pairs)
 -- map("i", "<TAB>", "pumvisible() ? '<C-y>' : search('\\%#[]>)}''\"`]', 'n') ? '<Right>' : '<TAB>'", { expr = true })
