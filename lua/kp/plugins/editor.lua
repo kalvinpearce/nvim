@@ -2,6 +2,31 @@ local Util = require("kp.utils")
 
 return {
 
+  -- copilot
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        panel = {
+          auto_refresh = true,
+        },
+        suggestion = {
+          auto_trigger = true,
+          keymap = {
+            accept = "<M-l>",
+            accept_word = "<M-right>",
+            accept_line = false,
+            next = "<M-]>",
+            prev = "<M-[>",
+            dismiss = "<C-]>",
+          },
+        },
+      })
+    end,
+  },
+
   -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
