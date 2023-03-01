@@ -202,9 +202,8 @@ return {
   {
     "goolord/alpha-nvim",
     event = "VimEnter",
-    enabled = false,
     opts = function()
-      local dashboard = require("alpha.themes.dashboard")
+      local dashboard = require("alpha.themes.startify")
       local logo = [[
                                                                         
                                                                         
@@ -223,45 +222,64 @@ return {
                                                                         
       ]]
 
-      dashboard.section.header.val = vim.split(logo, "\n")
-      dashboard.section.buttons.val = {
-        dashboard.button(
-          "f",
-          " " .. " Find file",
-          ":Telescope find_files <CR>"
-        ),
-        dashboard.button(
-          "n",
-          " " .. " New file",
-          ":ene <BAR> startinsert <CR>"
-        ),
-        dashboard.button(
-          "r",
-          " " .. " Recent files",
-          ":Telescope oldfiles <CR>"
-        ),
-        dashboard.button(
-          "g",
-          " " .. " Find text",
-          ":Telescope live_grep <CR>"
-        ),
-        dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
-        dashboard.button(
-          "s",
-          "勒" .. " Restore Session",
-          [[:lua require("persistence").load() <cr>]]
-        ),
-        dashboard.button("l", "鈴" .. " Lazy", ":Lazy<CR>"),
-        dashboard.button("q", " " .. " Quit", ":qa<CR>"),
-      }
-      for _, button in ipairs(dashboard.section.buttons.val) do
-        button.opts.hl = "AlphaButtons"
-        button.opts.hl_shortcut = "AlphaShortcut"
+      local sessions = require("session_manager.utils").get_sessions()
+      local function drawSessions()
+        local tbl = {}
+        for i, fn in ipairs(sessions) do
+          local file = fn.dir.filename
+          local sc = tostring(i - 1)
+          local fileName = fn.filename
+          local safeFilename = fileName:gsub("\\", "\\\\")
+          local btn = dashboard.button(
+            sc,
+            file,
+            '<cmd>lua require("session_manager.utils").load_session("' .. safeFilename .. '")<CR>'
+          )
+          local formatted = string.format("([^%s]+)", "/")
+          local t = {}
+          for str in string.gmatch(file, formatted) do
+            table.insert(t, str)
+          end
+
+          local sh_pth = t[#t]
+          btn.opts.hl = { { "Comment", -2, #file - #sh_pth - 2 } }
+          tbl[i] = btn
+        end
+        return {
+          type = "group",
+          val = tbl,
+          opts = {},
+        }
       end
-      dashboard.section.footer.opts.hl = "Type"
-      dashboard.section.header.opts.hl = "AlphaHeader"
-      dashboard.section.buttons.opts.hl = "AlphaButtons"
-      dashboard.opts.layout[1].val = 8
+
+      dashboard.section.sessions = {
+        type = "group",
+        val = {
+          { type = "padding", val = 1 },
+          { type = "text", val = "Sessions", opts = { hl = "SpecialComment" } },
+          { type = "padding", val = 1 },
+          {
+            type = "group",
+            val = function()
+              return { drawSessions() }
+            end,
+          },
+        },
+      }
+
+      dashboard.section.header.val = vim.split(logo, "\n")
+      dashboard.config.layout = {
+        { type = "padding", val = 1 },
+        dashboard.section.header,
+        { type = "padding", val = 2 },
+        dashboard.section.sessions,
+        dashboard.section.mru,
+        { type = "padding", val = 1 },
+        dashboard.section.top_buttons,
+        dashboard.section.bottom_buttons,
+        dashboard.section.footer,
+      }
+
       return dashboard
     end,
     config = function(_, dashboard)
@@ -278,19 +296,19 @@ return {
 
       require("alpha").setup(dashboard.opts)
 
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "LazyVimStarted",
-        callback = function()
-          local stats = require("lazy").stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          dashboard.section.footer.val = "⚡ Neovim loaded "
-            .. stats.count
-            .. " plugins in "
-            .. ms
-            .. "ms"
-          pcall(vim.cmd.AlphaRedraw)
-        end,
-      })
+      -- vim.api.nvim_create_autocmd("User", {
+      --   pattern = "LazyVimStarted",
+      --   callback = function()
+      --     local stats = require("lazy").stats()
+      --     local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+      --     dashboard.section.footer.val = "⚡ Neovim loaded "
+      --       .. stats.count
+      --       .. " plugins in "
+      --       .. ms
+      --       .. "ms"
+      --     pcall(vim.cmd.AlphaRedraw)
+      --   end,
+      -- })
     end,
   },
 
@@ -321,92 +339,4 @@ return {
 
   -- ui components
   { "MunifTanjim/nui.nvim", lazy = true },
-
-  {
-    "echasnovski/mini.starter",
-    dependencies = {
-      {
-        "echasnovski/mini.sessions",
-        version = false,
-        config = function()
-          require("mini.sessions").setup({
-            file = "",
-          })
-        end,
-      },
-    },
-    version = false, -- wait till new 0.7.0 release to put it back on semver
-    event = "VimEnter",
-    opts = function()
-      local logo = [[
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-        _|      _|  _|_|_|_|    _|_|    _|      _|  _|_|_|  _|      _|  
-        _|_|    _|  _|        _|    _|  _|      _|    _|    _|_|  _|_|  
-        _|  _|  _|  _|_|_|    _|    _|  _|      _|    _|    _|  _|  _|  
-        _|    _|_|  _|        _|    _|    _|  _|      _|    _|      _|  
-        _|      _|  _|_|_|_|    _|_|        _|      _|_|_|  _|      _|  
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-                                                                        
-      ]]
-      local pad = string.rep(" ", 22)
-      local new_section = function(name, action, section)
-        return { name = name, action = action, section = pad .. section }
-      end
-
-      local starter = require("mini.starter")
-      --stylua: ignore
-      local config = {
-        evaluate_single = true,
-        header = logo,
-        items = {
-          starter.sections.sessions(77, true),
-          new_section("Lazy", "Lazy", "Config"),
-          starter.sections.builtin_actions(),
-        },
-        content_hooks = {
-          starter.gen_hook.adding_bullet(pad .. "░ ", false),
-          starter.gen_hook.aligning("center", "center"),
-        },
-      }
-      return config
-    end,
-    config = function(_, config)
-      -- close Lazy and re-open when starter is ready
-      if vim.o.filetype == "lazy" then
-        vim.cmd.close()
-        vim.api.nvim_create_autocmd("User", {
-          pattern = "MiniStarterOpened",
-          callback = function()
-            require("lazy").show()
-          end,
-        })
-      end
-
-      local starter = require("mini.starter")
-      starter.setup(config)
-
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "LazyVimStarted",
-        callback = function()
-          local stats = require("lazy").stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          local pad_footer = string.rep(" ", 8)
-          starter.config.footer = pad_footer
-            .. "⚡ Neovim loaded "
-            .. stats.count
-            .. " plugins in "
-            .. ms
-            .. "ms"
-          pcall(starter.refresh)
-        end,
-      })
-    end,
-  },
 }
