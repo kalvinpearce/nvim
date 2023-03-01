@@ -56,10 +56,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-local unused_thing = function()
-  print("hello")
-end
-
 -- wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
