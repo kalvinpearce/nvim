@@ -233,7 +233,9 @@ return {
           local btn = dashboard.button(
             sc,
             file,
-            '<cmd>lua require("session_manager.utils").load_session("' .. safeFilename .. '")<CR>'
+            '<cmd>lua require("session_manager.utils").load_session("'
+              .. safeFilename
+              .. '")<CR>'
           )
           local formatted = string.format("([^%s]+)", "/")
           local t = {}
@@ -267,6 +269,14 @@ return {
         },
       }
 
+      dashboard.section.footer = {
+        type = "text",
+        val = "",
+        opts = {
+          hl = "Type",
+        },
+      }
+
       dashboard.section.header.val = vim.split(logo, "\n")
       dashboard.config.layout = {
         { type = "padding", val = 1 },
@@ -296,19 +306,19 @@ return {
 
       require("alpha").setup(dashboard.opts)
 
-      -- vim.api.nvim_create_autocmd("User", {
-      --   pattern = "LazyVimStarted",
-      --   callback = function()
-      --     local stats = require("lazy").stats()
-      --     local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-      --     dashboard.section.footer.val = "⚡ Neovim loaded "
-      --       .. stats.count
-      --       .. " plugins in "
-      --       .. ms
-      --       .. "ms"
-      --     pcall(vim.cmd.AlphaRedraw)
-      --   end,
-      -- })
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "LazyVimStarted",
+        callback = function()
+          local stats = require("lazy").stats()
+          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+          dashboard.section.footer.val = "⚡ Neovim loaded "
+            .. stats.count
+            .. " plugins in "
+            .. ms
+            .. "ms"
+          pcall(vim.cmd.AlphaRedraw)
+        end,
+      })
     end,
   },
 
