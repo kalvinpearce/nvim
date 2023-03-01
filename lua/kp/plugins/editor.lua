@@ -238,9 +238,7 @@ return {
         mappings = {
           i = {
             ["<c-t>"] = function(...)
-              return require("trouble.providers.telescope").open_with_trouble(
-                ...
-              )
+              return require("trouble.providers.telescope").open_with_trouble(...)
             end,
             ["<a-i>"] = function()
               Util.telescope("find_files", { no_ignore = true })()
@@ -559,40 +557,31 @@ return {
         wilder.lua_fzy_highlighter(),
       }
 
-      local popupmenu_renderer =
-        wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
-          border = "rounded",
-          empty_message = wilder.popupmenu_empty_message_with_spinner(),
-          highlighter = highlighters,
-          highlights = {
-            accent = wilder.make_hl(
-              "WilderAccent",
-              "Pmenu",
-              { { a = 1 }, { a = 1 }, { foreground = "#f4468f" } }
-            ),
-          },
-          left = {
-            " ",
-            wilder.popupmenu_devicons(),
-            wilder.popupmenu_buffer_flags({
-              flags = " a + ",
-              icons = { ["+"] = "", a = "", h = "" },
-            }),
-          },
-          right = {
-            " ",
-            wilder.popupmenu_scrollbar(),
-          },
-        }))
+      local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
+        border = "rounded",
+        empty_message = wilder.popupmenu_empty_message_with_spinner(),
+        highlighter = highlighters,
+        highlights = {
+          accent = wilder.make_hl("WilderAccent", "Pmenu", { { a = 1 }, { a = 1 }, { foreground = "#f4468f" } }),
+        },
+        left = {
+          " ",
+          wilder.popupmenu_devicons(),
+          wilder.popupmenu_buffer_flags({
+            flags = " a + ",
+            icons = { ["+"] = "", a = "", h = "" },
+          }),
+        },
+        right = {
+          " ",
+          wilder.popupmenu_scrollbar(),
+        },
+      }))
 
       local wildmenu_renderer = wilder.wildmenu_renderer({
         highlighter = highlighters,
         highlights = {
-          accent = wilder.make_hl(
-            "WilderAccent",
-            "Pmenu",
-            { { a = 1 }, { a = 1 }, { foreground = "#f4468f" } }
-          ),
+          accent = wilder.make_hl("WilderAccent", "Pmenu", { { a = 1 }, { a = 1 }, { foreground = "#f4468f" } }),
         },
         separator = " · ",
         left = { " ", wilder.wildmenu_spinner(), " " },
@@ -770,37 +759,12 @@ return {
 
       local map = require("kp.utils").map
       map("n", "<leader>tn", "<cmd>lua _NODE_TOGGLE()<cr>", { desc = "Node" })
-      map(
-        "n",
-        "<leader>tu",
-        "<cmd>lua _LAZYGIT_TOGGLE()<cr>",
-        { desc = "Lazygit" }
-      )
-      map(
-        "n",
-        "<leader>tf",
-        "<cmd>ToggleTerm direction=float<cr>",
-        { desc = "Float" }
-      )
-      map(
-        "n",
-        "<leader>th",
-        "<cmd>ToggleTerm size=10 direction=horizontal<cr>",
-        { desc = "Horizontal" }
-      )
-      map(
-        "n",
-        "<leader>tv",
-        "<cmd>ToggleTerm size=80 direction=vertical<cr>",
-        { desc = "Vertical" }
-      )
+      map("n", "<leader>tu", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", { desc = "Lazygit" })
+      map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Float" })
+      map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "Horizontal" })
+      map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc = "Vertical" })
 
-      map(
-        "n",
-        "<leader>gg",
-        "<cmd>lua _LAZYGIT_TOGGLE()<CR>",
-        { desc = "Lazygit" }
-      )
+      map("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { desc = "Lazygit" })
     end,
   },
 }

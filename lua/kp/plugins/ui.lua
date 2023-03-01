@@ -94,9 +94,7 @@ return {
         return function()
           ---@type {foreground?:number}?
           local hl = vim.api.nvim_get_hl_by_name(name, true)
-          return hl
-            and hl.foreground
-            and { fg = string.format("#%06x", hl.foreground) }
+          return hl and hl.foreground and { fg = string.format("#%06x", hl.foreground) }
         end
       end
 
@@ -233,9 +231,7 @@ return {
           local btn = dashboard.button(
             sc,
             file,
-            '<cmd>lua require("session_manager.utils").load_session("'
-              .. safeFilename
-              .. '")<CR>'
+            '<cmd>lua require("session_manager.utils").load_session("' .. safeFilename .. '")<CR>'
           )
           local formatted = string.format("([^%s]+)", "/")
           local t = {}
@@ -311,11 +307,7 @@ return {
         callback = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          dashboard.section.footer.val = "⚡ Neovim loaded "
-            .. stats.count
-            .. " plugins in "
-            .. ms
-            .. "ms"
+          dashboard.section.footer.val = "⚡ Neovim loaded " .. stats.count .. " plugins in " .. ms .. "ms"
           pcall(vim.cmd.AlphaRedraw)
         end,
       })

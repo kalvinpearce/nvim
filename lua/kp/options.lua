@@ -54,8 +54,7 @@ o.shortmess:append("c")
 o.whichwrap:append("<,>,[,],h,l")
 o.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal"
 
-local force_formatopts =
-  vim.api.nvim_create_augroup("ForctFormatOptions", { clear = true })
+local force_formatopts = vim.api.nvim_create_augroup("ForctFormatOptions", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
   group = force_formatopts,
   pattern = "*",

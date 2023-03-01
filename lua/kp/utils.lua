@@ -133,10 +133,7 @@ function M.toggle(option, silent, values)
     else
       vim.opt_local[option] = values[1]
     end
-    return Util.info(
-      "Set " .. option .. " to " .. vim.opt_local[option]:get(),
-      { title = "Option" }
-    )
+    return Util.info("Set " .. option .. " to " .. vim.opt_local[option]:get(), { title = "Option" })
   end
   vim.opt_local[option] = not vim.opt_local[option]:get()
   if not silent then
@@ -161,10 +158,7 @@ function M.toggle_diagnostics()
 end
 
 function M.deprecate(old, new)
-  Util.warn(
-    ("`%s` is deprecated. Please use `%s` instead"):format(old, new),
-    { title = "LazyVim" }
-  )
+  Util.warn(("`%s` is deprecated. Please use `%s` instead"):format(old, new), { title = "LazyVim" })
 end
 
 -- delay notifications till vim.notify was replaced or after 500ms

@@ -166,9 +166,7 @@ return {
     "danymat/neogen",
     dependencies = "nvim-treesitter/nvim-treesitter",
     config = function(_, opts)
-      require("neogen").setup(
-        vim.tbl_deep_extend("force", opts, { snippet_engine = "luasnip" })
-      )
+      require("neogen").setup(vim.tbl_deep_extend("force", opts, { snippet_engine = "luasnip" }))
     end,
   },
 
@@ -224,14 +222,8 @@ return {
             a = { "@block.outer", "@conditional.outer", "@loop.outer" },
             i = { "@block.inner", "@conditional.inner", "@loop.inner" },
           }, {}),
-          f = ai.gen_spec.treesitter(
-            { a = "@function.outer", i = "@function.inner" },
-            {}
-          ),
-          c = ai.gen_spec.treesitter(
-            { a = "@class.outer", i = "@class.inner" },
-            {}
-          ),
+          f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }, {}),
+          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }, {}),
         },
       }
     end,
@@ -271,16 +263,8 @@ return {
         local ic = vim.deepcopy(i)
         local ac = vim.deepcopy(a)
         for key, name in pairs({ n = "Next", l = "Last" }) do
-          i[key] = vim.tbl_extend(
-            "force",
-            { name = "Inside " .. name .. " textobject" },
-            ic
-          )
-          a[key] = vim.tbl_extend(
-            "force",
-            { name = "Around " .. name .. " textobject" },
-            ac
-          )
+          i[key] = vim.tbl_extend("force", { name = "Inside " .. name .. " textobject" }, ic)
+          a[key] = vim.tbl_extend("force", { name = "Around " .. name .. " textobject" }, ac)
         end
         require("which-key").register({
           mode = { "o", "x" },
