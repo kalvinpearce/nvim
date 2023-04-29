@@ -59,9 +59,26 @@ vim.api.nvim_create_autocmd("FileType", {
 -- wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
-  pattern = { "gitcommit", "markdown" },
+  pattern = { "gitcommit", "markdown", "NeogitCommitMessage" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+  end,
+})
+
+-- close gitcommit buffer on save
+-- autocmd for git commit, callback adds local autocmd for BufWritePost
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("close_gitcommit"),
+  pattern = { "gitcommit", "NeogitCommitMessage" },
+  callback = function(event)
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      group = augroup("close_gitcommit"),
+      buffer = event.buf,
+      callback = function()
+        -- hack to close the buffer as vim.api.nvim_win_close() doesn't work
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<cmd>q<cr>", true, true, true), "n", true)
+      end,
+    })
   end,
 })
