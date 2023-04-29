@@ -333,6 +333,10 @@ return {
     end,
   },
 
+  {
+    "sindrets/diffview.nvim",
+  },
+
   -- git signs
   {
     "lewis6991/gitsigns.nvim",
