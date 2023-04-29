@@ -37,16 +37,6 @@ return {
         function()
           require("neo-tree.command").execute({
             toggle = true,
-            dir = require("kp.utils").get_root(),
-          })
-        end,
-        desc = "Explorer NeoTree (root dir)",
-      },
-      {
-        "<leader>fE",
-        function()
-          require("neo-tree.command").execute({
-            toggle = true,
             dir = vim.loop.cwd(),
           })
         end,
@@ -55,12 +45,6 @@ return {
       {
         "<leader>e",
         "<leader>fe",
-        desc = "Explorer NeoTree (root dir)",
-        remap = true,
-      },
-      {
-        "<leader>E",
-        "<leader>fE",
         desc = "Explorer NeoTree (cwd)",
         remap = true,
       },
