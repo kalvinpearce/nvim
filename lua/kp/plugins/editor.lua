@@ -345,6 +345,23 @@ return {
   },
 
   {
+    "TimUntersberger/neogit",
+    cmd = {
+      "Neogit",
+    },
+    keys = {
+      { "<leader>gG", "<cmd>Neogit<cr>", mode = { "n" }, desc = "Neogit" },
+    },
+    config = function()
+      require("neogit").setup({
+        integrations = {
+          diffview = false,
+        },
+      })
+    end,
+  },
+
+  {
     "sindrets/diffview.nvim",
   },
 
