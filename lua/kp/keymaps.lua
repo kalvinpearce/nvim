@@ -28,8 +28,8 @@ map({ "n", "x" }, "<c-s>", ":w<cr>", { desc = "Save file" })
 map("i", "<c-s>", "<esc>:w<cr>a", { desc = "Save file" })
 -- Close
 map("n", "<c-q>", ":q<cr>", { desc = "Close file" })
-map("n", "<c-w>", ":bd<cr>", { desc = "Close file" })
-map("n", "<c-s-w>", ":e#<cr>", { desc = "Close file" })
+map("n", "<c-w>", ':lua require("mini.bufremove").delete(0, false)<cr>', { desc = "Close file" })
+-- map("n", "<c-s-w>", ":e#<cr>", { desc = "Close file" })
 
 -- Line duplication
 map("n", "<leader>dd", '"qyy"qp', { desc = "Duplicate line" })
