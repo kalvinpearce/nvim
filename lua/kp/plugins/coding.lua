@@ -11,20 +11,21 @@ return {
     },
     opts = {
       history = true,
-      delete_check_events = "TextChanged",
+      region_check_events = "InsertEnter",
+      delete_check_events = "TextChanged,InsertLeave",
     },
     -- stylua: ignore
-    keys = {
-      {
-        "<tab>",
-        function()
-          return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
-        end,
-        expr = true, silent = true, mode = "i",
-      },
-      { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
-      { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
-    },
+    -- keys = {
+    --   {
+    --     "<tab>",
+    --     function()
+    --       return require("luasnip").jumpable(1) and "<Plug>luasnip-jump-next" or "<tab>"
+    --     end,
+    --     expr = true, silent = true, mode = "i",
+    --   },
+    --   { "<tab>", function() require("luasnip").jump(1) end, mode = "s" },
+    --   { "<s-tab>", function() require("luasnip").jump(-1) end, mode = { "i", "s" } },
+    -- },
   },
 
   -- auto completion
@@ -40,6 +41,12 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help",
     },
     opts = function()
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      end
+      local luasnip = require("luasnip")
       local cmp = require("cmp")
       return {
         completion = {
@@ -68,6 +75,26 @@ return {
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp_signature_help" },
