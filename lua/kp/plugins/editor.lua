@@ -2,6 +2,8 @@ local Util = require("kp.utils")
 
 return {
 
+  { "mrjones2014/smart-splits.nvim" },
+
   -- copilot
   {
     "zbirenbaum/copilot.lua",

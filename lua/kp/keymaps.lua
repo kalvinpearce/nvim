@@ -36,16 +36,22 @@ map("n", "<leader>dd", '"qyy"qp', { desc = "Duplicate line" })
 map("x", "<leader>dd", [["qy'>"qp]], { desc = "Duplicate line" })
 
 -- Move to window using the <ctrl> hjkl keys
-map("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
-map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
-map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
-map("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
+map("n", "<C-h>", require("smart-splits").move_cursor_left, { desc = "Go to left window" })
+map("n", "<C-j>", require("smart-splits").move_cursor_down, { desc = "Go to lower window" })
+map("n", "<C-k>", require("smart-splits").move_cursor_up, { desc = "Go to upper window" })
+map("n", "<C-l>", require("smart-splits").move_cursor_right, { desc = "Go to right window" })
 
 -- Resize window using <ctrl> arrow keys
-map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map("n", "<C-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map("n", "<C-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
+map("n", "<C-Left>", require("smart-splits").resize_left, { desc = "" })
+map("n", "<C-Down>", require("smart-splits").resize_down, { desc = "" })
+map("n", "<C-Up>", require("smart-splits").resize_up, { desc = "" })
+map("n", "<C-Right>", require("smart-splits").resize_right, { desc = "" })
+
+-- Swap buffers using <leader><leader> hjkl keys
+map("n", "<leader><leader>h", require("smart-splits").swap_buf_left, { desc = "Swap buffer left" })
+map("n", "<leader><leader>j", require("smart-splits").swap_buf_down, { desc = "Swap buffer down" })
+map("n", "<leader><leader>k", require("smart-splits").swap_buf_up, { desc = "Swap buffer up" })
+map("n", "<leader><leader>l", require("smart-splits").swap_buf_right, { desc = "Swap buffer right" })
 
 -- Navigate buffers
 if Util.has("bufferline.nvim") then
