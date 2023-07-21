@@ -11,7 +11,7 @@ require("lazy").setup("kp.plugins", {
     lazy = false,
     version = false, -- always use the latest git commit
   },
-  checker = { enabled = true }, -- automatically check for plugin updates
+  checker = { enabled = false },
   performance = {
     rtp = {
       -- disable some rtp plugins

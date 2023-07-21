@@ -17,8 +17,8 @@ map("v", "<s-p>", "_dp")
 -- Move to end of paste
 map("n", "p", "p`]")
 -- Better insert pasting
-map("i", "<c-v>", [[<c-r>+]])
-map("c", "<c-v>", [[<c-r>+]], { noremap = false })
+map("i", "<c-v>", [[<c-r><c-p>+]])
+map("c", "<c-v>", [[<c-r><c-p>+]], { noremap = false })
 
 -- -- Multi tab (complete/tab/move out of pairs)
 -- map("i", "<TAB>", "pumvisible() ? '<C-y>' : search('\\%#[]>)}''\"`]', 'n') ? '<Right>' : '<TAB>'", { expr = true })
@@ -29,7 +29,6 @@ map("i", "<c-s>", "<esc>:w<cr>a", { desc = "Save file" })
 -- Close
 map("n", "<c-q>", ":q<cr>", { desc = "Close file" })
 map("n", "<c-w>", ':lua require("mini.bufremove").delete(0, false)<cr>', { desc = "Close file" })
--- map("n", "<c-s-w>", ":e#<cr>", { desc = "Close file" })
 
 -- Line duplication
 map("n", "<leader>dd", '"qyy"qp', { desc = "Duplicate line" })
@@ -54,17 +53,10 @@ map("n", "<leader><leader>k", require("smart-splits").swap_buf_up, { desc = "Swa
 map("n", "<leader><leader>l", require("smart-splits").swap_buf_right, { desc = "Swap buffer right" })
 
 -- Navigate buffers
-if Util.has("bufferline.nvim") then
-  map("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "<S-l>", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-  map("n", "[b", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev buffer" })
-  map("n", "]b", "<cmd>BufferLineCycleNext<cr>", { desc = "Next buffer" })
-else
-  map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-  map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-  map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
-  map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
-end
+map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
 -- Stay in indent mode
 map("v", "<", "<gv")

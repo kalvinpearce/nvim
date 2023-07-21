@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
--- resize splits if window got resized
+-- Resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   group = augroup("resize_splits"),
   callback = function()
@@ -24,7 +24,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   end,
 })
 
--- go to last loc when opening a buffer
+-- Go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup("last_loc"),
   callback = function()
@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- close some filetypes with <q>
+-- Close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_with_q"),
   pattern = {
@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- wrap and check for spell in text filetypes
+-- Wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
   pattern = { "gitcommit", "markdown", "NeogitCommitMessage" },
@@ -66,8 +66,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- close gitcommit buffer on save
--- autocmd for git commit, callback adds local autocmd for BufWritePost
+-- Close gitcommit buffer on save
+-- Autocmd for git commit, callback adds local autocmd for BufWritePost
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_gitcommit"),
   pattern = { "gitcommit", "NeogitCommitMessage" },
