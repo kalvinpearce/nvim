@@ -20,10 +20,7 @@ return {
       end,
     },
     init = function()
-      local util = require("kp.utils")
-      util.on_very_lazy(function()
-        vim.notify = require("notify")
-      end)
+      vim.notify = require("notify")
     end,
   },
 }

@@ -1,3 +1,5 @@
+--- @param name string
+--- @return number
 local function augroup(name)
   return vim.api.nvim_create_augroup("kp_" .. name, { clear = true })
 end

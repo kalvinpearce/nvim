@@ -2,12 +2,26 @@ local Util = require("lazy.core.util")
 
 local M = {}
 
-function M.map(mode, key, result, opts)
+--- Adds a new mapping with `noremap` and `silent` defaulted to `true`.
+--- @param mode string|table    Mode short-name, see |nvim_set_keymap()|.
+---                            Can also be list of modes to create mapping on multiple modes.
+--- @param lhs string           Left-hand side |{lhs}| of the mapping.
+--- @param rhs string|function  Right-hand side |{rhs}| of the mapping, can be a Lua function.
+--- @param opts table|nil Table of |:map-arguments|.
+---                      - Same as |nvim_set_keymap()| {opts}, except:
+---                        - "replace_keycodes" defaults to `true` if "expr" is `true`.
+---                        - "noremap": inverse of "remap" (see below).
+---                      - Also accepts:
+---                        - "buffer" number|boolean Creates buffer-local mapping, `0` or `true`
+---                        for current buffer.
+---                        - remap: (boolean) Make the mapping recursive. Inverses "noremap".
+---                        Defaults to `false`.
+function M.map(mode, lhs, rhs, opts)
   opts = vim.tbl_extend("keep", opts or {}, {
     noremap = true,
     silent = true,
   })
-  vim.keymap.set(mode, key, result, opts)
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 ---@param on_attach fun(client, buffer)
@@ -21,6 +35,7 @@ function M.on_attach(on_attach)
   })
 end
 
+---@alias lsp.Client.filter {id?: number, bufnr?: number, name?: string, method?: string, filter?:fun(client: lsp.Client):boolean}
 ---@param opts? lsp.Client.filter
 function M.get_clients(opts)
   local ret = {} ---@type lsp.Client[]
@@ -41,19 +56,9 @@ end
 
 function M.fg(name)
   ---@type {foreground?:number}?
-  local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name }) or vim.api.nvim_get_hl_by_name(name, true)
-  local fg = hl and hl.fg or hl.foreground
-  return fg and { fg = string.format("#%06x", fg) }
-end
-
----@param fn fun()
-function M.on_very_lazy(fn)
-  vim.api.nvim_create_autocmd("User", {
-    pattern = "VeryLazy",
-    callback = function()
-      fn()
-    end,
-  })
+  local hl = vim.api.nvim_get_hl(0, { name = name })
+  local fg = hl and hl.foreground
+  return fg and { fg = string.format("#%06x", fg) } or nil
 end
 
 ---@param name string

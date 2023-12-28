@@ -48,6 +48,9 @@ return {
         }
         local a = vim.deepcopy(i)
         for k, v in pairs(a) do
+          if type(v) == "table" then
+            v = v[1]
+          end
           a[k] = v:gsub(" including.*", "")
         end
 

@@ -72,8 +72,6 @@ map("n", "J", "mzJ`z")
 -- Center cursor when d/u & n/N jumping
 map("n", "<c-d>", "<c-d>zz")
 map("n", "<c-u>", "<c-u>zz")
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
 
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
@@ -87,19 +85,20 @@ map(
   { desc = "Redraw / clear hlsearch / diff update" }
 )
 
--- Search word but stay in place
-map("n", "gw", "*N", { desc = "Search word under cursor" })
-map("x", "gw", "*N", { desc = "Search word under cursor" })
-
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 -- n will always search forward, N will always search backward
 -- regardless of / vs ? being used
-map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map({ "n", "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map({ "n", "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+
+-- Search word but stay in place
+map("n", "gw", "*N", { desc = "Search word under cursor" })
+map("x", "gw", "*N", { desc = "Search word under cursor" })
+-- noremap due to n/N remaps above
+map("n", "n", "nzzzv", { noremap = false, desc = "Next search result" })
+map("n", "N", "Nzzzv", { noremap = false, desc = "Prev search result" })
+map("n", "{", "{zz", { desc = "Move to previous paragraph" })
+map("n", "}", "}zz", { desc = "Move to next paragraph" })
 
 -- toggle options
 map("n", "<leader>uf", require("kp.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })

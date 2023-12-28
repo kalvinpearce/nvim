@@ -6,7 +6,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
-require("lazy").setup("kp.plugins", {
+require("lazy").setup({
+  import = "kp.plugins",
+}, {
   defaults = {
     lazy = false,
     version = false, -- always use the latest git commit

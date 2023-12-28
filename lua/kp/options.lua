@@ -34,7 +34,7 @@ vim.opt.termguicolors = true -- truecolours for better experience
 vim.opt.lazyredraw = true -- make macros faster by only redraw when finished
 vim.opt.colorcolumn = "80" -- 80 chars color column (angry this is string)
 vim.opt.completeopt = "menu,menuone,noinsert" -- better completion
-vim.opt.scrolloff = 10 -- number of lines to keep above/below cursor when scrolling
+vim.opt.scrolloff = 5 -- number of lines to keep above/below cursor when scrolling
 vim.opt.sidescrolloff = 5 -- as above but for left/right scrolling
 
 vim.opt.splitbelow = true -- force horizontal splits to go below

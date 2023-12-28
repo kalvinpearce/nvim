@@ -2,6 +2,7 @@ return {
   -- Quick file navigation: harpoon
   {
     "ThePrimeagen/harpoon",
+    branch = "harpoon2",
     keys = {
       {
         "<a-n>",
