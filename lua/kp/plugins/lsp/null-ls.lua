@@ -10,10 +10,11 @@ return {
         sources = {
           nls.builtins.formatting.stylua,
           nls.builtins.formatting.shfmt,
-          nls.builtins.diagnostics.eslint_d,
-          nls.builtins.code_actions.eslint_d,
-          nls.builtins.formatting.prettierd,
-          nls.builtins.formatting.rustywind,
+          nls.builtins.formatting.prettierd.with({
+            extra_filetypes = { "svelte" },
+          }),
+          -- nls.builtins.formatting.rustywind,
+          nls.builtins.diagnostics.sqlfluff,
         },
       }
     end,

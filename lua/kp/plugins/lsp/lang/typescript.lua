@@ -10,7 +10,7 @@ return {
         tsserver = {
           keys = {
             { "<leader>lo", "<cmd>TypescriptOrganizeImports<CR>", desc = "Organize Imports" },
-            { "<leader>lR", "<cmd>TypescriptRenameFile<CR>", desc = "Rename File" },
+            { "<leader>lR", "<cmd>TypescriptRenameFile<CR>",      desc = "Rename File" },
           },
           settings = {
             typescript = {

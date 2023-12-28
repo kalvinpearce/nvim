@@ -44,6 +44,9 @@ return {
           adapter = adapter,
         },
         tools = {
+          inlay_hints = {
+            auto = false,
+          },
           on_initialized = function()
             vim.cmd([[
                   augroup RustLSP
@@ -73,6 +76,10 @@ return {
           },
           settings = {
             ["rust-analyzer"] = {
+              inlayHints = {
+                typeHints = { enable = false },
+                parameterHints = { enable = false },
+              },
               cargo = {
                 allFeatures = true,
                 loadOutDirsFromCheck = true,

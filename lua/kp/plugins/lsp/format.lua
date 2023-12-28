@@ -111,6 +111,7 @@ function M.get_formatters(bufnr)
   local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
   for _, client in ipairs(clients) do
     if M.supports_format(client) then
+      -- table.insert(ret.active, client)
       if (#null_ls > 0 and client.name == "null-ls") or #null_ls == 0 then
         table.insert(ret.active, client)
       else
