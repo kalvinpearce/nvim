@@ -1,5 +1,6 @@
 local Util = require("kp.utils")
 local map = Util.map
+local augroup = Util.augroup
 
 -- Map space leader
 map("", "<Space>", "<Nop>")
@@ -101,7 +102,7 @@ map("n", "{", "{zz", { desc = "Move to previous paragraph" })
 map("n", "}", "}zz", { desc = "Move to next paragraph" })
 
 -- toggle options
-map("n", "<leader>uf", require("kp.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
+-- map("n", "<leader>uf", require("kp.plugins.lsp.format").toggle, { desc = "Toggle format on Save" })
 map("n", "<leader>us", function()
   Util.toggle("spell")
 end, { desc = "Toggle Spelling" })
@@ -122,3 +123,35 @@ end, { desc = "Toggle Conceal" })
 map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
+
+-- LSP keymaps
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = augroup("lsp_attach"),
+  callback = function()
+    map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+    map("n", "<leader>ll", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
+    map("n", "gd", function()
+      require("telescope.builtin").lsp_definitions({ reuse_win = true })
+    end, { desc = "Goto Definition" })
+    map("n", "gr", "<cmd>Telescope lsp_references<cr>", { desc = "References" })
+    map("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+    map("n", "gI", function()
+      require("telescope.builtin").lsp_implementations({ reuse_win = true })
+    end, { desc = "Goto Implementation" })
+    map("n", "gy", function()
+      require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+    end, { desc = "Goto T[y]pe Definition" })
+    map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+    map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+    map("i", "<c-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+    map("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+    map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
+    map("n", "<leader>lf", require("kp.utils").format, { desc = "Format Document" })
+    map("v", "<leader>lf", require("kp.utils").format, { desc = "Format Range" })
+    map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action" })
+    map("n", "<leader>lA", function()
+      vim.lsp.buf.code_action({ context = { only = { "source" }, diagnostics = {} } })
+    end, { desc = "Source Action" })
+    map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+  end,
+})
