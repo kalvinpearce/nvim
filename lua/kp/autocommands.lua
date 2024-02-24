@@ -81,3 +81,12 @@ vim.api.nvim_create_autocmd("FileType", {
     })
   end,
 })
+
+-- Ensure wgsl files are correctly recognised
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = augroup("wgsl_filetype"),
+  pattern = "*.wgsl",
+  callback = function()
+    vim.bo.filetype = "wgsl"
+  end,
+})
