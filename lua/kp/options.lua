@@ -11,6 +11,7 @@ vim.opt.softtabstop = 2 -- spaces per tab
 vim.opt.shiftwidth = 2 -- spaces per indentation
 vim.opt.expandtab = true -- spaces over tabs (sorry Richard)
 vim.opt.smartindent = true -- do indenting on new line
+vim.opt.conceallevel = 2
 
 vim.opt.swapfile = false -- disable swapfile
 vim.opt.backup = false -- disable backup
