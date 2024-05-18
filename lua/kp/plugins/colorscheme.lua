@@ -1,18 +1,5 @@
 return {
   {
-    "uloco/bluloco.nvim",
-    dependencies = { "rktjmp/lush.nvim" },
-    lazy = true,
-    config = function()
-      -- vim.cmd([[colorscheme bluloco]])
-    end,
-  },
-  {
-    "folke/tokyonight.nvim",
-    opts = { style = "storm" },
-    lazy = true,
-  },
-  {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = false,
@@ -20,5 +7,31 @@ return {
     config = function()
       vim.cmd([[colorscheme catppuccin-frappe]])
     end,
+    opts = {
+      integrations = {
+        cmp = true,
+        gitsigns = true,
+        illuminate = true,
+        indent_blankline = { enabled = true },
+        lsp_trouble = true,
+        mason = true,
+        mini = true,
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+          },
+        },
+        notify = true,
+        neotree = true,
+        semantic_tokens = true,
+        telescope = true,
+        treesitter = true,
+        which_key = true,
+      },
+    },
   },
 }
