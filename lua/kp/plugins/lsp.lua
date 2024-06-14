@@ -5,7 +5,14 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/cmp-nvim-lsp",
+      -- LSP notifications
+      { "j-hui/fidget.nvim", opts = {} },
+      -- Helper for nvim plugin development
+      { "folke/neodev.nvim", opts = {} },
+      -- Autoformatting
+      "stevearc/conform.nvim",
+      "b0o/SchemaStore.nvim",
+      "folke/neoconf.nvim",
     },
     ---@class PluginLspOpts
     opts = {
@@ -16,9 +23,6 @@ return {
           spacing = 4,
           source = "if_many",
           prefix = "●",
-          -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-          -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-          -- prefix = "icons",
         },
         severity_sort = true,
       },
@@ -32,7 +36,11 @@ return {
         formatting_options = nil,
         timeout_ms = nil,
       },
-      servers = {},
+      servers = {
+        -- maxscript = {
+        --   mason = false,
+        -- },
+      },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
@@ -48,7 +56,18 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(_, opts)
+      require("neoconf").setup {}
+
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
+
+      -- require("lspconfig.configs").maxscript = {
+      --   default_config = {
+      --     cmd = { "/Users/kalvin/Repos/vscode-maxscript-lsp/maxscript-lsp", "--stdio", "--log=verbose" },
+      --     filetypes = { "maxscript" },
+      --     root_dir = require("lspconfig").util.root_pattern("*.ms", ".git"),
+      --     single_file_support = false,
+      --   },
+      -- }
 
       local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
       local capabilities = vim.tbl_deep_extend(
@@ -98,8 +117,116 @@ return {
       end
 
       if have_mason then
-        mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
+        mlsp.setup { ensure_installed = ensure_installed, handlers = { setup } }
+      end
+
+      local augroup = require("kp.utils").augroup
+
+      -- LSP keymaps
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = augroup "lsp_attach",
+        callback = function()
+          local set = require("kp.utils").map
+
+          vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+          set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+          set("n", "<leader>ll", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
+          set("n", "gd", function()
+            require("telescope.builtin").lsp_definitions { reuse_win = true }
+          end, { desc = "Goto Definition" })
+          set("n", "gr", "<cmd>Telescope lsp_references<cr>", { desc = "References" })
+          set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+          set("n", "gI", function()
+            require("telescope.builtin").lsp_implementations { reuse_win = true }
+          end, { desc = "Goto Implementation" })
+          set("n", "gy", function()
+            require("telescope.builtin").lsp_type_definitions { reuse_win = true }
+          end, { desc = "Goto T[y]pe Definition" })
+          set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+          set("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+          set("i", "<c-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+          set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+          set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
+          set("n", "<leader>lf", require("kp.utils").format, { desc = "Format Document" })
+          set("v", "<leader>lf", require("kp.utils").format, { desc = "Format Range" })
+          set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action" })
+          set("n", "<leader>lA", function()
+            vim.lsp.buf.code_action { context = { only = { "source" }, diagnostics = {} } }
+          end, { desc = "Source Action" })
+          set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+        end,
+      })
+    end,
+  },
+
+  {
+    "williamboman/mason.nvim",
+    cmd = "Mason",
+    keys = { { "<leader>lm", "<cmd>Mason<cr>", desc = "Mason" } },
+    build = ":MasonUpdate",
+    opts = {
+      ensure_installed = {
+        "stylua",
+        "shfmt",
+      },
+    },
+    ---@param opts MasonSettings | {ensure_installed: string[]}
+    config = function(_, opts)
+      require("mason").setup(opts)
+      local mr = require "mason-registry"
+      local function ensure_installed()
+        for _, tool in ipairs(opts.ensure_installed) do
+          local p = mr.get_package(tool)
+          if not p:is_installed() then
+            p:install()
+          end
+        end
+      end
+      if mr.refresh then
+        mr.refresh(ensure_installed)
+      else
+        ensure_installed()
       end
     end,
+  },
+
+  {
+    "folke/trouble.nvim",
+    cmd = { "TroubleToggle", "Trouble" },
+    opts = { use_diagnostic_signs = true },
+    keys = {
+      { "<leader>xx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
+      { "<leader>xX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
+      { "<leader>xL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
+      { "<leader>xQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+      {
+        "[q",
+        function()
+          if require("trouble").is_open() then
+            require("trouble").previous { skip_groups = true, jump = true }
+          else
+            local ok, err = pcall(vim.cmd.cprev)
+            if not ok then
+              vim.notify(err, vim.log.levels.ERROR)
+            end
+          end
+        end,
+        desc = "Previous trouble/quickfix item",
+      },
+      {
+        "]q",
+        function()
+          if require("trouble").is_open() then
+            require("trouble").next { skip_groups = true, jump = true }
+          else
+            local ok, err = pcall(vim.cmd.cnext)
+            if not ok then
+              vim.notify(err, vim.log.levels.ERROR)
+            end
+          end
+        end,
+        desc = "Next trouble/quickfix item",
+      },
+    },
   },
 }
