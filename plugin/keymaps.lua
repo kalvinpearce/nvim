@@ -40,16 +40,10 @@ map("n", "<c-k>", require("smart-splits").move_cursor_up, { desc = "Go to upper 
 map("n", "<c-l>", require("smart-splits").move_cursor_right, { desc = "Go to right window" })
 
 -- Resize window using <ctrl> arrow keys
-map("n", "<c-Left>", require("smart-splits").resize_left, { desc = "" })
-map("n", "<c-Down>", require("smart-splits").resize_down, { desc = "" })
-map("n", "<c-Up>", require("smart-splits").resize_up, { desc = "" })
-map("n", "<c-Right>", require("smart-splits").resize_right, { desc = "" })
-
--- Swap buffers using <leader><leader> hjkl keys
-map("n", "<leader><leader>h", require("smart-splits").swap_buf_left, { desc = "Swap buffer left" })
-map("n", "<leader><leader>j", require("smart-splits").swap_buf_down, { desc = "Swap buffer down" })
-map("n", "<leader><leader>k", require("smart-splits").swap_buf_up, { desc = "Swap buffer up" })
-map("n", "<leader><leader>l", require("smart-splits").swap_buf_right, { desc = "Swap buffer right" })
+map("n", "<C-S-h>", require("smart-splits").resize_left, { desc = "" })
+map("n", "<C-S-j>", require("smart-splits").resize_down, { desc = "" })
+map("n", "<C-S-k>", require("smart-splits").resize_up, { desc = "" })
+map("n", "<C-S-l>", require("smart-splits").resize_right, { desc = "" })
 
 -- Navigate buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })

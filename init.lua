@@ -21,8 +21,10 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 -- Set up lazy, and load `lua/kp/plugins/` folder
 require("lazy").setup({
-  { import = "kp.plugins" },
-  { import = "kp.languages" },
+  spec = {
+    { import = "kp.plugins" },
+    { import = "kp.languages" },
+  },
 }, {
   defaults = {
     lazy = false,
@@ -39,7 +41,7 @@ require("lazy").setup({
         "gzip",
         "matchit",
         "matchparen",
-        "netrwPlugin",
+        -- "netrwPlugin",
         "tarPlugin",
         "tohtml",
         "tutor",

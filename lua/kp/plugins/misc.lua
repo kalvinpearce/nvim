@@ -35,8 +35,21 @@ return {
 
   -- Multi cursor support
   {
-    "mg979/vim-visual-multi",
+    "smoka7/multicursors.nvim",
     event = "VeryLazy",
+    dependencies = {
+      "nvimtools/hydra.nvim",
+    },
+    opts = {},
+    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+    keys = {
+      {
+        mode = { "v", "n" },
+        "<c-n>",
+        "<cmd>MCstart<cr>",
+        desc = "Create a selection for selected text or word under the cursor",
+      },
+    },
   },
 
   -- Branching undo tree
@@ -83,10 +96,5 @@ return {
         autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir, -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession
       }
     end,
-  },
-
-  {
-    "shortcuts/no-neck-pain.nvim",
-    version = "*",
   },
 }

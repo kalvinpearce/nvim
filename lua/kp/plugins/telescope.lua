@@ -151,7 +151,7 @@ return {
           hidden = { file_browser = true, folder_browser = true },
           follow_symlinks = true,
           prompt_path = true,
-          hijack_netrw = true,
+          hijack_netrw = false,
         },
       },
     },

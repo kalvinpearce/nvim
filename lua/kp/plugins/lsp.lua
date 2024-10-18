@@ -40,6 +40,7 @@ return {
         -- maxscript = {
         --   mason = false,
         -- },
+        sourcekit = {},
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -60,15 +61,6 @@ return {
 
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
-      -- require("lspconfig.configs").maxscript = {
-      --   default_config = {
-      --     cmd = { "/Users/kalvin/Repos/vscode-maxscript-lsp/maxscript-lsp", "--stdio", "--log=verbose" },
-      --     filetypes = { "maxscript" },
-      --     root_dir = require("lspconfig").util.root_pattern("*.ms", ".git"),
-      --     single_file_support = false,
-      --   },
-      -- }
-
       local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
       local capabilities = vim.tbl_deep_extend(
         "force",
@@ -77,6 +69,10 @@ return {
         has_cmp and cmp_nvim_lsp.default_capabilities() or {},
         opts.capabilities or {}
       )
+      capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true,
+      }
 
       local servers = opts.servers
       local function setup(server)
@@ -221,7 +217,11 @@ return {
           else
             local ok, err = pcall(vim.cmd.cnext)
             if not ok then
-              vim.notify(err, vim.log.levels.ERROR)
+              if not err then
+                vim.notify("trouble error", vim.log.levels.ERROR)
+              else
+                vim.notify(err, vim.log.levels.ERROR)
+              end
             end
           end
         end,

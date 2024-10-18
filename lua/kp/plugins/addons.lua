@@ -5,6 +5,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+    cmd = { "ObsidianToday" },
     opts = {
       workspaces = {
         {

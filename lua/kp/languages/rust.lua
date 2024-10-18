@@ -25,38 +25,13 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
+      setup = {
+        ["rust_analyzer"] = function()
+          return true
+        end,
+      },
       servers = {
-        -- Ensure mason installs the server
-        rust_analyzer = {
-          settings = {
-            ["rust-analyzer"] = {
-              inlayHints = {
-                typeHints = { enable = false },
-                parameterHints = { enable = false },
-              },
-              cargo = {
-                allFeatures = true,
-                loadOutDirsFromCheck = true,
-                runBuildScripts = true,
-              },
-              -- Add clippy lints for Rust.
-              checkOnSave = {
-                allFeatures = true,
-                command = "clippy",
-                extraArgs = { "--no-deps" },
-              },
-              procMacro = {
-                enable = true,
-                ignored = {
-                  ["async-trait"] = { "async_trait" },
-                  ["napi-derive"] = { "napi" },
-                  ["async-recursion"] = { "async_recursion" },
-                  ["leptos_macro"] = { "server" },
-                },
-              },
-            },
-          },
-        },
         taplo = {
           keys = {
             {
@@ -76,61 +51,60 @@ return {
     },
   },
 
-  -- {
-  --   "mrcjkb/rustaceanvim",
-  --   version = "^4", -- Recommended
-  --   ft = { "rust" },
-  --   opts = {
-  --     server = {
-  --       on_attach = function(_, bufnr)
-  --         vim.keymap.set("n", "<leader>cR", function()
-  --           vim.cmd.RustLsp "codeAction"
-  --         end, { desc = "Code Action", buffer = bufnr })
-  --         vim.keymap.set("n", "<leader>dr", function()
-  --           vim.cmd.RustLsp "debuggables"
-  --         end, { desc = "Rust Debuggables", buffer = bufnr })
-  --       end,
-  --       default_settings = {
-  --         -- rust-analyzer language server configuration
-  --         ["rust-analyzer"] = {
-  --           inlayHints = {
-  --             typeHints = { enable = false },
-  --             parameterHints = { enable = false },
-  --           },
-  --           cargo = {
-  --             allFeatures = true,
-  --             loadOutDirsFromCheck = true,
-  --             buildScripts = {
-  --               enable = true,
-  --             },
-  --           },
-  --           -- Add clippy lints for Rust.
-  --           checkOnSave = {
-  --             allFeatures = true,
-  --             command = "clippy",
-  --             extraArgs = { "--no-deps" },
-  --           },
-  --           procMacro = {
-  --             enable = true,
-  --             ignored = {
-  --               ["async-trait"] = { "async_trait" },
-  --               ["napi-derive"] = { "napi" },
-  --               ["async-recursion"] = { "async_recursion" },
-  --               ["leptos_macro"] = { "server" },
-  --             },
-  --           },
-  --         },
-  --       },
-  --     },
-  --   },
-  --   config = function(_, opts)
-  --     vim.g.rustaceanvim = vim.tbl_deep_extend("keep", vim.g.rustaceanvim or {}, opts or {})
-  --     if vim.fn.executable "rust-analyzer" == 0 then
-  --       require("kp.utils").error(
-  --         "**rust-analyzer** not found in PATH, please install it.\nhttps://rust-analyzer.github.io/",
-  --         { title = "rustaceanvim" }
-  --       )
-  --     end
-  --   end,
-  -- },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^4", -- Recommended
+    ft = { "rust" },
+    opts = {
+      server = {
+        on_attach = function(_, bufnr)
+          vim.keymap.set("n", "<leader>cR", function()
+            vim.cmd.RustLsp "codeAction"
+          end, { desc = "Code Action", buffer = bufnr })
+          vim.keymap.set("n", "<leader>dr", function()
+            vim.cmd.RustLsp "debuggables"
+          end, { desc = "Rust Debuggables", buffer = bufnr })
+        end,
+        default_settings = {
+          -- rust-analyzer language server configuration
+          ["rust-analyzer"] = {
+            inlayHints = {
+              typeHints = { enable = false },
+              parameterHints = { enable = false },
+            },
+            cargo = {
+              allFeatures = true,
+              loadOutDirsFromCheck = true,
+              buildScripts = {
+                enable = true,
+              },
+            },
+            -- Add clippy lints for Rust.
+            checkOnSave = {
+              allFeatures = true,
+              command = "clippy",
+              extraArgs = { "--no-deps" },
+            },
+            procMacro = {
+              enable = true,
+              ignored = {
+                ["napi-derive"] = { "napi" },
+                ["async-recursion"] = { "async_recursion" },
+                ["leptos_macro"] = { "server" },
+              },
+            },
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      vim.g.rustaceanvim = vim.tbl_deep_extend("keep", vim.g.rustaceanvim or {}, opts or {})
+      if vim.fn.executable "rust-analyzer" == 0 then
+        require("kp.utils").error(
+          "**rust-analyzer** not found in PATH, please install it.\nhttps://rust-analyzer.github.io/",
+          { title = "rustaceanvim" }
+        )
+      end
+    end,
+  },
 }
