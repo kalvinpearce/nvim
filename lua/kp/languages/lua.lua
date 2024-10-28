@@ -2,7 +2,16 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "folke/neodev.nvim", opts = {} },
+      {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+          library = {
+            "lazy.nvim",
+            { path = "wezterm-types", mods = { "wezterm" } },
+          },
+        },
+      },
     },
     opts = {
       servers = {

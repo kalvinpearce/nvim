@@ -16,8 +16,6 @@ return {
           },
         },
       },
-      -- Helper for nvim plugin development
-      { "folke/neodev.nvim", opts = {} },
       "b0o/SchemaStore.nvim",
     },
     ---@class PluginLspOpts
