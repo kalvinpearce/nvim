@@ -1,5 +1,11 @@
 return {
   {
+    "echasnovski/mini.cursorword",
+    event = "VeryLazy",
+    opts = {},
+  },
+
+  {
     "echasnovski/mini.diff",
     event = "VeryLazy",
     opts = {
