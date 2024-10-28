@@ -2,7 +2,14 @@ return {
   -- Enhanced increment/decrement plugin
   {
     "monaqa/dial.nvim",
-    event = "VeryLazy",
+    keys = {
+      { mode = "n", "<C-a>" },
+      { mode = "n", "<C-x>" },
+      { mode = "v", "<C-a>" },
+      { mode = "v", "<C-x>" },
+      { mode = "v", "g<C-a>" },
+      { mode = "v", "g<C-x>" },
+    },
     config = function()
       local augend = require "dial.augend"
       require("dial.config").augends:register_group {
