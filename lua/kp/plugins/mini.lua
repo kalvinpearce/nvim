@@ -63,13 +63,6 @@ return {
   },
 
   {
-    "echasnovski/mini.pairs",
-    event = "VeryLazy",
-    opts = {},
-    enabled = false,
-  },
-
-  {
     "echasnovski/mini.surround",
     keys = function(_, keys)
       -- Populate the keys based on the user's options
