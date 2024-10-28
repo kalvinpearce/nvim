@@ -1,6 +1,12 @@
 return {
   {
     "akinsho/toggleterm.nvim",
+    keys = {
+      { mode = "n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Float" },
+      { mode = "n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
+      { mode = "n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
+      { mode = "n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", desc = "LazyGit" },
+    },
     config = function()
       require("toggleterm").setup {
         size = 20,
@@ -39,13 +45,6 @@ return {
       function _LAZYGIT_TOGGLE()
         lazygit:toggle()
       end
-
-      local map = require("kp.utils").map
-      map("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Float" })
-      map("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "Horizontal" })
-      map("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc = "Vertical" })
-
-      map("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", { desc = "Lazygit" })
     end,
   },
 }
