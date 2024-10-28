@@ -17,6 +17,18 @@ map("n", "p", "p`]")
 map("i", "<c-v>", [[<c-r><c-p>+]])
 map("c", "<c-v>", [[<c-r><c-p>+]], { noremap = false })
 
+-- Cut with m
+map({ "n", "x" }, "m", "d")
+map("n", "mm", "dd")
+map("n", "M", "D")
+-- Use blackhole register for c,x,d
+map({ "n", "x" }, "c", '"_c')
+map({ "n", "x" }, "C", '"_C')
+map({ "n", "x" }, "x", '"_x')
+map({ "n", "x" }, "X", '"_X')
+map({ "n", "x" }, "d", '"_d')
+map({ "n", "x" }, "D", '"_D')
+
 -- Save
 map({ "n", "x" }, "<leader>w", ":w<cr>", { desc = "Save file" })
 map({ "n", "x" }, "<leader>bw", ":w<cr>", { desc = "Save file" })
