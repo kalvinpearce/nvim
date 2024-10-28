@@ -45,18 +45,6 @@ map("n", "<leader>q", ":q<cr>", { desc = "Close file" })
 map("n", "<leader>dd", '"qyy"qp', { desc = "Duplicate line" })
 map("x", "<leader>dd", [["qy'>"qp]], { desc = "Duplicate line" })
 
--- Move to window using the <ctrl> hjkl keys
-map("n", "<c-h>", require("smart-splits").move_cursor_left, { desc = "Go to left window" })
-map("n", "<c-j>", require("smart-splits").move_cursor_down, { desc = "Go to lower window" })
-map("n", "<c-k>", require("smart-splits").move_cursor_up, { desc = "Go to upper window" })
-map("n", "<c-l>", require("smart-splits").move_cursor_right, { desc = "Go to right window" })
-
--- Resize window using <ctrl> arrow keys
-map("n", "<C-S-h>", require("smart-splits").resize_left, { desc = "" })
-map("n", "<C-S-j>", require("smart-splits").resize_down, { desc = "" })
-map("n", "<C-S-k>", require("smart-splits").resize_up, { desc = "" })
-map("n", "<C-S-l>", require("smart-splits").resize_right, { desc = "" })
-
 -- Navigate buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
