@@ -19,7 +19,6 @@ return {
       -- Helper for nvim plugin development
       { "folke/neodev.nvim", opts = {} },
       "b0o/SchemaStore.nvim",
-      "folke/neoconf.nvim",
     },
     ---@class PluginLspOpts
     opts = {
@@ -64,8 +63,6 @@ return {
     },
     ---@param opts PluginLspOpts
     config = function(_, opts)
-      require("neoconf").setup {}
-
       vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
 
       local capabilities =
