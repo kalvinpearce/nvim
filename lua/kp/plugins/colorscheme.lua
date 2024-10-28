@@ -2,31 +2,20 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = false,
+    lazy = true,
     priority = 1000,
-    config = function()
-      require("catppuccin").setup {
-        flavour = "frappe", -- latte, frappe, macchiato, mocha
-        transparent_background = true,
-        integrations = {
-          lsp_trouble = true,
-          mason = true,
-          native_lsp = {
-            enabled = true,
-            underlines = {
-              errors = { "undercurl" },
-              hints = { "undercurl" },
-              warnings = { "undercurl" },
-              information = { "undercurl" },
-            },
-          },
-          notify = true,
-          semantic_tokens = true,
-          telescope = true,
-          which_key = true,
-        },
-      }
+    init = function()
       vim.cmd.colorscheme "catppuccin"
     end,
+    opts = {
+      flavour = "frappe", -- latte, frappe, macchiato, mocha
+      compile = true,
+      transparent_background = true,
+      integrations = {
+        blink_cmp = true,
+        mason = true,
+        notify = true,
+      },
+    },
   },
 }
