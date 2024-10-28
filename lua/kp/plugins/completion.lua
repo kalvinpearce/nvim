@@ -1,19 +1,27 @@
 return {
   {
-    "hrsh7th/nvim-cmp",
-    lazy = false,
-    priority = 100,
-    dependencies = {
-      "onsails/lspkind.nvim",
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-      { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
-      "saadparwaiz1/cmp_luasnip",
+    "saghen/blink.cmp",
+    event = { "LspAttach", "InsertCharPre" },
+    version = "v0.*",
+    opts = {
+      highlight = {
+        use_nvim_cmp_as_default = true,
+      },
+      nerd_font_variant = "mono",
+      accept = { auto_brackets = { enabled = true } },
+      trigger = { signature_help = { enabled = true } },
+      keymap = {
+        accept = "<CR>",
+      },
+
+      windows = {
+        autocomplete = {
+          border = "single",
+        },
+        documentation = {
+          border = "single",
+        },
+      },
     },
-    config = function()
-      require "kp.completion"
-    end,
   },
 }

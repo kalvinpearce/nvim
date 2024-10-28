@@ -24,6 +24,7 @@ return {
       javascriptreact = { "prettierd", "prettier", stop_after_first = true },
       typescript = { "prettierd", "prettier", stop_after_first = true },
       typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+      markdown = { "prettierd", "prettier", stop_after_first = true },
     },
     -- Set up format-on-save
     format_on_save = function(bufnr)

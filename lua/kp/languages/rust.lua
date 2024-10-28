@@ -1,23 +1,10 @@
 return {
   -- Juiced rust crates support in cargo.toml
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      {
-        "Saecki/crates.nvim",
-        event = { "BufRead Cargo.toml" },
-        config = function()
-          require("crates").setup {}
-        end,
-      },
-    },
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      local cmp = require "cmp"
-      opts.sources = opts.sources or {}
-      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, {
-        { name = "crates" },
-      }))
+    "Saecki/crates.nvim",
+    event = { "BufRead Cargo.toml" },
+    config = function()
+      require("crates").setup {}
     end,
   },
 
