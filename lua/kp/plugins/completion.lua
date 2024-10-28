@@ -9,7 +9,13 @@ return {
       },
       nerd_font_variant = "mono",
       accept = { auto_brackets = { enabled = true } },
-      trigger = { signature_help = { enabled = true } },
+      trigger = {
+        completion = {
+          -- Don't show when entering instert mode
+          show_on_insert_on_trigger_character = false,
+        },
+        signature_help = { enabled = true },
+      },
       keymap = {
         accept = "<CR>",
       },
