@@ -1,5 +1,20 @@
 return {
   {
+    "echasnovski/mini.diff",
+    event = "VeryLazy",
+    opts = {
+      view = {
+        style = "sign",
+        signs = {
+          add = "▎",
+          change = "▎",
+          delete = "",
+        },
+      },
+    },
+  },
+
+  {
     "echasnovski/mini.ai",
     event = "VeryLazy",
     dependencies = { "nvim-treesitter-textobjects" },
