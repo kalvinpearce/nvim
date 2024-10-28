@@ -4,7 +4,6 @@ return {
   cmd = { "ConformInfo" },
   keys = {
     {
-      -- Customize or remove this keymap to your liking
       "<leader>lf",
       function()
         require("conform").format { async = true, lsp_fallback = true }
@@ -13,9 +12,9 @@ return {
       desc = "Format buffer",
     },
   },
-  -- Everything in opts will be passed to setup()
+  ---@module "conform"
+  ---@type conform.setupOpts
   opts = {
-    -- Define your formatters
     formatters_by_ft = {
       lua = { "stylua" },
       sh = { "shfmt" },
@@ -25,6 +24,9 @@ return {
       typescript = { "prettierd", "prettier", stop_after_first = true },
       typescriptreact = { "prettierd", "prettier", stop_after_first = true },
       markdown = { "prettierd", "prettier", stop_after_first = true },
+    },
+    default_format_opts = {
+      lsp_format = "fallback",
     },
     -- Set up format-on-save
     format_on_save = function(bufnr)
@@ -58,7 +60,6 @@ return {
     },
   },
   init = function()
-    -- If you want the formatexpr, here is the place to set it
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
     vim.keymap.set("n", "<leader>uf", function()

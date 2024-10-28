@@ -9,8 +9,6 @@ return {
       { "j-hui/fidget.nvim", opts = {} },
       -- Helper for nvim plugin development
       { "folke/neodev.nvim", opts = {} },
-      -- Autoformatting
-      "stevearc/conform.nvim",
       "b0o/SchemaStore.nvim",
       "folke/neoconf.nvim",
     },
