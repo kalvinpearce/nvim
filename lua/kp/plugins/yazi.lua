@@ -5,9 +5,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    event = "VeryLazy",
     keys = {
-      -- 👇 in this section, choose your own keymappings!
       {
         "-",
         function()
