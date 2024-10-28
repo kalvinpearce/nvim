@@ -1,3 +1,5 @@
+local data = assert(vim.fn.stdpath "data") --[[@as string]]
+
 local function telescope(builtin, opts)
   local params = { builtin = builtin, opts = opts }
   return function()
@@ -20,38 +22,44 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    version = false, -- telescope did only one release, so use HEAD for now
+    dependencies = {
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      { "nvim-telescope/telescope-file-browser.nvim" },
+      { "nvim-telescope/telescope-smart-history.nvim" },
+      { "kkharji/sqlite.lua" },
+    },
     keys = {
-      { "<leader>,",       "<cmd>Telescope buffers show_all_buffers=true<cr>",  desc = "Switch Buffer" },
-      { "<leader>/",       telescope("live_grep"),                              desc = "Grep (root dir)" },
-      { "<leader>:",       "<cmd>Telescope command_history<cr>",                desc = "Command History" },
-      { "<leader><space>", telescope("files"),                                  desc = "Find Files (root dir)" },
+      { "<leader>,", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+      { "<leader>bb", "<cmd>Telescope buffers show_all_buffers=true<cr>", desc = "Switch Buffer" },
+      { "<leader>/", telescope "live_grep", desc = "Grep (root dir)" },
+      { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+      { "<leader><space>", telescope "files", desc = "Find Files (root dir)" },
       -- find
-      { "<leader>fb",      "<cmd>Telescope buffers<cr>",                        desc = "Buffers" },
-      { "<c-p>",           telescope("files"),                                  desc = "Find Files (root dir)" },
-      { "<leader>ff",      telescope("files"),                                  desc = "Find Files (root dir)" },
-      { "<leader>fr",      "<cmd>Telescope oldfiles<cr>",                       desc = "Recent" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+      { "<c-p>", telescope "files", desc = "Find Files (root dir)" },
+      { "<leader>ff", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", desc = "Find Files (current dir)" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       -- git
-      { "<leader>gc",      "<cmd>Telescope git_commits<CR>",                    desc = "commits" },
-      { "<leader>gs",      "<cmd>Telescope git_status<CR>",                     desc = "status" },
+      { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "commits" },
+      { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "status" },
       -- search
-      { "<leader>sa",      "<cmd>Telescope autocommands<cr>",                   desc = "Auto Commands" },
-      { "<leader>sb",      "<cmd>Telescope current_buffer_fuzzy_find<cr>",      desc = "Buffer" },
-      { "<leader>sc",      "<cmd>Telescope command_history<cr>",                desc = "Command History" },
-      { "<leader>sC",      "<cmd>Telescope commands<cr>",                       desc = "Commands" },
-      { "<leader>sd",      "<cmd>Telescope diagnostics bufnr=0<cr>",            desc = "Document diagnostics" },
-      { "<leader>sD",      "<cmd>Telescope diagnostics<cr>",                    desc = "Workspace diagnostics" },
-      { "<leader>sg",      telescope("live_grep"),                              desc = "Grep (root dir)" },
-      { "<leader>sh",      "<cmd>Telescope help_tags<cr>",                      desc = "Help Pages" },
-      { "<leader>sH",      "<cmd>Telescope highlights<cr>",                     desc = "Search Highlight Groups" },
-      { "<leader>sk",      "<cmd>Telescope keymaps<cr>",                        desc = "Key Maps" },
-      { "<leader>sM",      "<cmd>Telescope man_pages<cr>",                      desc = "Man Pages" },
-      { "<leader>sm",      "<cmd>Telescope marks<cr>",                          desc = "Jump to Mark" },
-      { "<leader>so",      "<cmd>Telescope vim_options<cr>",                    desc = "Options" },
-      { "<leader>sR",      "<cmd>Telescope resume<cr>",                         desc = "Resume" },
-      { "<leader>sw",      telescope("grep_string"),                            desc = "Word (root dir)" },
-      { "<leader>sW",      telescope("grep_string", { cwd = false }),           desc = "Word (cwd)" },
-      { "<leader>uC",      telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
+      { "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
+      { "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
+      { "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+      { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+      { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document diagnostics" },
+      { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace diagnostics" },
+      { "<leader>sg", telescope "live_grep", desc = "Grep (root dir)" },
+      { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+      { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+      { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Key Maps" },
+      { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages" },
+      { "<leader>sm", "<cmd>Telescope marks<cr>", desc = "Jump to Mark" },
+      { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
+      { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Resume" },
+      { "<leader>sw", telescope "grep_string", desc = "Word (root dir)" },
+      { "<leader>sW", telescope("grep_string", { cwd = false }), desc = "Word (cwd)" },
+      { "<leader>uC", telescope("colorscheme", { enable_preview = true }), desc = "Colorscheme with preview" },
       {
         "<leader>ss",
         telescope("lsp_document_symbols", {
@@ -102,20 +110,14 @@ return {
               return require("trouble.providers.telescope").open_selected_with_trouble(...)
             end,
             ["<a-i>"] = function()
-              local action_state = require("telescope.actions.state")
+              local action_state = require "telescope.actions.state"
               local line = action_state.get_current_line()
               telescope("find_files", { no_ignore = true, default_text = line })()
             end,
             ["<a-h>"] = function()
-              local action_state = require("telescope.actions.state")
+              local action_state = require "telescope.actions.state"
               local line = action_state.get_current_line()
               telescope("find_files", { hidden = true, default_text = line })()
-            end,
-            ["<C-n>"] = function(...)
-              return require("telescope.actions").cycle_history_next(...)
-            end,
-            ["<C-p>"] = function(...)
-              return require("telescope.actions").cycle_history_prev(...)
             end,
             ["<C-Down>"] = function(...)
               return require("telescope.actions").cycle_history_next(...)
@@ -137,6 +139,28 @@ return {
           },
         },
       },
+      extensions = {
+        fzf = {},
+        wrap_results = true,
+        history = {
+          path = vim.fs.joinpath(data, "telescope_history.sqlite3"),
+          limit = 100,
+        },
+        file_browser = {
+          grouped = true,
+          hidden = { file_browser = true, folder_browser = true },
+          follow_symlinks = true,
+          prompt_path = true,
+          hijack_netrw = false,
+        },
+      },
     },
+    config = function(_, opts)
+      require("telescope").setup(opts)
+
+      pcall(require("telescope").load_extension, "fzf")
+      pcall(require("telescope").load_extension, "smart_history")
+      pcall(require("telescope").load_extension, "file_browser")
+    end,
   },
 }
