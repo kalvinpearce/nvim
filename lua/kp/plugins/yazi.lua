@@ -27,10 +27,4 @@ return {
       open_for_directories = false,
     },
   },
-
-  {
-    "stevearc/oil.nvim",
-    cmd = { "Oil" },
-    opts = {},
-  },
 }
