@@ -51,14 +51,6 @@ map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 map("n", "]b", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
--- Stay in indent mode
-map("v", "<", "<gv")
-map("v", ">", ">gv")
-
--- Move text up and down
-map("v", "J", ":move '>+1<cr>gv=gv", { desc = "Move down" })
-map("v", "K", ":move '<-2<cr>gv=gv", { desc = "Move up" })
-
 -- Join lines stay in place
 map("n", "J", "mzJ`z")
 

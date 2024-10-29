@@ -5,17 +5,6 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      -- LSP notifications
-      {
-        "j-hui/fidget.nvim",
-        opts = {
-          notification = {
-            window = {
-              winblend = 0,
-            },
-          },
-        },
-      },
       "b0o/SchemaStore.nvim",
     },
     ---@class PluginLspOpts
