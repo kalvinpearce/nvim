@@ -28,6 +28,7 @@
   "nvim-ufo": { "branch": "main", "commit": "522d719d421fc42b95577d9624048d8348d326ea" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
+  "render-markdown.nvim": { "branch": "main", "commit": "fc05fb7c56795f191b6800799a2ec6ea325ba715" },
   "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
   "smart-splits.nvim": { "branch": "master", "commit": "477a004122ea180b14d3e29544857d572c861668" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
