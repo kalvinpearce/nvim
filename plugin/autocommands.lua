@@ -68,7 +68,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Autocmd for git commit, callback adds local autocmd for BufWritePost
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup "close_gitcommit",
-  pattern = { "gitcommit", "NeogitCommitMessage" },
+  pattern = { "gitcommit" },
   callback = function(event)
     vim.api.nvim_create_autocmd("BufWritePost", {
       group = augroup "close_gitcommit",

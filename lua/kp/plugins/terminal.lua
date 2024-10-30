@@ -5,7 +5,7 @@ return {
       { mode = "n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Float" },
       { mode = "n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal" },
       { mode = "n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical" },
-      { mode = "n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", desc = "LazyGit" },
+      { mode = "n", "<leader>gl", "<cmd>lua _LAZYGIT_TOGGLE()<cr>", desc = "LazyGit" },
     },
     config = function()
       require("toggleterm").setup {
