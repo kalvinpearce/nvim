@@ -13,6 +13,7 @@ return {
         completion = {
           -- Don't show when entering instert mode
           show_on_insert_on_trigger_character = false,
+          show_in_snippet = true,
         },
         signature_help = { enabled = true },
       },
