@@ -1,12 +1,12 @@
 return {
   {
     "Exafunction/codeium.vim",
-    keys = {
-      { mode = "i", "<M-left>", desc = "Codeium Trigger Suggestion" },
-      { mode = "i", "<M-right>", desc = "Codeium Accept Suggestion" },
-      { mode = "i", "<M-down>", desc = "Codeium Cycle Suggestions" },
-      { mode = "i", "<M-up>", desc = "Codeium Cycle Suggestions" },
-    },
+    -- keys = {
+    --   { mode = "i", "<M-left>", desc = "Codeium Trigger Suggestion" },
+    --   { mode = "i", "<M-right>", desc = "Codeium Accept Suggestion" },
+    --   { mode = "i", "<M-down>", desc = "Codeium Cycle Suggestions" },
+    --   { mode = "i", "<M-up>", desc = "Codeium Cycle Suggestions" },
+    -- },
     init = function()
       vim.g.codeium_disable_bindings = 1
       vim.g.codeium_manual = true
