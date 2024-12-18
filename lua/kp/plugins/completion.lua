@@ -20,13 +20,13 @@ return {
       keymap = {
         accept = "<CR>",
       },
-
       windows = {
         autocomplete = {
           border = "single",
         },
         documentation = {
           border = "single",
+          auto_show = true,
         },
       },
     },
