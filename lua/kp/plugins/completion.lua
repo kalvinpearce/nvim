@@ -1,34 +1,39 @@
 return {
   {
     "saghen/blink.cmp",
-    event = { "LspAttach", "InsertCharPre" },
+    event = { "InsertEnter" },
     version = "v0.*",
     opts = {
-      highlight = {
+      keymap = { preset = "enter" },
+      appearance = {
         use_nvim_cmp_as_default = true,
+        nerd_font_variant = "mono",
       },
-      nerd_font_variant = "mono",
-      accept = { auto_brackets = { enabled = true } },
-      trigger = {
-        completion = {
-          -- Don't show when entering instert mode
-          show_on_insert_on_trigger_character = false,
-          show_in_snippet = true,
-        },
-        signature_help = { enabled = true },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
       },
-      keymap = {
-        accept = "<CR>",
-      },
-      windows = {
-        autocomplete = {
+      signature = { enabled = true },
+
+      completion = {
+        accept = { auto_brackets = { enabled = true } },
+        menu = {
           border = "single",
+          draw = {
+            treesitter = { "lsp" },
+          },
         },
         documentation = {
-          border = "single",
           auto_show = true,
+          auto_show_delay_ms = 200,
+        },
+        ghost_text = {
+          enabled = vim.g.ai_cmp,
+        },
+        trigger = {
+          show_on_insert_on_trigger_character = false,
         },
       },
     },
+    opts_extend = { "sources.default" },
   },
 }

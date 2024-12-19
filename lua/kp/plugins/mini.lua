@@ -23,17 +23,6 @@ return {
       end
     end,
     -- stylua: ignore
-    keys = {
-      { "<leader>bd", function() require("mini.bufremove").delete(0, false) end, desc = "Delete Buffer" },
-      { "<leader>bD", function() require("mini.bufremove").delete(0, true) end,  desc = "Delete Buffer (Force)" },
-      {
-        "<leader>un",
-        function()
-          require("mini.notify").clear()
-        end,
-        desc = "Delete all Notifications",
-      },
-    },
     opts = {
       ai = function()
         local ai = require "mini.ai"
@@ -123,22 +112,6 @@ return {
           up = "<S-k>",
         },
       },
-      notify = function()
-        vim.notify = require("mini.notify").make_notify()
-        return {
-          content = {
-            format = function(notif)
-              return notif.msg
-            end,
-          },
-          window = {
-            winblend = 0,
-          },
-          lsp_progress = {
-            enable = false,
-          },
-        }
-      end,
       surround = {
         mappings = {
           add = "gza", -- Add surrounding in Normal and Visual modes

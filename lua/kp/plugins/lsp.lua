@@ -48,7 +48,7 @@ return {
     ---@param opts PluginLspOpts
     config = function(_, opts)
       local capabilities =
-        vim.tbl_deep_extend("force", {}, vim.lsp.protocol.make_client_capabilities(), opts.capabilities or {})
+        vim.tbl_deep_extend("force", {}, require("blink.cmp").get_lsp_capabilities {}, opts.capabilities or {})
       capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
         lineFoldingOnly = true,
