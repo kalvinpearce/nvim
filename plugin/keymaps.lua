@@ -93,6 +93,9 @@ map("i", ";", ";<c-g>u")
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsearch" })
 
+-- Exit cmdline with <esc>
+map("c", "<esc>", "<c-c>")
+
 -- On enter, clear search if it's on, otherwise just do "enter"
 map("n", "<CR>", function()
   ---@diagnostic disable-next-line: undefined-field
