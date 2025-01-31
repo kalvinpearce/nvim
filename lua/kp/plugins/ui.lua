@@ -15,11 +15,4 @@ return {
       end
     end,
   },
-
-  {
-    "Bekaboo/dropbar.nvim",
-    name = "dropbar",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {},
-  },
 }
