@@ -48,7 +48,7 @@ return {
 
   {
     "mrcjkb/rustaceanvim",
-    version = "^4", -- Recommended
+    version = "^5", -- Recommended
     ft = { "rust" },
     opts = {
       server = {
@@ -68,7 +68,7 @@ return {
               parameterHints = { enable = false },
             },
             cargo = {
-              allFeatures = true,
+              features = "all",
               loadOutDirsFromCheck = true,
               buildScripts = {
                 enable = true,
@@ -76,9 +76,12 @@ return {
             },
             -- Add clippy lints for Rust.
             checkOnSave = {
-              allFeatures = true,
+              features = "all",
               command = "clippy",
               extraArgs = { "--no-deps" },
+            },
+            diagnostics = {
+              disabled = { "inactive-code", "proc-macro-disabled" },
             },
             procMacro = {
               enable = true,
@@ -86,6 +89,10 @@ return {
                 ["napi-derive"] = { "napi" },
                 ["async-recursion"] = { "async_recursion" },
                 ["leptos_macro"] = { "server" },
+                ["tokio"] = { "test" },
+                ["tokio-macros"] = { "test" },
+                ["test_log"] = { "test" },
+                ["test_log_macros"] = { "test" },
               },
             },
           },
