@@ -61,7 +61,8 @@ map("n", "<c-u>", "<c-u>zz")
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
 -- stylua: ignore
-map("n", "<leader>ur", "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>", { desc = "Redraw / clear hlsearch / diff update" })
+map("n", "<leader>ur", "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+  { desc = "Redraw / clear hlsearch / diff update" })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 -- n will always search forward, N will always search backward
@@ -106,3 +107,17 @@ map("n", "<CR>", function()
     return "<CR>"
   end
 end, { expr = true })
+
+map("n", "]q", function()
+  local success = pcall(vim.cmd, "cnext")
+  if not success then
+    pcall(vim.cmd, "cfirst")
+  end
+end, { desc = "navigate to the next quickfix item" })
+
+map("n", "[q", function()
+  local success = pcall(vim.cmd, "cprev")
+  if not success then
+    pcall(vim.cmd, "clast")
+  end
+end, { desc = "navigate to the prev quickfix item" })
