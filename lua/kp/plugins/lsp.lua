@@ -30,7 +30,21 @@ return {
         -- maxscript = {
         --   mason = false,
         -- },
-        sourcekit = {},
+        sourcekit = {
+          root_dir = function(filename, _)
+            local util = require "lspconfig.util"
+            -- If find *.uproject return nil
+            if util.root_pattern "*.uproject"(filename) then
+              return nil
+            end
+
+            return util.root_pattern "buildServer.json"(filename)
+              or util.root_pattern("*.xcodeproj", "*.xcworkspace")(filename)
+              -- better to keep it at the end, because some modularized apps contain multiple Package.swift files
+              or util.root_pattern("compile_commands.json", "Package.swift")(filename)
+              or vim.fs.dirname(vim.fs.find(".git", { path = filename, upward = true })[1])
+          end,
+        },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
@@ -107,17 +121,11 @@ return {
           vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
           set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
           set("n", "<leader>ll", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
-          set("n", "gd", function()
-            require("telescope.builtin").lsp_definitions { reuse_win = true }
-          end, { desc = "Goto Definition" })
-          set("n", "gr", "<cmd>Telescope lsp_references<cr>", { desc = "References" })
+          -- set("n", "gd", "<cmd>FzfLua lsp_definitions<cr>", { desc = "Goto Definition" })
+          -- set("n", "gr", "<cmd>FzfLua lsp_references<cr>", { desc = "References" })
           set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
-          set("n", "gI", function()
-            require("telescope.builtin").lsp_implementations { reuse_win = true }
-          end, { desc = "Goto Implementation" })
-          set("n", "gy", function()
-            require("telescope.builtin").lsp_type_definitions { reuse_win = true }
-          end, { desc = "Goto T[y]pe Definition" })
+          -- set("n", "gI", "<cmd>FzfLua lsp_implementations<cr>", { desc = "Goto Implementation" })
+          -- set("n", "gy", "<cmd>FzfLua lsp_typedefs<cr>", { desc = "Goto T[y]pe Definition" })
           set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
           set("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
           set("i", "<c-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
@@ -168,8 +176,16 @@ return {
 
   {
     "folke/trouble.nvim",
+    enabled = false,
     cmd = "Trouble",
     opts = { use_diagnostic_signs = true },
+    config = function(opts)
+      local config = require "fzf-lua.config"
+      local actions = require("trouble.sources.fzf").actions
+      config.defaults.actions.files["ctrl-t"] = actions.open
+
+      require("trouble").setup(opts)
+    end,
     keys = {
       {
         "<leader>xx",
@@ -200,6 +216,20 @@ return {
         "<leader>xQ",
         "<cmd>Trouble qflist toggle<cr>",
         desc = "Quickfix List (Trouble)",
+      },
+      {
+        "]t",
+        function()
+          require("trouble").next { skip_groups = true, jump = true }
+        end,
+        desc = "Next Trouble",
+      },
+      {
+        "[y",
+        function()
+          require("trouble").prev { skip_groups = true, jump = true }
+        end,
+        desc = "Previous Trouble",
       },
     },
   },
