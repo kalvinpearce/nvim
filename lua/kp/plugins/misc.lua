@@ -32,12 +32,6 @@ return {
     end,
   },
 
-  -- Branching undo tree
-  {
-    "mbbill/undotree",
-    cmd = "UndotreeToggle",
-  },
-
   -- Smarter and more intuitive split pane management
   {
     "mrjones2014/smart-splits.nvim",

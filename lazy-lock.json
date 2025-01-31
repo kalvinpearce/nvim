@@ -29,6 +29,5 @@
   "rustaceanvim": { "branch": "master", "commit": "242e47bc356818b956e685a2e8de1d613caf45bf" },
   "smart-splits.nvim": { "branch": "master", "commit": "bfb5e63bd4639439b48815f46636dbd52b19b1bd" },
   "snacks.nvim": { "branch": "main", "commit": "bc39417e51649536f72bd9e850711663c125064f" },
-  "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
-  "undotree": { "branch": "master", "commit": "2556c6800b210b2096b55b66e74b4cc1d9ebbe4f" }
+  "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" }
 }
