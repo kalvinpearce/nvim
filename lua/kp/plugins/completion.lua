@@ -4,17 +4,11 @@ return {
     event = { "InsertEnter" },
     version = "v0.*",
     opts = {
-      keymap = {
-        preset = "enter",
-        cmdline = {
-          ["<Tab>"] = { "select_next", "fallback" },
+      cmdline = {
+        keymap = {
           ["<down>"] = { "select_next", "fallback" },
-          ["<S-Tab>"] = { "select_prev", "fallback" },
           ["<up>"] = { "select_prev", "fallback" },
-          ["<C-e>"] = { "cancel", "fallback" },
           ["<Esc>"] = { "cancel", "fallback" },
-          ["<C-y>"] = { "select_and_accept" },
-          ["<CR>"] = { "accept", "fallback" },
         },
       },
       appearance = {
