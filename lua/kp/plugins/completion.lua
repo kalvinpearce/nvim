@@ -14,7 +14,7 @@ return {
           ["<C-e>"] = { "cancel", "fallback" },
           ["<Esc>"] = { "cancel", "fallback" },
           ["<C-y>"] = { "select_and_accept" },
-          ["<CR>"] = { "select_and_accept", "fallback" },
+          ["<CR>"] = { "accept", "fallback" },
         },
       },
       appearance = {
