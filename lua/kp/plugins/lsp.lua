@@ -3,6 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
+      { "folke/neoconf.nvim", config = true },
       "williamboman/mason-lspconfig.nvim",
       "b0o/SchemaStore.nvim",
       -- LSP notifications

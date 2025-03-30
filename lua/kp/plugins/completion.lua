@@ -31,6 +31,8 @@ return {
         window = { border = "single" },
       },
 
+      keymap = { preset = "enter" },
+
       completion = {
         accept = { auto_brackets = { enabled = false } },
         menu = {
