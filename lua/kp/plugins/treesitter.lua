@@ -42,7 +42,6 @@ return {
         keymaps = {
           init_selection = "<C-t>",
           node_incremental = "<C-t>",
-          scope_incremental = "<nop>",
           node_decremental = "<bs>",
         },
       },
