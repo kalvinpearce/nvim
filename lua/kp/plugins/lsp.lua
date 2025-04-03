@@ -31,6 +31,9 @@ return {
         -- maxscript = {
         --   mason = false,
         -- },
+        wgsl_analyzer = {
+          mason = false,
+        },
         sourcekit = {
           root_dir = function(filename, _)
             local util = require "lspconfig.util"
