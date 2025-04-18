@@ -378,8 +378,8 @@ vim.opt.rtp:prepend(lazypath)
 -- Set up lazy, and load `lua/kp/plugins/` folder
 require("lazy").setup({
   spec = {
-    { import = "kp.plugins" },
-    { import = "kp.languages" },
+    { import = "plugins" },
+    { import = "plugins.langs" },
   },
 })
 map("n", "<leader>L", ":Lazy<cr>", { desc = "Lazy" })
