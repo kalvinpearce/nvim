@@ -213,14 +213,6 @@ map("n", "}", "}zz", { desc = "Move to next paragraph" })
 map("n", "n", "nzzzv", { noremap = false, desc = "Next search result" })
 map("n", "N", "Nzzzv", { noremap = false, desc = "Prev search result" })
 
--- toggle options
-local utils = require "kp.utils"
-map("n", "<leader>us", utils.toggle_spell, { desc = "Toggle Spelling" })
-map("n", "<leader>uw", utils.toggle_wrap, { desc = "Toggle Word Wrap" })
-map("n", "<leader>ul", utils.toggle_line_numbers, { desc = "Toggle Line Numbers" })
-map("n", "<leader>ud", utils.toggle_diagnostics, { desc = "Toggle Diagnostics" })
-map("n", "<leader>uc", utils.toggle_conceal, { desc = "Toggle Conceal" })
-
 -- Add undo break-points
 map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")

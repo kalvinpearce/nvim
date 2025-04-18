@@ -21,7 +21,7 @@ return {
         },
       }
 
-      local map = require("kp.utils").map
+      local map = vim.keymap.set
       local dialMap = require "dial.map"
       map("n", "<C-a>", dialMap.inc_normal())
       map("n", "<C-x>", dialMap.dec_normal())
@@ -36,7 +36,7 @@ return {
   {
     "mrjones2014/smart-splits.nvim",
     config = function()
-      local map = require("kp.utils").map
+      local map = vim.keymap.set
       local ss = require "smart-splits"
 
       -- Move to window using the <ctrl> hjkl keys

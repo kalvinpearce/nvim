@@ -114,34 +114,25 @@ return {
         mlsp.setup { ensure_installed = ensure_installed, handlers = { setup } }
       end
 
-      local augroup = require("kp.utils").augroup
-
       -- LSP keymaps
       vim.api.nvim_create_autocmd("LspAttach", {
-        group = augroup "lsp_attach",
         callback = function()
-          local set = require("kp.utils").map
+          local map = vim.keymap.set
 
           vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
-          set("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
-          set("n", "<leader>ll", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
-          -- set("n", "gd", "<cmd>FzfLua lsp_definitions<cr>", { desc = "Goto Definition" })
-          -- set("n", "gr", "<cmd>FzfLua lsp_references<cr>", { desc = "References" })
-          set("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
-          -- set("n", "gI", "<cmd>FzfLua lsp_implementations<cr>", { desc = "Goto Implementation" })
-          -- set("n", "gy", "<cmd>FzfLua lsp_typedefs<cr>", { desc = "Goto T[y]pe Definition" })
-          set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
-          set("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-          set("i", "<c-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-          set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
-          set("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev Diagnostic" })
-          set("n", "<leader>lf", require("kp.utils").format, { desc = "Format Document" })
-          set("v", "<leader>lf", require("kp.utils").format, { desc = "Format Range" })
-          set({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action" })
-          set("n", "<leader>lA", function()
+          map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+          map("n", "<leader>ll", "<cmd>LspInfo<cr>", { desc = "Lsp Info" })
+          map("n", "gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
+          map("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
+          map("n", "gK", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+          map("i", "<c-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
+          map("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format Document" })
+          map("v", "<leader>lf", vim.lsp.buf.format, { desc = "Format Range" })
+          map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action" })
+          map("n", "<leader>lA", function()
             vim.lsp.buf.code_action { context = { only = { "source" }, diagnostics = {} } }
           end, { desc = "Source Action" })
-          set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+          map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
         end,
       })
     end,
