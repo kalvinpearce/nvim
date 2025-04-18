@@ -5,7 +5,7 @@ return {
     lazy = true,
     priority = 1000,
     init = function()
-      vim.cmd.colorscheme "catppuccin"
+      vim.cmd.colorscheme("catppuccin")
     end,
     opts = {
       flavour = "frappe", -- latte, frappe, macchiato, mocha

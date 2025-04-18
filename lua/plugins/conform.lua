@@ -6,7 +6,7 @@ return {
     {
       "<leader>lf",
       function()
-        require("conform").format { async = true, lsp_fallback = true }
+        require("conform").format({ async = true, lsp_fallback = true })
       end,
       mode = "",
       desc = "Format buffer",
@@ -43,7 +43,7 @@ return {
 
       -- Disable autoformat for Cargo.toml file
       local bufname = vim.api.nvim_buf_get_name(bufnr)
-      if bufname:match "Cargo.toml" then
+      if bufname:match("Cargo.toml") then
         return
       end
 
