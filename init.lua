@@ -125,6 +125,9 @@ vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 
+-- [[ Diagnostics ]]
+vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
+
 -- Enable the experimental Lua module loader
 vim.loader.enable()
 
@@ -213,6 +216,15 @@ map("c", "<esc>", "<c-c>")
 map("n", "<leader>hh", "<cmd>checkhealth<cr>", { desc = "Vim Health" })
 map("n", "<leader>hl", "<cmd>checkhealth vim.lsp<cr>", { desc = "Lsp Health" })
 
+-- Toggle diagnostic lines
+map("n", "<leader>uK", function()
+  if vim.diagnostic.config().virtual_lines then
+    vim.diagnostic.config({ virtual_lines = false })
+  else
+    vim.diagnostic.config({ virtual_lines = { current_line = true } })
+  end
+end, { desc = "Toggle diagnostic virtual_lines" })
+
 -- LSP
 vim.keymap.del("n", "grr")
 vim.keymap.del("n", "gra")
@@ -248,6 +260,16 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   command = "tabdo wincmd =",
+})
+
+-- Open diagnostics on hover
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    local opts = {
+      focusable = false,
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end,
 })
 
 -- Close some filetypes with <q>
