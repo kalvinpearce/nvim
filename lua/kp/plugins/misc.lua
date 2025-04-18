@@ -37,19 +37,22 @@ return {
     "mrjones2014/smart-splits.nvim",
     config = function()
       local map = vim.keymap.set
-      local ss = require "smart-splits"
 
-      -- Move to window using the <ctrl> hjkl keys
-      map("n", "<c-h>", ss.move_cursor_left, { desc = "Go to left window a" })
-      map("n", "<c-j>", ss.move_cursor_down, { desc = "Go to lower window" })
-      map("n", "<c-k>", ss.move_cursor_up, { desc = "Go to upper window" })
-      map("n", "<c-l>", ss.move_cursor_right, { desc = "Go to right window" })
-
-      -- Resize window using <ctrl> arrow keys
-      map("n", "<C-S-h>", ss.resize_left, { desc = "" })
-      map("n", "<C-S-j>", ss.resize_down, { desc = "" })
-      map("n", "<C-S-k>", ss.resize_up, { desc = "" })
-      map("n", "<C-S-l>", ss.resize_right, { desc = "" })
+      map("n", "<A-h>", require("smart-splits").resize_left)
+      map("n", "<A-j>", require("smart-splits").resize_down)
+      map("n", "<A-k>", require("smart-splits").resize_up)
+      map("n", "<A-l>", require("smart-splits").resize_right)
+      -- moving between splits
+      map("n", "<C-h>", require("smart-splits").move_cursor_left)
+      map("n", "<C-j>", require("smart-splits").move_cursor_down)
+      map("n", "<C-k>", require("smart-splits").move_cursor_up)
+      map("n", "<C-l>", require("smart-splits").move_cursor_right)
+      map("n", "<C-\\>", require("smart-splits").move_cursor_previous)
+      -- swapping buffers between windows
+      map("n", "<leader><leader>h", require("smart-splits").swap_buf_left)
+      map("n", "<leader><leader>j", require("smart-splits").swap_buf_down)
+      map("n", "<leader><leader>k", require("smart-splits").swap_buf_up)
+      map("n", "<leader><leader>l", require("smart-splits").swap_buf_right)
     end,
   },
 
