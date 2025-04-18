@@ -7,7 +7,7 @@ vim.g.maplocalleader = " "
 -- General
 vim.opt.backup = false -- Don't store backup while overwriting the file
 vim.opt.mouse = "a" -- Enable mouse for all available modes
-vim.opt.sessionoptions = "buffers,curdir,tabpages,winsize,terminal" -- Remove some data from sessions
+vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,winsize,terminal" -- Remove some data from sessions
 vim.opt.swapfile = false -- Disable swapfile
 vim.opt.undofile = true -- Enable persistent undo (see also `:h undodir`)
 vim.schedule(function()
@@ -379,8 +379,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     { import = "kp.plugins" },
-    { import = "kp.languages.lua" },
-    { import = "kp.languages.rust" },
+    { import = "kp.languages" },
   },
 })
 map("n", "<leader>L", ":Lazy<cr>", { desc = "Lazy" })
