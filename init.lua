@@ -10,10 +10,10 @@ vim.opt.mouse = "a" -- Enable mouse for all available modes
 vim.opt.sessionoptions = "buffers,curdir,tabpages,winsize,terminal" -- Remove some data from sessions
 vim.opt.swapfile = false -- Disable swapfile
 vim.opt.undofile = true -- Enable persistent undo (see also `:h undodir`)
--- vim.schedule(function()
---   --  Schedule the setting after `UiEnter` because it can increase startup-time.
---   vim.opt.clipboard = "unnamedplus" -- Sync clipboard between OS and Neovim.
--- end)
+vim.schedule(function()
+  --  Schedule the setting after `UiEnter` because it can increase startup-time.
+  vim.opt.clipboard = "unnamedplus" -- Sync clipboard between OS and Neovim.
+end)
 
 -- Appearance
 vim.opt.breakindent = true -- Indent wrapped lines to match line start
@@ -156,13 +156,6 @@ map("n", "p", "p`]")
 -- Better insert pasting
 map("i", "<c-v>", [[<c-r><c-p>+]])
 map("c", "<c-v>", [[<c-r><c-p>+]], { noremap = false })
-
--- Copy with system clipboard
-map({ "n", "x" }, "gy", '"+y', { desc = "Copy to system clipboard" })
--- Paste with system clipboard
-map("n", "gp", '"+p', { desc = "Paste from system clipboard" })
--- Paste in Visual with `P` to not copy selected text (`:h v_P`)
-map("x", "gp", '"+P', { desc = "Paste from system clipboard" })
 
 -- Cut with m
 map({ "n", "x" }, "m", "d")
