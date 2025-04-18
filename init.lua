@@ -30,6 +30,7 @@ vim.opt.sidescrolloff = 5 -- as above but for left/right scrolling
 vim.opt.signcolumn = "yes" -- Always show sign column (otherwise it will shift text)
 vim.opt.splitbelow = true -- Horizontal splits will be below
 vim.opt.splitright = true -- Vertical splits will be to the right
+vim.opt.winborder = "rounded" -- Use rounded border for floating windows
 vim.opt.wrap = false -- Display long lines as just one line
 
 -- Editing

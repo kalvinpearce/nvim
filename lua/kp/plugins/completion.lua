@@ -2,7 +2,7 @@ return {
   {
     "saghen/blink.cmp",
     event = { "InsertEnter" },
-    version = "v0.*",
+    version = "1.*",
     opts = {
       cmdline = {
         keymap = {
@@ -20,7 +20,6 @@ return {
       },
       signature = {
         enabled = true,
-        window = { border = "single" },
       },
 
       keymap = { preset = "enter" },
@@ -28,7 +27,6 @@ return {
       completion = {
         accept = { auto_brackets = { enabled = false } },
         menu = {
-          border = "single",
           draw = {
             treesitter = { "lsp" },
           },
@@ -45,7 +43,6 @@ return {
           },
         },
         documentation = {
-          window = { border = "single" },
           auto_show = true,
           auto_show_delay_ms = 200,
         },
