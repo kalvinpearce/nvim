@@ -38,7 +38,7 @@ vim.opt.completeopt = "menuone,noinsert,noinsert,popup,fuzzy" -- Customize compl
 vim.opt.expandtab = true -- spaces over tabs (sorry Richard)
 vim.opt.formatoptions = "rqnl1j" -- Improve comment editing
 vim.opt.ignorecase = true -- Ignore case when searching (use `\C` to force not doing that)
-vim.opt.iskeyword:append "-" -- don't split word on - char
+vim.opt.iskeyword:append("-") -- don't split word on - char
 vim.opt.inccommand = "split" -- show command output as you type
 vim.opt.incsearch = true -- Show search results while typing
 vim.opt.infercase = true -- Infer letter cases for a richer built-in keyword completion
@@ -50,7 +50,7 @@ vim.opt.softtabstop = -1 -- Copy shiftwidth value
 vim.opt.tabstop = 2 -- spaces per tab
 vim.opt.updatetime = 250 -- faster completion time
 vim.opt.virtualedit = "block" -- Allow going past the end of line in visual block mode
-vim.opt.whichwrap:append "<,>,[,],h,l" -- Add directional keys to line wrapping
+vim.opt.whichwrap:append("<,>,[,],h,l") -- Add directional keys to line wrapping
 
 -- Spelling
 vim.opt.spelllang = "en_us,en_au" -- Define spelling dictionaries
@@ -64,15 +64,6 @@ vim.opt.foldlevel = 99 -- Open all folds
 vim.opt.foldlevelstart = 99 -- Open all folds by default on new buffer
 vim.opt.foldmethod = "expr" -- Pass folding onto custom foldexpr function
 vim.opt.foldtext = "v:lua.custom_foldtext()" -- Use custom foldtext function
-vim.api.nvim_create_autocmd("LspAttach", { -- Prefer LSP folding if client supports it
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if client and client:supports_method "textDocument/foldingRange" then
-      local win = vim.api.nvim_get_current_win()
-      vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
-    end
-  end,
-})
 local function fold_virt_text(result, s, lnum, coloff)
   if not coloff then
     coloff = 0
@@ -105,7 +96,7 @@ function _G.custom_foldtext()
   local result = {}
   fold_virt_text(result, start, vim.v.foldstart - 1)
   table.insert(result, { " ... ", "Delimiter" })
-  fold_virt_text(result, end_, vim.v.foldend - 1, #(end_str:match "^(%s+)" or ""))
+  fold_virt_text(result, end_, vim.v.foldend - 1, #(end_str:match("^(%s+)") or ""))
   return result
 end
 
@@ -217,6 +208,20 @@ map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and clear hlsea
 -- Exit cmdline with <esc>
 map("c", "<esc>", "<c-c>")
 
+-- Health
+map("n", "<leader>hh", "<cmd>checkhealth<cr>", { desc = "Vim Health" })
+map("n", "<leader>hl", "<cmd>checkhealth vim.lsp<cr>", { desc = "Lsp Health" })
+
+-- LSP
+vim.keymap.del("n", "grr")
+vim.keymap.del("n", "gra")
+vim.keymap.del("n", "grn")
+vim.keymap.del("n", "gri")
+map("n", "<leader>ld", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map({ "n", "v" }, "<leader>lf", vim.lsp.buf.format, { desc = "Format Code" })
+map({ "n", "v" }, "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action" })
+map("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+
 -- [[ Automatic Commands ]]
 -- See `:help autocmd
 
@@ -278,7 +283,6 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit" },
   callback = function(event)
     vim.api.nvim_create_autocmd("BufWritePost", {
-      group = augroup "close_gitcommit",
       buffer = event.buf,
       callback = function()
         -- hack to close the buffer as vim.api.nvim_win_close() doesn't work
@@ -300,7 +304,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 vim.api.nvim_create_autocmd({ "VimEnter", "BufWinEnter", "BufRead", "BufNewFile" }, {
   pattern = { "justfile", ".justfile", "*.just" },
   callback = function()
-    vim.cmd [[ setlocal filetype=just | setlocal commentstring=#\ %s ]]
+    vim.cmd([[ setlocal filetype=just | setlocal commentstring=#\ %s ]])
   end,
 })
 
@@ -313,12 +317,57 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
+-- Set up basic lsp loading spinner
+---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
+local progress = vim.defaulttable()
+vim.api.nvim_create_autocmd("LspProgress", {
+  ---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+  callback = function(ev)
+    local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    local value = ev.data.params.value --[[@as {percentage?: number, title?: string, message?: string, kind: "begin" | "report" | "end"}]]
+    if not client or type(value) ~= "table" then
+      return
+    end
+    local p = progress[client.id]
+
+    for i = 1, #p + 1 do
+      if i == #p + 1 or p[i].token == ev.data.params.token then
+        p[i] = {
+          token = ev.data.params.token,
+          msg = ("[%3d%%] %s%s"):format(
+            value.kind == "end" and 100 or value.percentage or 100,
+            value.title or "",
+            value.message and (" **%s**"):format(value.message) or ""
+          ),
+          done = value.kind == "end",
+        }
+        break
+      end
+    end
+
+    local msg = {} ---@type string[]
+    progress[client.id] = vim.tbl_filter(function(v)
+      return table.insert(msg, v.msg) or not v.done
+    end, p)
+
+    local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+    vim.notify(table.concat(msg, "\n"), vim.log.levels.INFO, {
+      id = "lsp_progress",
+      title = client.name,
+      opts = function(notif)
+        notif.icon = #progress[client.id] == 0 and " "
+          or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1]
+      end,
+    })
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 -- See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system { "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath }
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
   if vim.v.shell_error ~= 0 then
     error("Error cloning lazy.nvim:\n" .. out)
   end
@@ -326,9 +375,18 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- Set up lazy, and load `lua/kp/plugins/` folder
-require("lazy").setup {
+require("lazy").setup({
   spec = {
     { import = "kp.plugins" },
-    { import = "kp.languages" },
+    { import = "kp.languages.lua" },
   },
-}
+})
+map("n", "<leader>L", ":Lazy<cr>", { desc = "Lazy" })
+
+-- Enable all configured servers
+local configs = {}
+for _, v in ipairs(vim.api.nvim_get_runtime_file("lsp/*", true)) do
+  local name = vim.fn.fnamemodify(v, ":t:r")
+  configs[name] = true
+end
+vim.lsp.enable(vim.tbl_keys(configs))
