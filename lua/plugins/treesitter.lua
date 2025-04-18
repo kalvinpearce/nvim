@@ -23,7 +23,7 @@ return {
         "http",
         "javascript",
         "just",
-        "json",
+        "json5",
         "lua",
         "markdown",
         "markdown_inline",
