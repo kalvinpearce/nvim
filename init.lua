@@ -39,10 +39,10 @@ vim.opt.completeopt = "menuone,noinsert,noinsert,popup,fuzzy" -- Customize compl
 vim.opt.expandtab = true -- spaces over tabs (sorry Richard)
 vim.opt.formatoptions = "rqnl1j" -- Improve comment editing
 vim.opt.ignorecase = true -- Ignore case when searching (use `\C` to force not doing that)
-vim.opt.iskeyword:append("-") -- don't split word on - char
 vim.opt.inccommand = "split" -- show command output as you type
 vim.opt.incsearch = true -- Show search results while typing
 vim.opt.infercase = true -- Infer letter cases for a richer built-in keyword completion
+vim.opt.iskeyword:append("-") -- don't split word on - char
 vim.opt.lazyredraw = true -- make macros faster by only redraw when finished
 vim.opt.shiftwidth = 2 -- spaces per indentation
 vim.opt.smartcase = true -- Don't ignore case when searching if pattern has upper case
@@ -380,6 +380,7 @@ require("lazy").setup({
   spec = {
     { import = "kp.plugins" },
     { import = "kp.languages.lua" },
+    { import = "kp.languages.rust" },
   },
 })
 map("n", "<leader>L", ":Lazy<cr>", { desc = "Lazy" })
