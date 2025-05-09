@@ -53,7 +53,7 @@ return {
 
   {
     "windwp/nvim-ts-autotag",
-    ft = { "html", "javascriptreact", "typescriptreact" },
+    ft = { "html", "javascriptreact", "typescriptreact", "svelte" },
     opts = {},
   },
 }

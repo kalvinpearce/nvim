@@ -11,6 +11,7 @@ return {
     "svelte",
     "astro",
   },
+  workspace_required = true,
   root_markers = {
     ".eslintrc",
     ".eslintrc.js",
@@ -60,32 +61,44 @@ return {
       },
     },
   },
-  on_new_config = function(config, new_root_dir)
+  before_init = function(_, config)
     -- The "workspaceFolder" is a VSCode concept. It limits how far the
     -- server will traverse the file system when locating the ESLint config
     -- file (e.g., .eslintrc).
-    config.settings.workspaceFolder = {
-      uri = new_root_dir,
-      name = vim.fn.fnamemodify(new_root_dir, ":t"),
-    }
+    local root_dir = config.root_dir
 
-    -- Support flat config
-    if
-      vim.fn.filereadable(new_root_dir .. "/eslint.config.js") == 1
-      or vim.fn.filereadable(new_root_dir .. "/eslint.config.mjs") == 1
-      or vim.fn.filereadable(new_root_dir .. "/eslint.config.cjs") == 1
-      or vim.fn.filereadable(new_root_dir .. "/eslint.config.ts") == 1
-      or vim.fn.filereadable(new_root_dir .. "/eslint.config.mts") == 1
-      or vim.fn.filereadable(new_root_dir .. "/eslint.config.cts") == 1
-    then
-      config.settings.experimental.useFlatConfig = true
-    end
+    if root_dir then
+      config.settings = config.settings or {}
+      config.settings.workspaceFolder = {
+        uri = root_dir,
+        name = vim.fn.fnamemodify(root_dir, ":t"),
+      }
 
-    -- Support Yarn2 (PnP) projects
-    local pnp_cjs = new_root_dir .. "/.pnp.cjs"
-    local pnp_js = new_root_dir .. "/.pnp.js"
-    if vim.loop.fs_stat(pnp_cjs) or vim.loop.fs_stat(pnp_js) then
-      config.cmd = vim.list_extend({ "yarn", "exec" }, config.cmd)
+      -- Support flat config
+      local flat_config_files = {
+        "eslint.config.js",
+        "eslint.config.mjs",
+        "eslint.config.cjs",
+        "eslint.config.ts",
+        "eslint.config.mts",
+        "eslint.config.cts",
+      }
+
+      for _, file in ipairs(flat_config_files) do
+        if vim.fn.filereadable(root_dir .. "/" .. file) == 1 then
+          config.settings.experimental = config.settings.experimental or {}
+          config.settings.experimental.useFlatConfig = true
+          break
+        end
+      end
+
+      -- Support Yarn2 (PnP) projects
+      local pnp_cjs = root_dir .. "/.pnp.cjs"
+      local pnp_js = root_dir .. "/.pnp.js"
+      if vim.uv.fs_stat(pnp_cjs) or vim.uv.fs_stat(pnp_js) then
+        local cmd = config.cmd
+        config.cmd = vim.list_extend({ "yarn", "exec" }, cmd)
+      end
     end
   end,
   handlers = {
