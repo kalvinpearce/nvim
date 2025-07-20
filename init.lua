@@ -126,7 +126,7 @@ vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
 
 -- [[ Diagnostics ]]
-vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
+vim.diagnostic.config({ virtual_text = true, virtual_lines = false, jump = { float = true } })
 
 -- Enable the experimental Lua module loader
 vim.loader.enable()
@@ -260,16 +260,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- Resize splits if window got resized
 vim.api.nvim_create_autocmd({ "VimResized" }, {
   command = "tabdo wincmd =",
-})
-
--- Open diagnostics on hover
-vim.api.nvim_create_autocmd("CursorHold", {
-  callback = function()
-    local opts = {
-      focusable = false,
-    }
-    vim.diagnostic.open_float(nil, opts)
-  end,
 })
 
 -- Close some filetypes with <q>
